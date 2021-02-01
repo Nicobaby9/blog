@@ -40,7 +40,7 @@
 				</td>
 			</tr>
 			@empty
-				<p>Tidak ada data.</p>
+				<td>Tidak ada data.</td>
 			@endforelse
 		</tbody>
 	</table>

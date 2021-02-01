@@ -24,6 +24,13 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Post</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('post.index') }}">List Post</a></li>
+            <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Tags</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('tag.index') }}">List Tags</a></li>

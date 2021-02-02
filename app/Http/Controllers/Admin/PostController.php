@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Model\{Post, Category, Tag};
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -58,10 +59,13 @@ class PostController extends Controller
 
             $post = Post::create([
                 'title' => $request->title,
+                'slug' => Str::slug($request->title, '-'),
                 'category_id' => $request->category_id,
                 'content' => $request->content,
                 'image' => $filename,
             ]);
+
+            $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
         }
@@ -86,7 +90,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 
     /**

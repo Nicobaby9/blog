@@ -3,13 +3,17 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\{Category, User};
+use App\Model\{Category, Tag, User};
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'category_id', 'content', 'image'];
+    protected $fillable = ['title', 'slug', 'category_id', 'content', 'image'];
 
     public function category() {
     	return $this->belongsTo(Category::class);
+    }
+
+    public function tags() {
+    	return $this->belongsToMany(Tag::class)->withTimeStamps();
     }
 }

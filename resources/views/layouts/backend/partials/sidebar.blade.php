@@ -14,7 +14,7 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>Post</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('post.index') }}">List Post</a></li>
-            <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
+            <li><a class="nav-link" href="{{ route('post.bin') }}">List Post Recycle Bin</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

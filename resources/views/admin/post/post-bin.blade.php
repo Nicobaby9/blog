@@ -1,10 +1,8 @@
 @extends('layouts.backend.home')
 
-@section('title', 'Post')
+@section('title', 'Post Recycle Bin')
 
 @section('content')
-<a class="btn btn-primary" href="{{ route('post.create') }}" role="button" aria-expanded="false">Tambah Post</a>
-<hr>
 <table class="table table-hover table-light table-bordered">
 	<thead class="table-primary">
 		<tr>
@@ -29,8 +27,8 @@
 			</td>
 			<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
 			<td>
-				<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.destroy',$post->id) }}"> Delete </button>
+				<a href="{{ route('post.restore', $post->id) }}" class="btn btn-sm btn-primary">Restore</a>
+				<button class="btn btn-danger btn-flat btn-sm remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.clean',$post->id) }}"> Delete </button>
 			</td>
 		</tr>
 		@empty
@@ -49,7 +47,7 @@
     var current_object = $(this);
     swal({
         title: "Apakah anda Yakin?",
-        text: "Post masih dapat dilihat di Post Recycle Bin.",
+        text: "Post yang akan dihapus tidak akan bisa di restore!",
         type: "error",
         showCancelButton: true,
         dangerMode: true,

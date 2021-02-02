@@ -124,7 +124,7 @@ class PostController extends Controller
             $destinationPath = public_path('/storage/post-image');
             $file->move($destinationPath, $filename);
             $insert['image'] = "$filename";
-            $a = File::delete($destinationPath . $post->image); 
+            $image = File::delete($destinationPath . $post->image); 
 
             $post_data = [
                 'title' => $request->title,
@@ -137,7 +137,7 @@ class PostController extends Controller
             $post->update($post_data);
             $post->tags()->sync($request->tags);
 
-            return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
+            return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);
         }else {
             $post_data = [
                 'title' => $request->title,
@@ -149,7 +149,7 @@ class PostController extends Controller
             $post->update($post_data);
             $post->tags()->sync($request->tags);
 
-            return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
+            return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);
         }
     }
 
@@ -164,6 +164,31 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
 
-        return redirect()->back()->with(['success' => 'Data berhasil dihapus']);
+        return redirect()->back()->with(['success' => 'Data berhasil dihapus, Silahkan lihat di Post Recycle Bin']);
+    }
+
+    public function post_bin() {
+        $posts = Post::onlyTrashed()->paginate(10);
+
+        return view('admin.post.post-bin', compact('posts'));
+    }
+
+    public function restore($id) {
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->restore();
+
+        return redirect()->back()->with(['success' => 'Data berhasil resstore, Silahkan lihat di List Post']);
+    }
+
+    public function clean($id) {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        // Delete Image
+        $destinationPath = public_path('/storage/post-image');
+        $image = File::delete($destinationPath . $post->image); 
+
+        $post->forceDelete();
+        
+        return redirect()->back()->with(['success' => 'Data berhasil dihapus secara permanen']);
     }
 }

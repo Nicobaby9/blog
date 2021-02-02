@@ -3,10 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\{Category, Tag, User};
 
 class Post extends Model
 {
+	use SoftDeletes;
+
     protected $fillable = ['title', 'slug', 'category_id', 'content', 'image'];
 
     public function category() {

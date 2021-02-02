@@ -1,7 +1,7 @@
 @extends('layouts.backend.home')
 
 @section('title')
-	<h1>Home Page</h1>
+	<h1>Dashboard</h1>
 @endsection
 
 @section('content')

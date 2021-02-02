@@ -11,7 +11,7 @@
 			<th scope="col">No.</th>
 			<th scope="col">Title</th>
 			<th scope="col">Tags</th>
-			<th scope="col">Image</th>
+			<th scope="col">Thumbnail</th>
 			<th scope="col">Action</th>
 		</tr>
 	</thead>

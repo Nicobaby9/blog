@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\{Post, Category, Tag};
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use File;
 
 class PostController extends Controller
 {
@@ -45,7 +46,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|min:5',
             'category_id' => 'required',
-            'content' => 'required',
+            'content' => 'required|min:20',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4000'
         ]);
 
@@ -106,7 +107,50 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|min:5',
+            'category_id' => 'required',
+            'content' => 'required|min:20',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4000',
+        ]);
+
+        $post = Post::findOrFail($id);
+
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $imageSize = $file->getsize();
+            $destinationPath = public_path('/storage/post-image');
+            $file->move($destinationPath, $filename);
+            $insert['image'] = "$filename";
+            $a = File::delete($destinationPath . $post->image); 
+
+            $post_data = [
+                'title' => $request->title,
+                'slug' => Str::slug($request->title, '-'),
+                'category_id' => $request->category_id,
+                'content' => $request->content,
+                'image' => $filename,
+            ];
+
+            $post->update($post_data);
+            $post->tags()->sync($request->tags);
+
+            return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
+        }else {
+            $post_data = [
+                'title' => $request->title,
+                'slug' => Str::slug($request->title, '-'),
+                'category_id' => $request->category_id,
+                'content' => $request->content,
+            ];
+
+            $post->update($post_data);
+            $post->tags()->sync($request->tags);
+
+            return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
+        }
     }
 
     /**
@@ -117,6 +161,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->back()->with(['success' => 'Data berhasil dihapus']);
     }
 }

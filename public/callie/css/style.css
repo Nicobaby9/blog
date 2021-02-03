@@ -745,25 +745,10 @@ textarea.input {
   transition: 1.6s transform, 1.6s -webkit-transform;
 }
 
-.post-img-1>img {
-  width: 100%;
-  height: 180px;
-  -webkit-transition: 1.6s -webkit-transform;
-  transition: 1.6s -webkit-transform;
-  transition: 1.6s transform;
-  transition: 1.6s transform, 1.6s -webkit-transform;
-}
-
 .post-img:hover>img {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
-}
-
-.post-img-1:hover>img {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 .post .post-title {

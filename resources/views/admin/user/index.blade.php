@@ -1,42 +1,38 @@
 @extends('layouts.backend.home')
 
-@section('title', 'Post')
+@section('title', 'User')
 
 @section('content')
-<a class="btn btn-primary" href="{{ route('post.create') }}" role="button" aria-expanded="false">Tambah Post</a>
+<a class="btn btn-primary" href="{{ route('user.create') }}" role="button" aria-expanded="false">Tambah User</a>
 <hr>
 <table class="table table-hover table-light table-bordered">
 	<thead class="table-primary">
 		<tr>
 			<th scope="col">No.</th>
-			<th scope="col">Title</th>
-			<th scope="col">Author</th>
-			<th scope="col">Kategory</th>
-			<th scope="col">Tags</th>
-			<th scope="col">Thumbnail</th>
+			<th scope="col">Nama</th>
+			<th scope="col">Email</th>
+			<th scope="col">Role</th>
+			<th scope="col">Photo</th>
 			<th scope="col">Action</th>
 		</tr>
 	</thead>
 	<tbody>
-		@forelse($posts as $key => $post)
+		@forelse($users as $key => $user)
 		<tr>
 			<td>{{ $key+=1 }}</td>
-			<td>{{ \Illuminate\Support\Str::title($post->title) }}</td>
-			<td>{{ \Illuminate\Support\Str::title($post->user->name) }}</td>
-			<td>{{ \Illuminate\Support\Str::title($post->category->name) }}</td>
+			<td>{{ \Illuminate\Support\Str::title($user->name) }}</td>
+			<td>{{ $user->email }}</td>
 			<td>
-				<ul>
-					@foreach($post->tags as $tag)
-					<h6> 
-						<span class="badge badge-info">{{ $tag->name }}</span> 
-					</h6>
-					@endforeach
-				</ul>
+				@if($user->role == 1)
+					<span class="badge badge-success">Administrator</span> 
+				@else
+					<span class="badge badge-info">Author</span> 
+				@endif
 			</td>
-			<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
+			<td><img src="{{ asset('storage/user-photo/'. $user->photo) }}" class="rounded-circle" width="80" height="80"></td>
 			<td>
-				<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.destroy',$post->id) }}"> Delete </button>
+				<a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
+				<button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $user->id }}" data-action="{{ route('user.destroy',$user->id) }}"> Delete </button>
 			</td>
 		</tr>
 		@empty
@@ -45,17 +41,17 @@
 	</tbody>
 </table>
 
-{{ $posts->links() }}
+{{ $users->links() }}
 
 @endsection
 
 @section('js')
 <script type="text/javascript">
-  $('body').on("click",".remove-post",function(){
+  $('body').on("click",".remove-user",function(){
     var current_object = $(this);
     swal({
         title: "Apakah anda Yakin?",
-        text: "Post masih dapat dilihat di Post Recycle Bin.",
+        text: "User yang akan dihapus ditak akan bisa direstore!",
         type: "error",
         showCancelButton: true,
         dangerMode: true,

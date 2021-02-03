@@ -54,12 +54,13 @@ class PostController extends Controller
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $imageSize = $file->getsize();
-            $destinationPath = public_path('/storage/post-image');
+            $destinationPath = public_path('/storage/post-image/');
             $file->move($destinationPath, $filename);
             $insert['image'] = "$filename";
 
             $post = Post::create([
                 'title' => $request->title,
+                'user_id' => auth()->user()->id,
                 'slug' => Str::slug($request->title, '-'),
                 'category_id' => $request->category_id,
                 'content' => $request->content,
@@ -184,7 +185,7 @@ class PostController extends Controller
         $post = Post::withTrashed()->where('id', $id)->first();
 
         // Delete Image
-        $destinationPath = public_path('/storage/post-image');
+        $destinationPath = public_path('/storage/post-image/');
         $image = File::delete($destinationPath . $post->image); 
 
         $post->forceDelete();

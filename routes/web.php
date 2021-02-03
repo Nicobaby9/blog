@@ -18,7 +18,9 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function() {
+Auth::routes();
+
+Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('/post-recycle-bin', 'PostController@post_bin')->name('post.bin');
 	Route::get('/post-restore/{id}', 'PostController@restore')->name('post.restore');
@@ -26,5 +28,5 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin'], function() {
 	Route::resource('/post', 'PostController');
 	Route::resource('/tag', 'TagController');
 	Route::resource('/category', 'CategoryController');
+	Route::resource('/user', 'UserController');
 });
-Auth::routes();

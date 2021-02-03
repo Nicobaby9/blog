@@ -10,7 +10,7 @@ class Post extends Model
 {
 	use SoftDeletes;
 
-    protected $fillable = ['title', 'slug', 'category_id', 'content', 'image'];
+    protected $fillable = ['title', 'user_id', 'slug', 'category_id', 'content', 'image'];
 
     public function category() {
     	return $this->belongsTo(Category::class);
@@ -18,5 +18,9 @@ class Post extends Model
 
     public function tags() {
     	return $this->belongsToMany(Tag::class)->withTimeStamps();
+    }
+
+    public function user() {
+    	return $this->belongsTo(User::class);
     }
 }

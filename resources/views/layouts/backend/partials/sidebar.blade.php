@@ -21,14 +21,21 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Kategori</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('category.index') }}">List Kategori</a></li>
-            <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
+            <li><a class="nav-link" href="{{ route('category.create') }}">Tambah Katregori</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-hashtag"></i> <span>Tags</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('tag.index') }}">List Tags</a></li>
-            <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
+            <li><a class="nav-link" href="{{ route('tag.create') }}">Tambah Tag</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>User</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('user.index') }}">List User</a></li>
+            <li><a class="nav-link" href="{{ route('user.create') }}">Tambah User</a></li>
           </ul>
         </li>
         <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>

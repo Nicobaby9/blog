@@ -39,8 +39,8 @@
 
 		<!-- post content -->
 		<div class="section-row">
-			<h3>{{ $str_modif }}</h3>
-			<p>{{ \Illuminate\Support\Str::after($post->content, '...') }}</p>
+			<h3>{!! $str_modif !!}</h3>
+			<p>{!! \Illuminate\Support\Str::afterLast($post->content, $str_modif) !!}</p>
 		</div>
 		<!-- /post content -->
 
@@ -63,13 +63,13 @@
 		<div class="section-row">
 			<div class="post-nav">
 				<div class="prev-post">
-					<a class="post-img" href="blog-post.html"><img src="./img/widget-8.jpg" alt=""></a>
+					<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-8.jpg') }}" alt=""></a>
 					<h3 class="post-title"><a href="#">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
 					<span>Previous post</span>
 				</div>
 
 				<div class="next-post">
-					<a class="post-img" href="blog-post.html"><img src="./img/widget-10.jpg" alt=""></a>
+					<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-10.jpg') }}" alt=""></a>
 					<h3 class="post-title"><a href="#">Postea senserit id eos, vivendo periculis ei qui</a></h3>
 					<span>Next post</span>
 				</div>
@@ -85,7 +85,7 @@
 			<div class="author media">
 				<div class="media-left">
 					<a href="author.html">
-						<img class="author-img media-object" src="./img/avatar-1.jpg" alt="">
+						<img class="author-img media-object" src="{{ asset('callie/img/avatar-1.jpg') }}" alt="">
 					</a>
 				</div>
 				<div class="media-body">
@@ -110,7 +110,7 @@
 				<!-- post -->
 				<div class="col-md-4">
 					<div class="post post-sm">
-						<a class="post-img" href="blog-post.html"><img src="./img/post-4.jpg" alt=""></a>
+						<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/post-4.jpg') }}" alt=""></a>
 						<div class="post-body">
 							<div class="post-category">
 								<a href="category.html">Health</a>
@@ -128,7 +128,7 @@
 				<!-- post -->
 				<div class="col-md-4">
 					<div class="post post-sm">
-						<a class="post-img" href="blog-post.html"><img src="./img/post-6.jpg" alt=""></a>
+						<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/post-6.jpg') }}" alt=""></a>
 						<div class="post-body">
 							<div class="post-category">
 								<a href="category.html">Fashion</a>
@@ -147,7 +147,7 @@
 				<!-- post -->
 				<div class="col-md-4">
 					<div class="post post-sm">
-						<a class="post-img" href="blog-post.html"><img src="./img/post-7.jpg" alt=""></a>
+						<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/post-7.jpg') }}" alt=""></a>
 						<div class="post-body">
 							<div class="post-category">
 								<a href="category.html">Health</a>
@@ -175,7 +175,7 @@
 				<!-- comment -->
 				<div class="media">
 					<div class="media-left">
-						<img class="media-object" src="./img/avatar-2.jpg" alt="">
+						<img class="media-object" src="{{ asset('callie/img/avatar-2.jpg') }}" alt="">
 					</div>
 					<div class="media-body">
 						<div class="media-heading">
@@ -187,7 +187,7 @@
 						<!-- comment -->
 						<div class="media media-author">
 							<div class="media-left">
-								<img class="media-object" src="./img/avatar-1.jpg" alt="">
+								<img class="media-object" src="{{ asset('callie/img/avatar-1.jpg') }}" alt="">
 							</div>
 							<div class="media-body">
 								<div class="media-heading">
@@ -206,7 +206,7 @@
 				<!-- comment -->
 				<div class="media">
 					<div class="media-left">
-						<img class="media-object" src="./img/avatar-3.jpg" alt="">
+						<img class="media-object" src="{{ asset('callie/img/avatar-3.jpg') }}" alt="">
 					</div>
 					<div class="media-body">
 						<div class="media-heading">
@@ -262,7 +262,7 @@
 		<!-- ad widget -->
 		<div class="aside-widget text-center">
 			<a href="#" style="display: inline-block;margin: auto;">
-				<img class="img-responsive" src="./img/ad-3.jpg" alt="">
+				<img class="img-responsive" src="{{ asset('callie/img/ad-3.jpg') }}" alt="">
 			</a>
 		</div>
 		<!-- /ad widget -->
@@ -336,7 +336,7 @@
 			</div>
 			<!-- post -->
 			<div class="post post-widget">
-				<a class="post-img" href="blog-post.html"><img src="./img/widget-3.jpg" alt=""></a>
+				<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-3.jpg') }}" alt=""></a>
 				<div class="post-body">
 					<div class="post-category">
 						<a href="category.html">Lifestyle</a>
@@ -348,7 +348,7 @@
 
 			<!-- post -->
 			<div class="post post-widget">
-				<a class="post-img" href="blog-post.html"><img src="./img/widget-2.jpg" alt=""></a>
+				<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-2.jpg') }}" alt=""></a>
 				<div class="post-body">
 					<div class="post-category">
 						<a href="category.html">Technology</a>
@@ -361,7 +361,7 @@
 
 			<!-- post -->
 			<div class="post post-widget">
-				<a class="post-img" href="blog-post.html"><img src="./img/widget-4.jpg" alt=""></a>
+				<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-4.jpg') }}" alt=""></a>
 				<div class="post-body">
 					<div class="post-category">
 						<a href="category.html">Health</a>
@@ -373,7 +373,7 @@
 
 			<!-- post -->
 			<div class="post post-widget">
-				<a class="post-img" href="blog-post.html"><img src="./img/widget-5.jpg" alt=""></a>
+				<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-5.jpg') }}" alt=""></a>
 				<div class="post-body">
 					<div class="post-category">
 						<a href="category.html">Health</a>
@@ -393,12 +393,12 @@
 			</div>
 			<div class="galery-widget">
 				<ul>
-					<li><a href="#"><img src="./img/galery-1.jpg" alt=""></a></li>
-					<li><a href="#"><img src="./img/galery-2.jpg" alt=""></a></li>
-					<li><a href="#"><img src="./img/galery-3.jpg" alt=""></a></li>
-					<li><a href="#"><img src="./img/galery-4.jpg" alt=""></a></li>
-					<li><a href="#"><img src="./img/galery-5.jpg" alt=""></a></li>
-					<li><a href="#"><img src="./img/galery-6.jpg" alt=""></a></li>
+					<li><a href="#"><img src="{{ asset('callie/img/galery-1.jpg') }}" alt=""></a></li>
+					<li><a href="#"><img src="{{ asset('callie/img/galery-2.jpg') }}" alt=""></a></li>
+					<li><a href="#"><img src="{{ asset('callie/img/galery-3.jpg') }}" alt=""></a></li>
+					<li><a href="#"><img src="{{ asset('callie/img/galery-4.jpg') }}" alt=""></a></li>
+					<li><a href="#"><img src="{{ asset('callie/img/galery-5.jpg') }}" alt=""></a></li>
+					<li><a href="#"><img src="{{ asset('callie/img/galery-6.jpg') }}" alt=""></a></li>
 				</ul>
 			</div>
 		</div>
@@ -407,7 +407,7 @@
 		<!-- Ad widget -->
 		<div class="aside-widget text-center">
 			<a href="#" style="display: inline-block;margin: auto;">
-				<img class="img-responsive" src="./img/ad-1.jpg" alt="">
+				<img class="img-responsive" src="{{ asset('callie/img/ad-1.jpg') }}" alt="">
 			</a>
 		</div>
 		<!-- /Ad widget -->

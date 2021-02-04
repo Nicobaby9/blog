@@ -41,7 +41,7 @@
 			<!-- nav -->
 			<ul class="nav-menu">
 				<li class="has-dropdown">
-					<a href="index.html">Home</a>
+					<a href="{{ url('/') }}">Home</a>
 					<div class="dropdown">
 						<div class="dropdown-body">
 							<ul class="dropdown-list">

@@ -17,7 +17,7 @@
               <div class="col-xs-9 col-sm-9 col-md-8">
                   <label class="font-weight-bold">Konten</label>
                 <div class="form-group">
-                  <textarea name="content" style="color: black;" rows="19" cols="89" placeholder="Isi dari konten" class=""></textarea>
+                  <textarea name="content"style="color: black;" rows="19" cols="89" placeholder="Isi dari konten" id="content"></textarea>
                 </div>
               </div>
               <div class="col-xs-5 col-md-4">
@@ -67,7 +67,8 @@
 @endsection
 
 @section('js')
-
+<!-- CKeditor 4 -->
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <script>
     $(function() {
         $('#tag').selectize();
@@ -85,5 +86,7 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    CKEDITOR.replace( 'content' );
 </script>
 @endsection

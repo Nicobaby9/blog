@@ -46,10 +46,10 @@
 					<div class="dropdown">
 						<div class="dropdown-body">
 							<ul class="dropdown-list">
+								<li><a href="{{ route('list.category') }}" title="">Semua Kategori</a></li>
 								@foreach($categories as $category)
 								<li><a href="#">{{ $category->name }}</a></li>
 								@endforeach
-								<li> <center> {{ $categories->links() }}</center></li>
 							</ul>
 						</div>
 					</div>

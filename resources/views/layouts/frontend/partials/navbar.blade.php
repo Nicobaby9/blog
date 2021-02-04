@@ -40,24 +40,23 @@
 		<div class="container">
 			<!-- nav -->
 			<ul class="nav-menu">
+				<li><a href="{{ url('/') }}">Beranda</a></li>
 				<li class="has-dropdown">
-					<a href="{{ url('/') }}">Home</a>
+					<a href="{{ url('/') }}">Kategori</a>
 					<div class="dropdown">
 						<div class="dropdown-body">
 							<ul class="dropdown-list">
-								<li><a href="category.html">Category page</a></li>
-								<li><a href="blog-post.html">Post page</a></li>
-								<li><a href="author.html">Author page</a></li>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="contact.html">Contacts</a></li>
-								<li><a href="blank.html">Regular</a></li>
+								@foreach($categories as $category)
+								<li><a href="#">{{ $category->name }}</a></li>
+								@endforeach
+								<li> <center> {{ $categories->links() }}</center></li>
 							</ul>
 						</div>
 					</div>
 				</li>
-				<li><a href="#">Technology</a></li>
-				<li><a href="#">Health</a></li>
-				<li><a href="#">Travel</a></li>
+				@foreach($navCategories as $navCategory)
+				<li><a href="#">{{ $navCategory->name }}</a></li>
+				@endforeach
 			</ul>
 			<!-- /nav -->
 		</div>

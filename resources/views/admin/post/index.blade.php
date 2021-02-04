@@ -12,7 +12,6 @@
 			<th scope="col">Title</th>
 			<th scope="col">Author</th>
 			<th scope="col">Kategory</th>
-			<th scope="col">Tags</th>
 			<th scope="col">Thumbnail</th>
 			<th scope="col">Action</th>
 		</tr>
@@ -24,15 +23,6 @@
 			<td>{{ \Illuminate\Support\Str::title($post->title) }}</td>
 			<td>{{ \Illuminate\Support\Str::title($post->user->name) }}</td>
 			<td>{{ \Illuminate\Support\Str::title($post->category->name) }}</td>
-			<td>
-				<ul>
-					@foreach($post->tags as $tag)
-					<h6> 
-						<span class="badge badge-info">{{ $tag->name }}</span> 
-					</h6>
-					@endforeach
-				</ul>
-			</td>
 			<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
 			<td>
 				<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>

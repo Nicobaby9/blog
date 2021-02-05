@@ -43,4 +43,13 @@ class BlogController extends Controller
 
     	return view('frontend.list-category', compact('categories', 'navCategories', 'all_categories'));
     }
+
+    public function search(Request $request) {
+    	$categories = Category::take(5)->get();
+    	$navCategories = Category::latest()->take(3)->get();
+    	$posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->paginate(5);
+    	// $posts = $category->posts()->paginate(5);
+
+    	return view('frontend.category-show', compact('categories', 'navCategories', 'posts', 'category'));
+    }
 }

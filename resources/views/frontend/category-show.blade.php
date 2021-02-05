@@ -6,12 +6,16 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="section-title">
+			@if(request()->is('/category/{category}'))
 			<h2 class="title">Category : {{ $category->name }}</h2>
+			@elseif(request()->is(route('blog.search')))
+			<h2 class="title">Search</h2>
+			@endif
 		</div>
 	</div>
 	<div class="col-md-12">
 		<!-- post -->
-		@foreach($posts as $post)
+		@forelse($posts as $post)
 		<div class="post post-row">
 			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt=""></a>
 			<div class="post-body">
@@ -26,7 +30,9 @@
 				<p>{!! \Illuminate\Support\Str::words($post->content, 10, '...') !!}</p>
 			</div>
 		</div>
-		@endforeach
+		@empty
+			<h2 class="title">Tidak ada artikel terkait.</h2>
+		@endforelse
 		<!-- /post -->
 		<center>{{ $posts->links() }}</center>
 

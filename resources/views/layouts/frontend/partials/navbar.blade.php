@@ -22,7 +22,7 @@
 				<button class="aside-btn"><i class="fa fa-bars"></i></button>
 				<button class="search-btn"><i class="fa fa-search"></i></button>
 				<div id="nav-search">
-					<form>
+					<form action="{{ route('blog.search') }}" method="GET">
 						<input class="input" name="search" placeholder="Enter your search...">
 					</form>
 					<button class="nav-close search-close">
@@ -48,7 +48,7 @@
 							<ul class="dropdown-list">
 								<li><a href="{{ route('list.category') }}" title="">Semua Kategori</a></li>
 								@foreach($categories as $category)
-								<li><a href="#">{{ $category->name }}</a></li>
+								<li><a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}</a></li>
 								@endforeach
 							</ul>
 						</div>

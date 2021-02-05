@@ -7,15 +7,15 @@
 	<div class="col-md-8 hot-post-left">
 		<!-- post -->
 		<div class="post post-thumb">
-			<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/hot-post-1.jpg') }}" alt=""></a>
+			<a class="post-img" href="{{ route('blog.show', $main_post->slug) }}"><img src="{{ asset('storage/post-image/'.$main_post->image) }}" alt="" height="507"></a>
 			<div class="post-body">
 				<div class="post-category">
-					<a href="category.html">Lifestyle</a>
+					<a href="{{ route('blog.category', $main_post->category->slug) }}">{{ \Illuminate\Support\Str::title($main_post->category->name) }}</a>
 				</div>
-				<h3 class="post-title title-lg"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
+				<h3 class="post-title title-lg"><a href="{{ route('blog.show', $main_post->slug) }}">{{ \Illuminate\Support\Str::words($main_post->title, 11) }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="author.html">John Doe</a></li>
-					<li>20 April 2018</li>
+					<li><a href="author.html">{{ \Illuminate\Support\Str::words($main_post->user->name, 2) }}</a></li>
+					<li>{{ $main_post->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>
 		</div>
@@ -23,36 +23,21 @@
 	</div>
 	<div class="col-md-4 hot-post-right">
 		<!-- post -->
+		@foreach($second_main_post as $second_post)
 		<div class="post post-thumb">
-			<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/hot-post-2.jpg') }}" alt=""></a>
+			<a class="post-img" href="{{ route('blog.show', $second_post->slug) }}"><img src="{{ asset('storage/post-image/'.$second_post->image) }}" alt="" height="250"></a>
 			<div class="post-body">
 				<div class="post-category">
-					<a href="category.html">Lifestyle</a>
+					<a href="{{ route('blog.category', $second_post->category->slug) }}">{{ \Illuminate\Support\Str::title($second_post->category->name) }}</a>
 				</div>
-				<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
+				<h3 class="post-title title-md"><a href="{{ route('blog.show', $second_post->slug) }}">{{ \Illuminate\Support\Str::words($second_post->title, 11) }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="author.html">John Doe</a></li>
-					<li>20 April 2018</li>
+					<li><a href="author.html">{{ \Illuminate\Support\Str::words($second_post->user->name, 2) }}</a></li>
+					<li>{{ $second_post->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>
 		</div>
-		<!-- /post -->
-
-		<!-- post -->
-		<div class="post post-thumb">
-			<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/hot-post-3.jpg') }}" alt=""></a>
-			<div class="post-body">
-				<div class="post-category">
-					<a href="category.html">Fashion</a>
-					<a href="category.html">Lifestyle</a>
-				</div>
-				<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-				<ul class="post-meta">
-					<li><a href="author.html">John Doe</a></li>
-					<li>20 April 2018</li>
-				</ul>
-			</div>
-		</div>
+		@endforeach
 		<!-- /post -->
 	</div>
 </div>
@@ -75,7 +60,7 @@
 			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt="" height="190"></a>
 			<div class="post-body">
 				<div class="post-category">
-					<a href="#">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
+					<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
 				</div>
 				<h3 class="post-title"><a href="{{ route('blog.show', $post->slug) }}">{{ \Illuminate\Support\Str::words($post->title, 4) }}</a></h3>
 				<ul class="post-meta">
@@ -95,17 +80,17 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="section-title">
-			<h2 class="title">Related Post</h2>
+			<h2 class="title">Semua Post</h2>
 		</div>
 	</div>
 	<div class="col-md-12">
 		<!-- post -->
-		@foreach($newest_post as $post)
+		@foreach($all_posts as $post)
 		<div class="post post-row">
 			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt=""></a>
 			<div class="post-body">
 				<div class="post-category">
-					<a href="category.html">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
+					<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
 				</div>
 				<h3 class="post-title"><a href="{{ route('blog.show', $post->slug) }}">{{ \Illuminate\Support\Str::words($post->title, 8, '...') }}</a></h3>
 				<ul class="post-meta">
@@ -117,7 +102,7 @@
 		</div>
 		@endforeach
 		<!-- /post -->
-		<center>{{ $newest_post->links() }}</center>
+		<center>{{ $all_posts->links() }}</center>
 
 		<!-- <div class="section-row loadmore text-center">
 			<a href="#" class="primary-button">Load More</a>

@@ -10,13 +10,15 @@ use Str;
 class BlogController extends Controller
 {
     public function index(Post $post) {
-    	$recent_post = $post->latest()->take(6)->get();
-    	$posts = $post->orderBy('created_at', 'asc')->paginate(3);
-    	$newest_post = Post::latest()->paginate(5);
+    	$main_post = Post::where('main_content', 1)->latest()->first();
+    	$second_main_post = Post::whereNotIn('id', array($main_post->id))->where('main_content', 1)->take(2)->get();
+    	$recent_post = $post->whereNotIn('id', array($main_post->id))->latest()->take(6)->get();
+    	$all_posts = Post::paginate(5);
+
     	$categories = Category::take(5)->get();
     	$navCategories = Category::latest()->take(3)->get();
 
-    	return view('frontend.index', compact('recent_post', 'posts', 'newest_post', 'categories', 'navCategories'));
+    	return view('frontend.index', compact('recent_post', 'all_posts', 'categories', 'navCategories', 'main_post', 'second_main_post'));
     }
 
     public function show($post) {

@@ -192,4 +192,16 @@ class PostController extends Controller
         
         return redirect()->back()->with(['success' => 'Data berhasil dihapus secara permanen']);
     }
+
+    public function mainPost(Request $request, $id) {
+        $post = Post::findOrFail($id);
+        if ($request->main_content == 1) {
+            $post->main_content = false;
+        }else {
+            $post->main_content = true;
+        }
+        $post->update();
+
+        return redirect()->back()->with(['success' => 'Status Main Post sudah berhasil diubah.']);
+    }
 }

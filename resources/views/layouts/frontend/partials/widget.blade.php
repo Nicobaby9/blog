@@ -1,9 +1,9 @@
 <!-- ad widget-->
-<div class="aside-widget text-center">
+<!-- <div class="aside-widget text-center">
 	<a href="#" style="display: inline-block;margin: auto;">
 		<img class="img-responsive" src="{{ asset('callie/img/ad-3.jpg') }}" alt="">
 	</a>
-</div>
+</div> -->
 <!-- /ad widget -->
 
 <!-- social widget -->

@@ -3,6 +3,7 @@
 @section('title', 'Post')
 
 @section('content')
+
 <a class="btn btn-primary" href="{{ route('post.create') }}" role="button" aria-expanded="false">Tambah Post</a>
 <hr>
 <table class="table table-hover table-light table-bordered">
@@ -12,6 +13,7 @@
 			<th scope="col">Title</th>
 			<th scope="col">Author</th>
 			<th scope="col">Kategory</th>
+			<th scope="col">Main Post</th>
 			<th scope="col">Thumbnail</th>
 			<th scope="col">Action</th>
 		</tr>
@@ -23,6 +25,23 @@
 			<td>{{ \Illuminate\Support\Str::title($post->title) }}</td>
 			<td>{{ \Illuminate\Support\Str::title($post->user->name) }}</td>
 			<td>{{ \Illuminate\Support\Str::title($post->category->name) }}</td>
+			<td>
+				@if($post->main_content == 0)
+					<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
+						@csrf
+						@method('PATCH')
+    					<input type="hidden" name="main_content" value="0"/>
+						<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin??')"> No </button>
+					</form>
+				@else
+					<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
+						@csrf
+						@method('PATCH')
+    					<input type="hidden" name="main_content" value="1"/>
+						<button type="submit" class="btn btn-sm btn-success confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
+					</form>
+				@endif
+			</td>
 			<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
 			<td>
 				<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
@@ -41,17 +60,22 @@
 
 @section('js')
 <script type="text/javascript">
-  $('body').on("click",".remove-post",function(){
-    var current_object = $(this);
-    swal({
-        title: "Apakah anda Yakin?",
-        text: "Post masih dapat dilihat di Post Recycle Bin.",
-        type: "error",
-        showCancelButton: true,
-        dangerMode: true,
-        cancelButtonClass: '#ffffff',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Hapus',
+
+	$('#id').on('shown.bs.modal', function () {
+	  $('#myInput').trigger('focus').show();
+	});
+
+  	$('body').on("click",".remove-post",function(){
+	    var current_object = $(this);
+	    swal({
+	        title: "Apakah anda Yakin?",
+	        text: "Post masih dapat dilihat di Post Recycle Bin.",
+	        type: "error",
+	        showCancelButton: true,
+	        dangerMode: true,
+	        cancelButtonClass: '#ffffff',
+	        confirmButtonColor: '#dc3545',
+	        confirmButtonText: 'Hapus',
     },function (result) {
         if (result) {
             var action = current_object.attr('data-action');

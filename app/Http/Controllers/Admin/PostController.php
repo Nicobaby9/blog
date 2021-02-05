@@ -195,10 +195,16 @@ class PostController extends Controller
 
     public function mainPost(Request $request, $id) {
         $post = Post::findOrFail($id);
+        $posts = Post::where('main_content', 1)->get();
+
         if ($request->main_content == 1) {
-            $post->main_content = false;
+            if($posts->count() >= 3) {
+                return redirect()->back()->with(['error' => 'Main konten tidak dapat melebihi 3 konten.']);
+            }else {
+                $post->main_content = true;
+            }
         }else {
-            $post->main_content = true;
+            $post->main_content = false;
         }
         $post->update();
 

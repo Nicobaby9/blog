@@ -30,14 +30,14 @@
 					<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
 						@csrf
 						@method('PATCH')
-    					<input type="hidden" name="main_content" value="0"/>
+    					<input type="hidden" name="main_content" value="1"/>
 						<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin??')"> No </button>
 					</form>
 				@else
 					<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
 						@csrf
 						@method('PATCH')
-    					<input type="hidden" name="main_content" value="1"/>
+    					<input type="hidden" name="main_content" value="0"/>
 						<button type="submit" class="btn btn-sm btn-success confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
 					</form>
 				@endif

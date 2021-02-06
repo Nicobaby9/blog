@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
+	Route::resource('/web-setting', 'WebSettingController');
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('/post-recycle-bin', 'PostController@post_bin')->name('post.bin');
 	Route::get('/post-restore/{id}', 'PostController@restore')->name('post.restore');

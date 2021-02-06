@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\{Post, Category, Tag};
+use App\Model\{Post, Category, Tag, WebSetting};
 use Str;
 use View;
 
@@ -13,9 +13,11 @@ class BlogController extends Controller
 	public function __construct() {
 		$categories = Category::take(5)->get();
     	$navCategories = Category::latest()->take(3)->get();
+        $web = WebSetting::all()->first();
 
     	View::share('categories', $categories);
     	View::share('navCategories', $navCategories);
+    	View::share('web', $web);
 	}
 
     public function index(Post $post) {

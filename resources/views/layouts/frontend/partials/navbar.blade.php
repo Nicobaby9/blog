@@ -13,7 +13,7 @@
 
 			<!-- logo -->
 			<div class="nav-logo">
-				<a href="index.html" class="logo"><img src="{{ asset('callie/img/logo.png') }}" alt=""></a>
+				<a href="index.html" class="logo"><img src="{{ asset('storage/web-logo/'. $web->web_logo) }}" alt=""></a>
 			</div>
 			<!-- /logo -->
 

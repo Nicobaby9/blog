@@ -33,12 +33,15 @@ class BlogController extends Controller
 
     public function show($post) {
     	$post = Post::where('slug', $post)->first();
+    	$related_post = Post::where('category_id', $post->category_id)->take(3)->get();
+    	// dd($related_post);
+
     	$count = $post->view_count += 1;
     	$post->update([
     		'view_count' => $count,
     	]);
 
-    	return view('frontend.show', compact('post'));
+    	return view('frontend.show', compact('post', 'related_post'));
     }
 
     public function category(Category $category) {

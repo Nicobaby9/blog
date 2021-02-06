@@ -33,6 +33,10 @@ class BlogController extends Controller
 
     public function show($post) {
     	$post = Post::where('slug', $post)->first();
+    	$count = $post->view_count += 1;
+    	$post->update([
+    		'view_count' => $count,
+    	]);
 
     	return view('frontend.show', compact('post'));
     }

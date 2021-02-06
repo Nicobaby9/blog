@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\WebSetting;
+use File;
 
 class WebSettingController extends Controller
 {
@@ -17,7 +18,7 @@ class WebSettingController extends Controller
     {
         $web = WebSetting::all()->first();
         
-        return view('admin.web-setting.index');
+        return view('admin.web-setting.index', compact('web'));
     }
 
     /**
@@ -72,7 +73,49 @@ class WebSettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $web = WebSetting::findOrFail($id);
+
+        $this->validate($request, [
+            'web_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('web_logo')) {
+            $file = $request->file('web_logo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/storage/web-logo/');
+            $file->move($destinationPath, $filename);
+            $insert['web_logo'] = "$filename";
+            $image = File::delete($destinationPath . $web->web_logo); 
+
+            $web_data = [
+                'web_name' => $request->web_name,
+                'web_desc' => $request->web_desc,
+                'web_story' => $request->web_story,
+                'web_vision' => $request->web_vision,
+                'instagram' => $request->instagram,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+                'web_logo' => $filename,
+            ];
+
+            $web->update($web_data);
+
+            return redirect(route('web-setting.index'))->with(['success' => 'Berhasil mengubah settingan web']);
+        }else {
+            $web_data = [
+                'web_name' => $request->web_name,
+                'web_desc' => $request->web_desc,
+                'web_story' => $request->web_story,
+                'web_vision' => $request->web_vision,
+                'instagram' => $request->instagram,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+            ];
+
+            $web->update($web_data);
+
+            return redirect(route('web-setting.index'))->with(['success' => 'Berhasil mengubah settingan web']);
+        }
     }
 
     /**

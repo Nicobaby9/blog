@@ -4,16 +4,15 @@
 		<div class="container">
 			<!-- social -->
 			<ul class="nav-social">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+				<li><a href="{{ $web->facebook }}"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="{{ $web->twitter }}"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="{{ $web->instagram }}"><i class="fa fa-instagram"></i></a></li>
 			</ul>
 			<!-- /social -->
 
 			<!-- logo -->
-			<div class="nav-logo">
-				<a href="index.html" class="logo"><img src="{{ asset('storage/web-logo/'. $web->web_logo) }}" alt=""></a>
+			<div class="nav-logo" style="width: 250px;">
+				<a href="index.html" class="logo"><img src="{{ asset('storage/web-logo/'. $web->web_logo) }}"></a>
 			</div>
 			<!-- /logo -->
 
@@ -23,7 +22,7 @@
 				<button class="search-btn"><i class="fa fa-search"></i></button>
 				<div id="nav-search">
 					<form action="{{ route('blog.search') }}" method="GET">
-						<input class="input" name="search" placeholder="Enter your search...">
+						<input class="input" name="search" placeholder="Masukkan pencarian...">
 					</form>
 					<button class="nav-close search-close">
 						<span></span>

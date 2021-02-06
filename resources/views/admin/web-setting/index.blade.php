@@ -60,15 +60,15 @@
             </div>
             <div class="form-group">
                 <label>Web Desc</label>
-                <textarea class="form-control" rows="4">{!! $web->web_desc !!}</textarea>
+                <textarea name="web_desc" class="form-control" rows="4">{!! $web->web_desc !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Story</label>
-                <textarea class="form-control" rows="4">{!! $web->web_story !!}</textarea>
+                <textarea name="web_story" class="form-control" rows="4">{!! $web->web_story !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Vision</label>
-                <textarea class="form-control" rows="4">{!! $web->web_vision !!}</textarea>
+                <textarea name="web_vision" class="form-control" rows="4">{!! $web->web_vision !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Instagram</label>
@@ -85,7 +85,7 @@
             <div class="form-group">
                 <div class="custom-file">
                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    <input name="image" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);"  value="{{ $web->web_logo }}">
+                    <input name="web_logo" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);"  value="{{ $web->web_logo }}">
                 </div>
             </div>
             <div class="form-group" style="text-align: center;">

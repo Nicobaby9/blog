@@ -6,14 +6,13 @@
 			<div class="col-md-3">
 				<div class="footer-widget">
 					<div class="footer-logo">
-						<a href="index.html" class="logo"><img src="{{ asset('callie/img/logo-alt.png') }}" alt=""></a>
+						<a href="{{ url('/') }}"><img src="{{ asset('storage/web-logo/'. $web->web_logo) }}" width="250" height="250"></a>
 					</div>
-					<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+					<p>{{ $web->vision }}</p>
 					<ul class="contact-social">
-						<li><a href="#" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" class="social-google-plus"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="{{ $web->facebook }}" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="{{ $web->twitter }}" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="{{ $web->instagram }}" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -34,17 +33,9 @@
 					<h3 class="footer-title">Tags</h3>
 					<div class="tags-widget">
 						<ul>
-							<li><a href="#">Social</a></li>
-							<li><a href="#">Lifestyle</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Travel</a></li>
-							<li><a href="#">Technology</a></li>
-							<li><a href="#">Fashion</a></li>
-							<li><a href="#">Life</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="#">Magazine</a></li>
-							<li><a href="#">Food</a></li>
-							<li><a href="#">Health</a></li>
+							@foreach($tags as $tag)
+							<li><a href="#">{{ $tag->name }}</a></li>
+							@endforeach
 						</ul>
 					</div>
 				</div>

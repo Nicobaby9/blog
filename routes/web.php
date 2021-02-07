@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'Frontend\BlogController@index')->name('index');
+Route::get('/about', 'Frontend\BlogController@about')->name('about');
 // Route::get('/blog/home', 'Frontend\BlogController@home')->name('homie');
 Route::get('/post/{post}', 'Frontend\BlogController@show')->name('blog.show');
 Route::get('/category/{category}', 'Frontend\BlogController@category')->name('blog.category');
@@ -19,8 +20,11 @@ Route::get('/tag/{tag}', 'Frontend\BlogController@tag')->name('blog.tag');
 Route::get('/search', 'Frontend\BlogController@search')->name('blog.search');
 Route::get('/category', 'Frontend\BlogController@listCategory')->name('list.category');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/comment/store', 'Frontend\CommentController@commentStore')->name('comment.add');
-Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::post('/comment/store', 'Frontend\CommentController@commentStore')->name('comment.add');
+	Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
+});
 
 Auth::routes();
 

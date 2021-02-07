@@ -31,7 +31,7 @@ class BlogController extends Controller
     	$recent_post = $post->whereNotIn('id', array($main_post->id))->latest()->take(6)->get();
     	$all_posts = Post::paginate(5);
 
-    	return view('frontend.index', compact('recent_post', 'all_posts', 'main_post', 'second_main_post'));
+    	return view('frontend.post.index', compact('recent_post', 'all_posts', 'main_post', 'second_main_post'));
     }
 
     public function show($post) {
@@ -43,14 +43,14 @@ class BlogController extends Controller
     		'view_count' => $count,
     	]);
 
-    	return view('frontend.show', compact('post', 'related_post'));
+    	return view('frontend.post.show', compact('post', 'related_post'));
     }
 
     public function category(Category $category) {
     	$posts = Post::latest()->paginate(5);
     	$posts = $category->posts()->paginate(5);
 
-    	return view('frontend.category-show', compact('posts', 'category'));
+    	return view('frontend.post.category-show', compact('posts', 'category'));
     }
 
     public function tag($tag) {
@@ -59,7 +59,7 @@ class BlogController extends Controller
 
         $posts = $tag->posts;
 
-    	return view('frontend.tag-show', compact('posts', 'tag'));
+    	return view('frontend.post.tag-show', compact('posts', 'tag'));
     }
 
     public function listCategory() {
@@ -72,6 +72,11 @@ class BlogController extends Controller
     	$posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->paginate(5);
     	// $posts = $category->posts()->paginate(5);
 
-    	return view('frontend.category-show', compact('posts', 'category'));
+    	return view('frontend.post.category-show', compact('posts', 'category'));
+    }
+
+    //COMPANY
+    public function about() {
+        return view('frontend.about');
     }
 }

@@ -33,6 +33,14 @@
                 <textarea class="form-control" rows="4" disabled>{!! $web->web_vision !!}</textarea>
             </div>
             <div class="form-group">
+                <label>Web Quotes</label>
+                <textarea class="form-control" rows="4" disabled>{!! $web->web_quotes !!}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Quotes Creator</label>
+                <textarea class="form-control" rows="4" disabled>{!! $web->web_quotes_creator !!}</textarea>
+            </div>
+            <div class="form-group">
                 <label>Instagram</label>
                 <input name="instagram" type="text" class="form-control" value="{{ $web->instagram }}" disabled>
             </div>
@@ -69,6 +77,14 @@
             <div class="form-group">
                 <label>Web Vision</label>
                 <textarea name="web_vision" class="form-control" rows="4">{!! $web->web_vision !!}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Web Quotes</label>
+                <textarea name="web_quotes" class="form-control" rows="4">{!! $web->web_quotes !!}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Quotes Creator</label>
+                <input name="web_quotes_creator" type="text" class="form-control" value="{{ \Illuminate\Support\Str::ucfirst($web->web_quotes_creator) }}">
             </div>
             <div class="form-group">
                 <label>Instagram</label>

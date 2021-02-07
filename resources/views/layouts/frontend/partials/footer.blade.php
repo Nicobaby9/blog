@@ -10,9 +10,9 @@
 					</div>
 					<p>{{ $web->vision }}</p>
 					<ul class="contact-social">
-						<li><a href="{{ $web->facebook }}" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="{{ $web->twitter }}" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="{{ $web->instagram }}" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="https://{{ $web->facebook }}" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://{{ $web->twitter }}" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://{{ $web->instagram }}" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -59,9 +59,9 @@
 		<div class="footer-bottom row">
 			<div class="col-md-6 col-md-push-6">
 				<ul class="footer-nav">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About Us</a></li>
-					<li><a href="contact.html">Contacts</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/about">About Us</a></li>
+					<li><a href="/contact">Contacts</a></li>
 					<li><a href="#">Advertise</a></li>
 					<li><a href="#">Privacy</a></li>
 				</ul>

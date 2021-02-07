@@ -152,7 +152,7 @@
 						<button class="reply btn btn-dark" id="reply" onclick="reply('{{ $comment->id }}')">Replies ( <span>{{ $comment->replies->count() }}</span> )</button>
 						<hr>
 						<div class="reply-{{ $comment->id }} hidden">
-							@include('frontend.partials.comment_replies', ['comments' => $comment->replies->take(6)])
+							@include('frontend.post.partials.comment_replies', ['comments' => $comment->replies->take(6)])
 							<form action="{{ route('reply.add') }}" class="post-reply " method="POST" id="reply">
 								@csrf
 								<div class="row">

@@ -19,6 +19,8 @@ Route::get('/tag/{tag}', 'Frontend\BlogController@tag')->name('blog.tag');
 Route::get('/search', 'Frontend\BlogController@search')->name('blog.search');
 Route::get('/category', 'Frontend\BlogController@listCategory')->name('list.category');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/comment/store', 'Frontend\CommentController@commentStore')->name('comment.add');
+Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
 
 Auth::routes();
 

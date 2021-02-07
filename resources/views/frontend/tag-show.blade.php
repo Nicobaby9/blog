@@ -31,7 +31,8 @@
 			</div>
 		</div>
 		@empty
-			<center><h2 class="title">Tidak ada artikel terkait.</h2></center>
+		<hr>
+		<center><h2 class="title">Tidak ada artikel terkait.</h2></center>
 		@endforelse
 		<!-- /post -->
 

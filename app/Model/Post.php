@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Model\{Category, Tag, User};
+use App\Model\{Category, Comment, Tag, User};
 
 class Post extends Model
 {
@@ -26,5 +26,9 @@ class Post extends Model
 
     public function getRouteKeyName() {
         return 'slug';
+    }
+
+    public function comments() {
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
     }
 }

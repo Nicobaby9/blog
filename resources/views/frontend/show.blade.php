@@ -1,6 +1,9 @@
 @extends('layouts.frontend.home')
 
 @section('header')
+	<!-- Alert Message -->
+    @include('layouts.backend.partials.message')
+    <!-- //@include('sweetalert::alert') -->
 	<div id="post-header" class="page-header">
 		<div class="page-header-bg" style="background-image: url('{{ asset('storage/post-image/'. $post->image)  }}');" data-stellar-background-ratio="0.5"></div>
 		<div class="container">
@@ -131,94 +134,91 @@
 		<!-- post comments -->
 		<div class="section-row">
 			<div class="section-title">
-				<h3 class="title">3 Comments</h3>
+				<h3 class="title">{{ $post->comments->count() }} Comments</h3>
 			</div>
+			@forelse($post->comments as $comment)
 			<div class="post-comments">
 				<!-- comment -->
 				<div class="media">
 					<div class="media-left">
-						<img class="media-object" src="{{ asset('callie/img/avatar-2.jpg') }}" alt="">
+						<img class="media-object" src="{{ asset('storage/user-photo/'.$comment->user->photo) }}" height="50">
 					</div>
 					<div class="media-body">
 						<div class="media-heading">
-							<h4>John Doe</h4>
-							<span class="time">5 min ago</span>
+							<h4>{{ $comment->user->name }}</h4>
+							<span class="time">{{ $comment->created_at->diffForHumans() }}</span>
 						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#" class="reply">Reply</a>
-						<!-- comment -->
-						<div class="media media-author">
-							<div class="media-left">
-								<img class="media-object" src="{{ asset('callie/img/avatar-1.jpg') }}" alt="">
-							</div>
-							<div class="media-body">
-								<div class="media-heading">
-									<h4>John Doe</h4>
-									<span class="time">5 min ago</span>
+						<p>{{ $comment->body }}</p>
+						<button class="reply btn btn-dark" id="reply" onclick="reply('{{ $comment->id }}')">Replies ( <span>{{ $comment->replies->count() }}</span> )</button>
+						<hr>
+						<div class="reply-{{ $comment->id }} hidden">
+							@include('frontend.partials.comment_replies', ['comments' => $comment->replies->take(6)])
+							<form action="{{ route('reply.add') }}" class="post-reply " method="POST" id="reply">
+								@csrf
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+							                <input type="hidden" name="post_id" value="{{ $post->id }}" />
+							                <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
+							            </div>
+										<div class="form-group">
+											<textarea class="input" name="comment_body" placeholder="Message" required>{{ old('comment_body') }}</textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<button class="primary-button">Reply</button>
+									</div>
 								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-								<a href="#" class="reply">Reply</a>
-							</div>
+							</form>
+							<br>
 						</div>
 						<!-- /comment -->
 					</div>
 				</div>
 				<!-- /comment -->
-
-				<!-- comment -->
-				<div class="media">
-					<div class="media-left">
-						<img class="media-object" src="{{ asset('callie/img/avatar-3.jpg') }}" alt="">
-					</div>
-					<div class="media-body">
-						<div class="media-heading">
-							<h4>John Doe</h4>
-							<span class="time">5 min ago</span>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						<a href="#" class="reply">Reply</a>
-					</div>
-				</div>
-				<!-- /comment -->
 			</div>
+			@empty
+			<h5>Belum ada komentar.</h5>
+			@endforelse
 		</div>
 		<!-- /post comments -->
 
 		<!-- post reply -->
 		<div class="section-row">
 			<div class="section-title">
-				<h3 class="title">Leave a reply</h3>
+				<h3 class="title">Beri Komentar</h3>
 			</div>
-			<form class="post-reply">
+			<form action="{{ route('comment.add') }}" class="post-reply" method="POST">
+				@csrf
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<textarea class="input" name="message" placeholder="Message"></textarea>
-						</div>
-					</div>
-					<div class="col-md-4">
+                            <input type="hidden" name="post_id" value="{{ $post->id }}"/>
+                        </div>
 						<div class="form-group">
-							<input class="input" type="text" name="name" placeholder="Name">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<input class="input" type="email" name="email" placeholder="Email">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<input class="input" type="text" name="website" placeholder="Website">
+							<textarea class="input" name="comment_body" placeholder="Message" required="">{{ old('comment_body') }}</textarea>
 						</div>
 					</div>
 					<div class="col-md-12">
-						<button class="primary-button">Submit</button>
+						<button class="primary-button">Komen</button>
 					</div>
-
 				</div>
 			</form>
 		</div>
 		<!-- /post reply -->
 	</div>
 </div>
+@endsection
+
+@section('js')
+
+<!-- SweetAlert -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script>
+	function reply(commentId){
+        $('.reply-'+commentId).toggleClass('hidden');
+    }
+
+</script>	
 @endsection

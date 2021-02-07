@@ -31,7 +31,8 @@
 			</div>
 		</div>
 		@empty
-			<h2 class="title">Tidak ada artikel terkait.</h2>
+		<hr>
+		<center><h2 class="title">Tidak ada artikel terkait.</h2></center>
 		@endforelse
 		<!-- /post -->
 		<center>{{ $posts->links() }}</center>

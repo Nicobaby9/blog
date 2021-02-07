@@ -4,9 +4,9 @@
 		<div class="container">
 			<!-- social -->
 			<ul class="nav-social">
-				<li><a href="{{ $web->facebook }}"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="{{ $web->twitter }}"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="{{ $web->instagram }}"><i class="fa fa-instagram"></i></a></li>
+				<li><a href="https://{{ $web->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="http://{{ $web->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="http://{{ $web->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
 			</ul>
 			<!-- /social -->
 
@@ -54,7 +54,7 @@
 					</div>
 				</li>
 				@foreach($navCategories as $navCategory)
-				<li><a href="{{ route('blog.category', $category->slug) }}">{{ $navCategory->name }}</a></li>
+				<li><a href="{{ route('blog.category', $navCategory->slug) }}">{{ $navCategory->name }}</a></li>
 				@endforeach
 			</ul>
 			<!-- /nav -->

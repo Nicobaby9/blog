@@ -87,7 +87,7 @@
 		<!-- post -->
 		@foreach($all_posts as $post)
 		<div class="post post-row">
-			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt=""></a>
+			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt="" style="height: 180px;"></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>

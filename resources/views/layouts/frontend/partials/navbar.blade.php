@@ -41,7 +41,7 @@
 			<ul class="nav-menu">
 				<li><a href="{{ url('/') }}">Beranda</a></li>
 				<li class="has-dropdown">
-					<a href="{{ url('/') }}">Kategori</a>
+					<a href="{{ route('list.category') }}">Kategori</a>
 					<div class="dropdown">
 						<div class="dropdown-body">
 							<ul class="dropdown-list">
@@ -54,7 +54,7 @@
 					</div>
 				</li>
 				@foreach($navCategories as $navCategory)
-				<li><a href="#">{{ $navCategory->name }}</a></li>
+				<li><a href="{{ route('blog.category', $category->slug) }}">{{ $navCategory->name }}</a></li>
 				@endforeach
 			</ul>
 			<!-- /nav -->
@@ -65,14 +65,12 @@
 	<!-- Aside Nav -->
 	<div id="nav-aside">
 		<ul class="nav-aside-menu">
-			<li><a href="index.html">Home</a></li>
-			<li class="has-dropdown"><a>Categories</a>
+			<li><a href="{{ url('/') }}">Beranda</a></li>
+			<li class="has-dropdown"><a>Kategori</a>
 				<ul class="dropdown">
-					<li><a href="#">Lifestyle</a></li>
-					<li><a href="#">Fashion</a></li>
-					<li><a href="#">Technology</a></li>
-					<li><a href="#">Travel</a></li>
-					<li><a href="#">Health</a></li>
+					@foreach($categories as $category)
+						<li><a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}</a></li>
+					@endforeach
 				</ul>
 			</li>
 			<li><a href="about.html">About Us</a></li>

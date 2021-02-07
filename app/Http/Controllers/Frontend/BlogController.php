@@ -15,9 +15,11 @@ class BlogController extends Controller
     	$navCategories = Category::latest()->take(3)->get();
         $web = WebSetting::all()->first();
         $tags = Tag::orderBy('name', 'asc')->take(10)->get();
+        $popular_post = Post::orderBy('view_count', 'desc')->take(4)->get();
 
     	View::share('categories', $categories);
     	View::share('navCategories', $navCategories);
+    	View::share('popular_post', $popular_post);
     	View::share('tags', $tags);
     	View::share('web', $web);
 	}

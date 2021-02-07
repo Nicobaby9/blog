@@ -72,53 +72,17 @@
 		<h2 class="title">Popular Posts</h2>
 	</div>
 	<!-- post -->
+	@foreach($popular_post as $post)
 	<div class="post post-widget">
-		<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-3.jpg') }}" alt=""></a>
+		<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt=""></a>
 		<div class="post-body">
 			<div class="post-category">
-				<a href="category.html">Lifestyle</a>
+				<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
 			</div>
-			<h3 class="post-title"><a href="blog-post.html">Ne bonorum praesent cum, labitur persequeris definitionem quo cu?</a></h3>
+			<h3 class="post-title"><a href="{{ route('blog.show', $post->slug) }}">{{ \Illuminate\Support\Str::words($post->title, 11) }}</a></h3>
 		</div>
 	</div>
-	<!-- /post -->
-
-	<!-- post -->
-	<div class="post post-widget">
-		<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-2.jpg') }}" alt=""></a>
-		<div class="post-body">
-			<div class="post-category">
-				<a href="category.html">Technology</a>
-				<a href="category.html">Lifestyle</a>
-			</div>
-			<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-		</div>
-	</div>
-	<!-- /post -->
-
-	<!-- post -->
-	<div class="post post-widget">
-		<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-4.jpg') }}" alt=""></a>
-		<div class="post-body">
-			<div class="post-category">
-				<a href="category.html">Health</a>
-			</div>
-			<h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-		</div>
-	</div>
-	<!-- /post -->
-
-	<!-- post -->
-	<div class="post post-widget">
-		<a class="post-img" href="blog-post.html"><img src="{{ asset('callie/img/widget-5.jpg') }}" alt=""></a>
-		<div class="post-body">
-			<div class="post-category">
-				<a href="category.html">Health</a>
-				<a href="category.html">Lifestyle</a>
-			</div>
-			<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-		</div>
-	</div>
+	@endforeach
 	<!-- /post -->
 </div>
 <!-- /post widget -->

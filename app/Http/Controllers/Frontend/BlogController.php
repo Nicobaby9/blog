@@ -34,7 +34,6 @@ class BlogController extends Controller
     public function show($post) {
     	$post = Post::where('slug', $post)->first();
     	$related_post = Post::where('category_id', $post->category_id)->take(3)->get();
-    	// dd($related_post);
 
     	$count = $post->view_count += 1;
     	$post->update([
@@ -49,6 +48,15 @@ class BlogController extends Controller
     	$posts = $category->posts()->paginate(5);
 
     	return view('frontend.category-show', compact('posts', 'category'));
+    }
+
+    public function tag($tag) {
+    	$tag = Tag::where('slug', $tag)->first();
+        $posts = Post::orderBy('created_at', 'asc')->take(6)->get();
+
+        $posts = $tag->posts;
+
+    	return view('frontend.tag-show', compact('posts', 'tag'));
     }
 
     public function listCategory() {

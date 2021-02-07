@@ -10,6 +10,10 @@ class Tag extends Model
     protected $guarded = [];
 
    	public function posts() {
-   		return $this->belongsToMany(Post::class);
+   		return $this->belongsToMany(Post::class)->withTimestamps();
    	}
+
+   	public function getRouteKeyName() {
+        return 'slug';
+    }
 }

@@ -29,10 +29,8 @@
 		<!-- post share -->
 		<div class="section-row">
 			<div class="post-share">
-				<label>Tags : </label>
-				@foreach($post->tags as $tag)
-				<a href="#" class="btn btn-sm btn-success" style="background-color: transparent; color: black;">{{ $tag->name }}</a>
-				@endforeach
+				<label>Category : </label>
+				<a href="{{ route('blog.category', $post->category->slug) }}" class="btn btn-sm btn-success" style="background-color: black; width: 30%;">{{ $post->category->name }}</a>
 			</div>
 		</div>
 		<!-- /post share -->
@@ -51,7 +49,7 @@
 					<li>TAGS:</li>
 					@foreach($post->tags as $tag)
 					<li>
-						<a href="#" class="btn btn-sm btn-success" style="background-color: transparent; color: black;">{{ $tag->name }}</a>
+						<a href="{{ route('blog.tag', $tag->slug) }}" class="btn btn-sm btn-success" style="background-color: transparent; color: black;">{{ $tag->name }}</a>
 					</li>
 					@endforeach
 				</ul>
@@ -111,7 +109,7 @@
 				@foreach($related_post as $post)
 				<div class="col-md-4">
 					<div class="post post-sm">
-						<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'.$post->image) }}" alt=""></a>
+						<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'.$post->image) }}" height="145"></a>
 						<div class="post-body">
 							<div class="post-category">
 								<a href="category.html">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>

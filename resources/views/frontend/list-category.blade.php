@@ -12,7 +12,7 @@
 	<div class="col-md-11">
 		@foreach($all_categories as $category)
 		<div class="post-meta">
-			<a href="{{ route('blog.category', $category->slug) }}" class="btn btn-block btn-info btn-lg" style="color: black; font-weight: bold;">{{ \Illuminate\Support\Str::title($category->name) }}</a>
+			<a href="{{ route('blog.category', $category->slug) }}" class="btn btn-block btn-success btn-lg" style="color: white; font-weight: bold; background-color: black;">{{ \Illuminate\Support\Str::title($category->name) }}</a>
 		</div>
 		<hr>
 		@endforeach

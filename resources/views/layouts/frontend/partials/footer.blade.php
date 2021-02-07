@@ -34,7 +34,7 @@
 					<div class="tags-widget">
 						<ul>
 							@foreach($tags as $tag)
-							<li><a href="#">{{ $tag->name }}</a></li>
+							<li><a href="{{ route('blog.tag', $tag->slug) }}">{{ $tag->name }}</a></li>
 							@endforeach
 						</ul>
 					</div>

@@ -15,6 +15,7 @@ Route::get('/', 'Frontend\BlogController@index')->name('index');
 // Route::get('/blog/home', 'Frontend\BlogController@home')->name('homie');
 Route::get('/post/{post}', 'Frontend\BlogController@show')->name('blog.show');
 Route::get('/category/{category}', 'Frontend\BlogController@category')->name('blog.category');
+Route::get('/tag/{tag}', 'Frontend\BlogController@tag')->name('blog.tag');
 Route::get('/search', 'Frontend\BlogController@search')->name('blog.search');
 Route::get('/category', 'Frontend\BlogController@listCategory')->name('list.category');
 Route::get('/home', 'HomeController@index')->name('home');

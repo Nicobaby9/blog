@@ -36,6 +36,8 @@
 		<!-- NAV -->
 		@include('layouts.frontend.partials.navbar')
 		<!-- /NAV -->
+        <!-- Alert Message -->
+        @include('layouts.backend.partials.message')
 		@yield('header')
 	</header>
 	<!-- /HEADER -->

@@ -27,7 +27,7 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>Inbox Mail</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('mail.index') }}">List Mail</a></li>
-            <li><a class="nav-link" href="{{ route('post.bin') }}">Spam</a></li>
+            <li><a class="nav-link" href="{{ route('mail.spam') }}">Spam</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

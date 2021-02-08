@@ -32,7 +32,8 @@
 			<div class="section-title">
 				<h2 class="title">Mail us</h2>
 			</div>
-			<form>
+			<form action="{{ route('send.mail') }}" method="POST">
+				@csrf
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">

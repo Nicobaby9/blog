@@ -21,6 +21,7 @@ Route::get('/tag/{tag}', 'Frontend\BlogController@tag')->name('blog.tag');
 Route::get('/search', 'Frontend\BlogController@search')->name('blog.search');
 Route::get('/category', 'Frontend\BlogController@listCategory')->name('list.category');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/send-mail', 'Admin\AdviceMailController@sendMail')->name('send.mail');
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::post('/comment/store', 'Frontend\CommentController@commentStore')->name('comment.add');
@@ -39,6 +40,11 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' 
 	Route::get('/post-restore/{id}', 'PostController@restore')->name('post.restore');
 	Route::delete('/post-clean/{id}', 'PostController@clean')->name('post.clean');
 	Route::patch('/post-main-post/{id}', 'PostController@mainPost')->name('post.main.post');
+
+	//MAIL
+	Route::get('/mail-spam', 'AdviceMailController@spam')->name('mail.spam');
+	Route::get('/mail-restore/{id}', 'AdviceMailController@restore')->name('mail.restore');
+	Route::delete('/mail-clean/{id}', 'AdviceMailController@clean')->name('mail.clean');
 
 	Route::resource('/category', 'CategoryController');
 	Route::resource('/mail', 'AdviceMailController');

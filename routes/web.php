@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'Frontend\BlogController@index')->name('index');
-Route::get('/about', 'Frontend\BlogController@about')->name('about');
+Route::get('/about-us', 'Frontend\BlogController@about')->name('about');
+Route::get('/contact', 'Frontend\BlogController@contact')->name('contact');
 // Route::get('/blog/home', 'Frontend\BlogController@home')->name('homie');
 Route::get('/post/{post}', 'Frontend\BlogController@show')->name('blog.show');
 Route::get('/category/{category}', 'Frontend\BlogController@category')->name('blog.category');
@@ -30,6 +31,7 @@ Auth::routes();
 
 Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
 	Route::resource('/web-setting', 'WebSettingController');
+	Route::resource('/contact-setting', 'ContactController');
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 	Route::get('/post-recycle-bin', 'PostController@post_bin')->name('post.bin');
 	Route::get('/post-restore/{id}', 'PostController@restore')->name('post.restore');

@@ -18,6 +18,12 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Contact</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('contact-setting.index') }}">Setting</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Kategori</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('category.index') }}">List Kategori</a></li>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\{Post, Category, Tag, WebSetting};
+use App\Model\{Post, Category, Contact, Tag, WebSetting};
 use Str;
 use View;
 
@@ -16,7 +16,6 @@ class BlogController extends Controller
         $web = WebSetting::all()->first();
         $tags = Tag::orderBy('name', 'asc')->take(10)->get();
         $popular_post = Post::orderBy('view_count', 'desc')->take(4)->get();
-        // $cat = Category::where('')
 
     	View::share('categories', $categories);
     	View::share('navCategories', $navCategories);
@@ -56,7 +55,6 @@ class BlogController extends Controller
     public function tag($tag) {
     	$tag = Tag::where('slug', $tag)->first();
         $posts = Post::orderBy('created_at', 'asc')->take(6)->get();
-
         $posts = $tag->posts;
 
     	return view('frontend.post.tag-show', compact('posts', 'tag'));
@@ -70,7 +68,6 @@ class BlogController extends Controller
 
     public function search(Request $request) {
     	$posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->paginate(5);
-    	// $posts = $category->posts()->paginate(5);
 
     	return view('frontend.post.category-show', compact('posts', 'category'));
     }
@@ -78,5 +75,11 @@ class BlogController extends Controller
     //COMPANY
     public function about() {
         return view('frontend.about');
+    }
+
+    public function contact() {
+        $contact = Contact::all()->first();
+
+        return view('frontend.contact', compact('contact'));
     }
 }

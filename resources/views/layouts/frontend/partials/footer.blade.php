@@ -60,7 +60,7 @@
 			<div class="col-md-6 col-md-push-6">
 				<ul class="footer-nav">
 					<li><a href="/">Home</a></li>
-					<li><a href="/about">About Us</a></li>
+					<li><a href="/about-us">About Us</a></li>
 					<li><a href="/contact">Contacts</a></li>
 					<li><a href="#">Advertise</a></li>
 					<li><a href="#">Privacy</a></li>

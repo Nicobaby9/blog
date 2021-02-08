@@ -11,10 +11,10 @@
 |
 */
 
+// Route::get('/blog/home', 'Frontend\BlogController@home')->name('homie');
 Route::get('/', 'Frontend\BlogController@index')->name('index');
 Route::get('/about-us', 'Frontend\BlogController@about')->name('about');
 Route::get('/contact', 'Frontend\BlogController@contact')->name('contact');
-// Route::get('/blog/home', 'Frontend\BlogController@home')->name('homie');
 Route::get('/post/{post}', 'Frontend\BlogController@show')->name('blog.show');
 Route::get('/category/{category}', 'Frontend\BlogController@category')->name('blog.category');
 Route::get('/tag/{tag}', 'Frontend\BlogController@tag')->name('blog.tag');
@@ -33,12 +33,16 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' 
 	Route::resource('/web-setting', 'WebSettingController');
 	Route::resource('/contact-setting', 'ContactController');
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+	//POST
 	Route::get('/post-recycle-bin', 'PostController@post_bin')->name('post.bin');
 	Route::get('/post-restore/{id}', 'PostController@restore')->name('post.restore');
 	Route::delete('/post-clean/{id}', 'PostController@clean')->name('post.clean');
 	Route::patch('/post-main-post/{id}', 'PostController@mainPost')->name('post.main.post');
+
+	Route::resource('/category', 'CategoryController');
+	Route::resource('/mail', 'AdviceMailController');
 	Route::resource('/post', 'PostController');
 	Route::resource('/tag', 'TagController');
-	Route::resource('/category', 'CategoryController');
 	Route::resource('/user', 'UserController');
 });

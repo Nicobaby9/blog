@@ -24,6 +24,13 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>Inbox Mail</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('mail.index') }}">List Mail</a></li>
+            <li><a class="nav-link" href="{{ route('post.bin') }}">Spam</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Kategori</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('category.index') }}">List Kategori</a></li>
@@ -38,16 +45,17 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Web</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('web-setting.index') }}">Setting</a></li>
+          </ul>
+        </li>
+        <li class="menu-header">Khususon</li>
+        <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>User</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('user.index') }}">List User</a></li>
             <li><a class="nav-link" href="{{ route('user.create') }}">Tambah User</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Web</span></a>
-          <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{ route('web-setting.index') }}">Setting</a></li>
           </ul>
         </li>
         <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>

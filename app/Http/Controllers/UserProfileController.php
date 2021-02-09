@@ -56,10 +56,11 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($username)
     {
-        $user = User::findOrFail($id);
-        $profile = UserProfile::where('user_id', $user->id)->first();
+        $profile = UserProfile::where('username', $username)->first();
+        // dd($profile);
+        $user = User::where('id', $profile->user_id)->first();
 
         return view('user-profile.edit', compact('user', 'profile'));
     }
@@ -71,10 +72,11 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
-        $user = User::findOrFail($id);
-        $profile = UserProfile::where('user_id', $user->id)->first();
+        $profile = UserProfile::where('username', $username)->first();
+        // dd($profile);
+        $user = User::where('id', $profile->user_id)->first();
 
         $this->validate($request, [
             'name' => 'min:3|max:99',
@@ -108,7 +110,6 @@ class UserProfileController extends Controller
                     'password' => bcrypt($request->password),
                 ];
                 $profile_data = [
-                    'username' => $request->username,
                     'bio' => $request->bio,
                     'headline' => $request->headline,
                     'facebook' => $request->facebook,
@@ -122,7 +123,6 @@ class UserProfileController extends Controller
                     'email' => $request->email,
                 ];
                 $profile_data = [
-                    'username' => $request->username,
                     'bio' => $request->bio,
                     'headline' => $request->headline,
                     'facebook' => $request->facebook,

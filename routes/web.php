@@ -27,7 +27,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/comment/store', 'Frontend\CommentController@commentStore')->name('comment.add');
 	Route::get('/profile/{userprofile}', 'Frontend\BlogController@profile')->name('profile.info');
 	Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
-	Route::resource('/profile', 'UserProfileController');
+	Route::get('/profile/edit/{userprofile}', 'UserProfileController@edit')->name('profile.edit');
+	Route::patch('/profile/update/{userprofile}', 'UserProfileController@update')->name('profile.update');
+
+	// Route::resource('/profile', 'UserProfileController');
 });
 
 Auth::routes();

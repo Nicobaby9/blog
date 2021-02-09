@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Model\User;
+use Str;
 
 class RegisterController extends Controller
 {
@@ -75,7 +76,7 @@ class RegisterController extends Controller
         $user->profile()->create([
             'user_id' => $user->id,
             'bio' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'username' => $data['username'],
+            'username' => Str::slug($data['username'], '_'),
             'headline' => 'Your Headline',
             'facebook' => 'Your Facebook',
             'instagram' => 'Your Instagram',

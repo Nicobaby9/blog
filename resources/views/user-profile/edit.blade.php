@@ -34,7 +34,7 @@
       	<br>
     	<center><h5>Foto Profil</h5></center>
       </div>
-      <form action="{{ route('profile.update', $user->id) }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+      <form action="{{ route('profile.update', $profile->username) }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       	@csrf
       	@method('PATCH')
 			<div class="profile-widget-description">
@@ -53,7 +53,7 @@
   </div>
   <div class="col-12 col-md-12 col-lg-7">
     <div class="card">
-      <form method="post" class="needs-validation" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
+      <form method="post" class="needs-validation" action="{{ route('profile.update', $profile->username) }}" enctype="multipart/form-data">
       	@csrf
       	@method('PATCH')
         <div class="card-header">
@@ -65,14 +65,14 @@
                 <label>Name</label>
                 <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                 <div class="invalid-feedback">
-                  Please fill in the first name
+                  Please fill in the name
                 </div>
               </div>
               <div class="form-group col-md-6 col-12">
                 <label>Username</label>
-                <input type="text" name="username" class="form-control" value="{{ $user->profile['username'] }}">
+                <input type="text" name="username" class="form-control" value="{{ $user->profile['username'] }}" disabled>
                 <div class="invalid-feedback">
-                  Please fill in the last name
+                  Please fill in the username
                 </div>
               </div>
 	            <div class="form-group col-md-8 col-12">
@@ -99,7 +99,7 @@
 				    <div class="bar"></div>
 				    <div class="label"></div>
 				</div> 
-              </div>
+      </div>
               <div class="form-group col-md-6 col-12">
                 <label>Password Confirmation</label>
                 <input id="password2" type="password" class="form-control" name="password_confirmation" autocomplete="new-password"> 

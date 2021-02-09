@@ -43,11 +43,17 @@
   <script src="{{ asset('stisla/js/stisla.js') }}"></script>
 
   <!-- JS Libraies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pwstrength-bootstrap/3.0.9/pwstrength-bootstrap.js"></script>
+  <script src="../node_modules/selectric/public/jquery.selectric.min.js"></script>
 
   <!-- Template JS File -->
   <script src="{{ asset('stisla/js/scripts.js') }}"></script>
   <script src="{{ asset('stisla/js/custom.js') }}"></script>
 
   <!-- Page Specific JS File -->
+  <script src="{{ asset('stisla/js/page/auth-register.js') }}"></script>
+
+  @yield('js')
+
 </body>
 </html>

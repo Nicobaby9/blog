@@ -32,23 +32,30 @@
     <div class="card profile-widget">
       <div class="profile-widget-header">
       	<br>
-    	<center><h5 >Profile Photo</h5></center>
+    	<center><h5>Foto Profil</h5></center>
       </div>
-      <div class="profile-widget-description">
-        <center><img id="preview_img" src="{{ asset('storage/user-photo/'.$user->photo) }}" class="rounded-circle profile-picture" height="150" width="150"></center>
-      </div>
-      	<center><label for="photo" class="profile-widget">Image</label></center>
-        <div class="custom-file">
-            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-            <input name="photo" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);">
-            <p class="text-danger">{{ $errors->first('photo') }}</p>
-        <br>
-        </div>
+      <form action="{{ route('profile.update', $user->id) }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+      	@csrf
+      	@method('PATCH')
+			<div class="profile-widget-description">
+				<center><img id="preview_img" src="{{ asset('storage/user-photo/'.$user->photo) }}" class="rounded-circle profile-picture" height="150" width="150"></center>
+			</div>
+	      	<center><label for="photo" class="profile-widget">Foto</label></center>
+	        <div class="custom-file">
+	            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+	            <input name="photo" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);">
+	            <p class="text-danger">{{ $errors->first('photo') }}</p>
+	        	<br>
+	        </div>
+	        <button class="btn btn-primary btn-block">Ganti Foto</button>
+      </form>
     </div>
   </div>
   <div class="col-12 col-md-12 col-lg-7">
     <div class="card">
-      <form method="post" class="needs-validation" novalidate="">
+      <form method="post" class="needs-validation" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
+      	@csrf
+      	@method('PATCH')
         <div class="card-header">
           <h4>Edit Profile</h4>
         </div>
@@ -85,6 +92,18 @@
                 <label>Phone</label>
                 <input type="tel" name="phone" class="form-control" value="{{ $user->profile->phone }}">
               </div>
+              <div class="form-group col-md-6 col-12">
+                <label>Password</label>
+                <input id="password" type="password" name="password" class="form-control pwstrength @error('password') is-invalid @enderror" value="{{ \Illuminate\Support\Str::limit($user->password, 6) }}" data-indicator="pwindicator" name="password" autocomplete="new-password">
+                <div id="pwindicator" class="pwindicator">
+				    <div class="bar"></div>
+				    <div class="label"></div>
+				</div> 
+              </div>
+              <div class="form-group col-md-6 col-12">
+                <label>Password Confirmation</label>
+                <input id="password2" type="password" class="form-control" name="password_confirmation" autocomplete="new-password"> 
+              </div>
               <div class="form-group col-md-8 col-12">
                 <label>Facebook</label>
                 <input type="tel" name="facebook" class="form-control" value="{{ $user->profile->facebook }}">
@@ -101,7 +120,7 @@
             <div class="row">
               <div class="form-group col-12">
                 <label>Bio</label>
-                <textarea class="form-control summernote-simple" rows="5" style="height: 150px;">{{ $user->profile['bio'] }}</textarea>
+                <textarea name="bio" class="form-control summernote-simple" rows="5" style="height: 150px;">{{ $user->profile['bio'] }}</textarea>
               </div>
             </div>
             <!-- <div class="row">
@@ -126,6 +145,13 @@
 @endsection
 
 @section('js')
+
+<!-- JS Libraies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pwstrength-bootstrap/3.0.9/pwstrength-bootstrap.js"></script>
+<script src="../node_modules/selectric/public/jquery.selectric.min.js"></script>
+
+<!-- Page Specific JS File -->
+<script src="{{ asset('stisla/js/page/auth-register.js') }}"></script>
 <script>
     function loadPreview(input, id) {
         id = id || '#preview_img';

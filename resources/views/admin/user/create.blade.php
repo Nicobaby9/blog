@@ -33,7 +33,7 @@
                 <label for="photo">Image</label>
                 <div class="custom-file">
                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    <input name="photo" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);" required>
+                    <input name="photo" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);">
                     <p class="text-danger">{{ $errors->first('photo') }}</p>
                 <br>
                 </div>

@@ -44,7 +44,7 @@ class UserController extends Controller
             'name' => 'required|min:3|max:99',
             'email' => 'required|email',
             'role' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4000'
+            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4000'
         ]);
 
         if($request->input('password')) {
@@ -70,6 +70,16 @@ class UserController extends Controller
                 'password' => $password,
                 'role' => $request->role,
                 'photo' => $filename,
+            ]);
+
+            return redirect(route('user.index'))->with(['success' => 'Berhasil mebuat user baru']);
+        }else {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $password,
+                'role' => $request->role,
+                'photo' => 'profile.png',
             ]);
 
             return redirect(route('user.index'))->with(['success' => 'Berhasil mebuat user baru']);
@@ -124,7 +134,10 @@ class UserController extends Controller
             $destinationPath = public_path('/storage/user-photo/');
             $file->move($destinationPath, $filename);
             $insert['photo'] = "$filename";
-            $image = File::delete($destinationPath . $user->photo); 
+
+            if($user->photo != 'profile.png') {
+                $image = File::delete($destinationPath . $user->photo); 
+            }
 
             if($request->input('password')) {
                 $user_data = [
@@ -177,7 +190,10 @@ class UserController extends Controller
 
         // Delete Image
         $destinationPath = public_path('/storage/user-photo/');
-        $image = File::delete($destinationPath . $user->photo); 
+
+        if($user->photo != 'profile.png') {
+            $image = File::delete($destinationPath . $user->photo); 
+        }
 
         $user->delete();
 

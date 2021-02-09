@@ -72,6 +72,17 @@ class UserController extends Controller
                 'photo' => $filename,
             ]);
 
+            $user->profile()->create([
+                'user_id' => $user->id,
+                'bio' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'username' => '@username',
+                'headline' => 'Your Headline',
+                'facebook' => 'Your Facebook',
+                'instagram' => '@instagram',
+                'twitter' => '@twitter',
+                'phone' => 'Your Phone Number'
+            ]);
+
             return redirect(route('user.index'))->with(['success' => 'Berhasil mebuat user baru']);
         }else {
             $user = User::create([
@@ -80,6 +91,17 @@ class UserController extends Controller
                 'password' => $password,
                 'role' => $request->role,
                 'photo' => 'profile.png',
+            ]);
+
+            $user->profile()->create([
+                'user_id' => $user->id,
+                'bio' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'username' => '@username',
+                'headline' => 'Your Headline',
+                'facebook' => 'Your Facebook',
+                'instagram' => '@instagram',
+                'twitter' => '@twitter',
+                'phone' => 'Your Phone Number'
             ]);
 
             return redirect(route('user.index'))->with(['success' => 'Berhasil mebuat user baru']);

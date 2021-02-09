@@ -25,6 +25,7 @@ Route::post('/send-mail', 'Admin\AdviceMailController@sendMail')->name('send.mai
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::post('/comment/store', 'Frontend\CommentController@commentStore')->name('comment.add');
+	Route::get('/profile/{userprofile}', 'Frontend\BlogController@profile')->name('profile.info');
 	Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
 	Route::resource('/profile', 'UserProfileController');
 });

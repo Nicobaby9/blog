@@ -65,6 +65,22 @@
 	<!-- Aside Nav -->
 	<div id="nav-aside">
 		<ul class="nav-aside-menu">
+			@if(auth()->guest())
+			<li><a href="{{ route('login') }}">Login</a></li>
+			@else
+			<li><a href="{{ route('profile.info', auth()->user()->profile->username) }}">Hi, {{ auth()->user()->name }}</a></li>
+			<li>
+				<a class="dropdown-item" href="{{ route('logout') }}"
+	             onclick="event.preventDefault();
+		                           document.getElementById('logout-form').submit();">
+		             <i class="fas fa-sign-out-alt"></i> Logout
+		          </a>
+
+		          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+		              @csrf
+		          </form>
+			</li>
+			@endif
 			<li><a href="{{ url('/') }}">Beranda</a></li>
 			<li class="has-dropdown"><a>Kategori</a>
 				<ul class="dropdown">
@@ -75,7 +91,7 @@
 			</li>
 			<li><a href="/about-us">About Us</a></li>
 			<li><a href="/contact">Contacts</a></li>
-			<li><a href="#">Advertise</a></li>
+			
 		</ul>
 		<button class="nav-close nav-aside-close"><span></span></button>
 	</div>

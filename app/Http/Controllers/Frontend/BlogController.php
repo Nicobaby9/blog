@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\{Post, Category, Contact, Tag, WebSetting};
+use App\Model\{Post, Category, Contact, Tag, User, UserProfile, WebSetting};
 use Str;
 use View;
 
@@ -81,5 +81,13 @@ class BlogController extends Controller
         $contact = Contact::all()->first();
 
         return view('frontend.contact', compact('contact'));
+    }
+
+    //USER PROFILE
+    public function profile($username) {
+        $profile = UserProfile::where('username', $username)->first();
+        // dd($profile->user->name);
+
+        return view('frontend.profile', compact('profile'));
     }
 }

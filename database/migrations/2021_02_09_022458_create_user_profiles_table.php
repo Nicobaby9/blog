@@ -16,13 +16,13 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('bio')->default('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-            $table->string('username')->default('@username');
-            $table->string('headline')->default('Your Headline');
-            $table->string('facebook')->default('Your Facebook Page');
-            $table->string('instagram')->default('@instagram');
-            $table->string('twitter')->default('@twitter');
-            $table->string('phone')->default('081XXXXXXXX');
+            $table->string('bio')->nullable();
+            $table->string('username')->unique();
+            $table->string('headline')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

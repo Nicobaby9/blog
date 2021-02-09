@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => ['required', 'string', 'min:1', 'unique:user_profiles'],
         ]);
     }
 
@@ -74,11 +75,11 @@ class RegisterController extends Controller
         $user->profile()->create([
             'user_id' => $user->id,
             'bio' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-            'username' => '@username',
+            'username' => $data['username'],
             'headline' => 'Your Headline',
             'facebook' => 'Your Facebook',
-            'instagram' => '@instagram',
-            'twitter' => '@twitter',
+            'instagram' => 'Your Instagram',
+            'twitter' => 'Your Twitter',
             'phone' => 'Your Phone Number'
         ]);
 

@@ -72,6 +72,5 @@
 	function reply(){
         $('.reply').toggleClass('hidden');
     }
-
 </script>
 @endsection

@@ -40,7 +40,6 @@
 
 		<!-- post content -->
 		<div class="section-row">
-			<h3>{!! \Illuminate\Support\Str::words($post->content, 10, '...'); !!}</h3>
 			<p>{!! \Illuminate\Support\Str::afterLast($post->content, '...') !!}</p>
 		</div>
 		<!-- /post content -->

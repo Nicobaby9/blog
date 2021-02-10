@@ -97,7 +97,7 @@
 					<li><a href="author.html">{{ \Illuminate\Support\Str::words($post->user->name, 2) }}</a></li>
 					<li>{{ $post->created_at->diffForHumans() }}</li>
 				</ul>
-				<p>{!! \Illuminate\Support\Str::words($post->content, 10, '...') !!}</p>
+				<p>{!! \Illuminate\Support\Str::words($post->content, 5, '...') !!}</p>
 			</div>
 		</div>
 		@endforeach

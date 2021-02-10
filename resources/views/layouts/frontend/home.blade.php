@@ -70,7 +70,9 @@
 	<!-- /SECTION -->
 
 	<!-- FOOTER -->
-	@include('layouts.frontend.partials.footer')
+	<footer id="footer">
+		@include('layouts.frontend.partials.footer')
+	</footer>
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->

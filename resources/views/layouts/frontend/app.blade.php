@@ -69,7 +69,12 @@
 	<!-- /SECTION -->
 
 	<!-- FOOTER -->
-	@include('layouts.frontend.partials.footer')
+	<footer id="footer">
+		<!-- container -->
+		<div class="container">
+			@include('layouts.frontend.partials.footer')
+		</div>
+	</footer>
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->

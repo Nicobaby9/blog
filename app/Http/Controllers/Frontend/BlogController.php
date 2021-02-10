@@ -63,7 +63,7 @@ class BlogController extends Controller
     public function listCategory() {
     	$all_categories = Category::all();
 
-    	return view('frontend.list-category', compact('all_categories'));
+    	return view('frontend.post.list-category', compact('all_categories'));
     }
 
     public function search(Request $request) {

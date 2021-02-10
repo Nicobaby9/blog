@@ -23,10 +23,12 @@
 			<td>{{ \Illuminate\Support\Str::title($user->name) }}</td>
 			<td>{{ $user->email }}</td>
 			<td>
-				@if($user->role == 1)
-					<span class="badge badge-success">Administrator</span> 
+				@if($user->role == 99)
+					<span class="badge badge-dark">Administrator</span> 
+				@elseif($user->role == 1)
+					<span class="badge badge-success">Author</span>
 				@else
-					<span class="badge badge-info">Author</span> 
+					<span class="badge badge-info">User</span>  
 				@endif
 			</td>
 			<td><img src="{{ asset('storage/user-photo/'. $user->photo) }}" class="rounded-circle" width="80" height="80"></td>

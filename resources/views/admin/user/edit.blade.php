@@ -12,11 +12,11 @@
             @method('PATCH')
            <div class="form-group">
                 <label class="font-weight-bold">Name</label>
-                <input name="name" type="text" class="form-control" placeholder="Name" value="{{ $user->name }}">
+                <input type="text" class="form-control" placeholder="Name" value="{{ $user->name }}" disabled>
             </div>
             <div class="form-group">
                 <label class="font-weight-bold">Email</label>
-                <input name="email" type="text" class="form-control" placeholder="Email" value="{{ $user->email }}" readonly>
+                <input type="text" class="form-control" placeholder="Email" value="{{ $user->email }}" readonly>
             </div>
             <div class="form-group">
                 <label class="font-weight-bold">Role</label>
@@ -25,27 +25,21 @@
                         @if($user->role == 0) 
                             selected
                         @endif
-                    >Author</option>
+                    >User</option>
                     <option value="1" 
                         @if($user->role == 1) 
+                            selected
+                        @endif
+                    >Author</option>
+                    <option value="99" 
+                        @if($user->role == 99) 
                             selected
                         @endif
                     >Administrator</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="font-weight-bold">Password</label>
-                <input name="password" type="password" class="form-control" placeholder="Password">
-            </div>
-            <div class="form-group">
                 <label for="photo">Image</label>
-                <div class="custom-file">
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    <input name="photo" type="file" class="custom-file-input" id="exampleInputFile" onchange="loadPreview(this);">
-                    <p class="text-danger">{{ $errors->first('photo') }}</p>
-                <br>
-                </div>
-                <label for="photo">Image Preview</label>
                 <br>
                 <div class="text-center">
                     <a href="#" class="thumbnail">

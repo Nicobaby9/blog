@@ -15,50 +15,65 @@ class TagSeeder extends Seeder
     	\DB::table('tags')->insert([
         	0 => [
                 'id' 	=> 1,
-                'name' 	=> 'PHP',
-                'slug' 	=> 'php',
+                'name' 	=> 'Sekolah',
+                'slug' 	=> 'sekolah',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             1 => [
                 'id' 	=> 2,
-                'name' 	=> 'Laravel',
-                'slug' 	=> 'laravel',
+                'name' 	=> 'Pemerintah',
+                'slug' 	=> 'pemerintah',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             2 => [
                 'id' 	=> 3,
-                'name' 	=> 'Javascript',
-                'slug' 	=> 'js',
+                'name' 	=> 'Sekolah',
+                'slug' 	=> 'sekolah',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             3 => [
                 'id' 	=> 4,
-                'name' 	=> 'Java',
-                'slug' 	=> 'java',
+                'name' 	=> 'Informatika',
+                'slug' 	=> 'informatika',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             4 => [
                 'id' 	=> 5,
-                'name' 	=> 'Python',
-                'slug' 	=> 'phyton',
+                'name' 	=> 'Game',
+                'slug' 	=> 'game',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             5 => [
                 'id' 	=> 6,
-                'name' 	=> 'Swift',
-                'slug' 	=> 'swift',
+                'name' 	=> 'Dota 2',
+                'slug' 	=> 'dota-2',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             6 => [
                 'id' 	=> 7,
-                'name' 	=> 'C++',
-                'slug' 	=> 'c-plus-plus',
+                'name' 	=> 'Komputer',
+                'slug' 	=> 'komputer',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             7 => [
                 'id' 	=> 8,
-                'name' 	=> 'Dart',
-                'slug' 	=> 'dart',
+                'name' 	=> 'Formula 1',
+                'slug' 	=> 'formula-1',
+                'created_at'=> '2021-01-07 08:27:30'   
+            ],
+
+            8 => [
+                'id'    => 9,
+                'name'  => 'Moto GP',
+                'slug'  => 'moto-gp',
+                'created_at'=> '2021-01-07 08:27:30'   
             ],
 
         ]);

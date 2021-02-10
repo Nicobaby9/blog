@@ -145,59 +145,16 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $this->validate($request, [
-            'name' => 'required|min:3|max:99',
             'role' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4000'
         ]);
 
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/storage/user-photo/');
-            $file->move($destinationPath, $filename);
-            $insert['photo'] = "$filename";
+        $user_data = [
+            'role' => $request->role,
+        ];
 
-            if($user->photo != 'profile.png') {
-                $image = File::delete($destinationPath . $user->photo); 
-            }
+        $user->update($user_data);
 
-            if($request->input('password')) {
-                $user_data = [
-                    'name' => $request->name,
-                    'password' => bcrypt($request->password),
-                    'role' => $request->role,
-                    'photo' => $filename,
-                ];
-            }else {
-                $user_data = [
-                    'name' => $request->name,
-                    'role' => $request->role,
-                    'photo' => $filename,
-                ];
-            }
-
-            $user->update($user_data);
-
-            return redirect(route('user.index'))->with(['success' => 'Data user berhasil diupdate']);
-        }else {
-            if($request->input('password')) {
-                $user_data = [
-                    'name' => $request->name,
-                    'password' => bcrypt($request->password),
-                    'role' => $request->role,
-                ];
-            }else {
-                $user_data = [
-                    'name' => $request->name,
-                    'role' => $request->role,
-                ];
-            }
-
-            $user->update($user_data);
-
-            return redirect(route('user.index'))->with(['success' => 'Data user berhasil diupdate']);
-        }
-
+        return redirect(route('user.index'))->with(['success' => 'Data user berhasil diupdate.']);
     }
 
     /**

@@ -67,7 +67,7 @@
 		</div>
 		<div class="col-md-6 col-md-pull-6">
 			<div class="footer-copyright">
-				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>.Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+				Copyright {{ $web->web_name }} &copy;<script>document.write(new Date().getFullYear());</script><i class="fa fa-heart-o" aria-hidden="true"></i><a href="https://colorlib.com" target="_blank"></a><a href="https://themeslab.org/" target="_blank"></a>
 			</div>
 		</div>
 	</div>

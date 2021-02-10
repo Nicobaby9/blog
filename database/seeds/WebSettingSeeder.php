@@ -11,7 +11,7 @@ class WebSettingSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('tags')->insert([
+        \DB::table('web_settings')->insert([
             'id' 		=> 1,
             'web_name' 	=> 'Aerials',
             'web_logo' 	=> '1612607368.png',
@@ -25,7 +25,7 @@ class WebSettingSeeder extends Seeder
             'instagram' => 'yudho.alkfiro',
             'facebook' 	=> 'facebook',
 			'twitter' 	=> 'twitter',
-            'created_at'=> '2021-01-07 08:27:30'           
+            'created_at'=> '2021-01-07 08:27:30'        
         ]);
     }
 }

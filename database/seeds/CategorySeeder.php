@@ -11,12 +11,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        // TAGS
+        // Categories
     	\DB::table('categories')->insert([
         	0 => [
                 'id' 	=> 1,
                 'name' 	=> 'Ekonomi',
-                'slug' 	=> 'economy',
+                'slug' 	=> 'ekonomi',
                 'created_at'=> '2021-01-07 08:27:30',
             ],
 
@@ -30,35 +30,35 @@ class CategorySeeder extends Seeder
             2 => [
                 'id' 	=> 3,
                 'name' 	=> 'Olahraga',
-                'slug' 	=> 'sports',
+                'slug' 	=> 'olahraga',
                 'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             3 => [
                 'id' 	=> 4,
                 'name' 	=> 'Pendidikan',
-                'slug' 	=> 'education',
+                'slug' 	=> 'pendidkan',
                 'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             4 => [
                 'id' 	=> 5,
                 'name' 	=> 'Politik',
-                'slug' 	=> 'politics',
+                'slug' 	=> 'politik',
                 'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             5 => [
                 'id' 	=> 6,
-                'name' 	=> 'Kesehatan',
-                'slug' 	=> 'health',
+                'name' 	=> 'Gaya Hidup',
+                'slug' 	=> 'gaya-hidup',
                 'created_at'=> '2021-01-07 08:27:30'   
             ],
 
             6 => [
                 'id' 	=> 7,
                 'name' 	=> 'Bisnis',
-                'slug' 	=> 'business',
+                'slug' 	=> 'bisnis',
                 'created_at'=> '2021-01-07 08:27:30'   
             ],
 

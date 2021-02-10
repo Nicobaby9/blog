@@ -29,8 +29,6 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/reply/store', 'Frontend\CommentController@replyStore')->name('reply.add');
 	Route::get('/profile/edit/{userprofile}', 'UserProfileController@edit')->name('profile.edit');
 	Route::patch('/profile/update/{userprofile}', 'UserProfileController@update')->name('profile.update');
-
-	// Route::resource('/profile', 'UserProfileController');
 });
 
 Auth::routes();

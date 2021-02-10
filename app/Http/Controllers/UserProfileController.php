@@ -59,7 +59,6 @@ class UserProfileController extends Controller
     public function edit($username)
     {
         $profile = UserProfile::where('username', $username)->first();
-        // dd($profile);
         $user = User::where('id', $profile->user_id)->first();
 
         return view('user-profile.edit', compact('user', 'profile'));
@@ -75,7 +74,6 @@ class UserProfileController extends Controller
     public function update(Request $request, $username)
     {
         $profile = UserProfile::where('username', $username)->first();
-        // dd($profile);
         $user = User::where('id', $profile->user_id)->first();
 
         $this->validate($request, [

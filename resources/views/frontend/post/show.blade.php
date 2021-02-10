@@ -220,5 +220,5 @@
         $('.reply-'+commentId).toggleClass('hidden');
     }
 
-</script>	
+</script>
 @endsection

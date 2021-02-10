@@ -7,10 +7,10 @@
   </form>
   <ul class="navbar-nav navbar-right">
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-      <img alt="image" src="{{ asset('stisla/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+      <img alt="image" src="{{ asset('storage/user-photo/'.auth()->user()->photo) }}" class="rounded-circle mr-1" height="32">
       <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div></a>
       <div class="dropdown-menu dropdown-menu-right">
-        <a href="{{ route('profile.edit', auth()->user()->profile->username) }}" class="dropdown-item has-icon">
+        <a href="{{ route('profile.info', auth()->user()->profile->username) }}" class="dropdown-item has-icon">
           <i class="far fa-user"></i> Profile
         </a>
         <a href="features-settings.html" class="dropdown-item has-icon">

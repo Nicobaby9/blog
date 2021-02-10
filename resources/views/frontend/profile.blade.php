@@ -7,7 +7,7 @@
 			<div class="col-md-offset-1 col-md-10 text-center">
 				<div class="author">
 					<img class="author-img center-block" src="{{ asset('storage/user-photo/'. $profile->user->photo) }}" height="100" width="100">
-					<h1 class="text-uppercase">{{ $profile->user->name }}</h1>
+					<h1 class="text-uppercase"><a style="color: white;" onclick="reply()">{{ $profile->user->name }}</a></h1>
 					<p class="lead">{{ $profile->headline }}</p>
 					<ul class="author-social">
 						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -15,6 +15,12 @@
 						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 					</ul>
+					<hr>
+					@if(auth()->user()->id == $profile->user_id)
+					<ul class="reply text-uppercase hidden">
+						<li><a href="{{ route('profile.edit', $profile->username) }}" style="color: silver;">Edit Profile</a></li>
+					</ul>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -59,4 +65,13 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('js')
+<script>
+	function reply(){
+        $('.reply').toggleClass('hidden');
+    }
+
+</script>
 @endsection

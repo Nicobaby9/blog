@@ -86,7 +86,6 @@ class BlogController extends Controller
     //USER PROFILE
     public function profile($username) {
         $profile = UserProfile::where('username', $username)->first();
-        // dd($profile->user->name);
 
         return view('frontend.profile', compact('profile'));
     }

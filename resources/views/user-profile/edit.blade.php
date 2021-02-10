@@ -1,6 +1,6 @@
-@extends('layouts.backend.home')
+@extends('layouts.frontend.profile')
 
-@section('title', 'Profile')
+@section('title', 'Edit Profile')
 
 @section('content')
 <div class="row mt-sm-4">

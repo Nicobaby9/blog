@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\Model\{User, UserProfile};
 use File;
 
 class UserController extends Controller
@@ -166,6 +166,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        $profile = UserProfile::where('user_id', $user->id)->first();
 
         // Delete Image
         $destinationPath = public_path('/storage/user-photo/');
@@ -175,7 +176,34 @@ class UserController extends Controller
         }
 
         $user->delete();
+        $profile->delete();
 
-        return redirect(route('user.index'))->with(['success' => 'Data user berhasil dihapus.']);
+        return redirect(route('user.index'))->with(['success' => 'Berhasil mem-banned / membekukan user.']);
+    }
+
+    public function bannedUser() {
+        $users = User::onlyTrashed()->paginate(30);
+
+        return view('admin.user.banned-user', compact('users'));
+    }
+
+    public function unban($id) {
+        $user = User::withTrashed()->where('id', $id)->first();
+        $profile = UserProfile::withTrashed()->where('user_id', $user->id)->first();
+
+        $user->restore();
+        $profile->restore();
+
+        return redirect(route('user.index'))->with(['success' => 'Berhasil mengembalikan user yang dibekukan / dibanned, silahkan cek di Kotak Masuk']);
+    }
+
+    public function clean($id) {
+        $user = User::withTrashed()->where('id', $id)->first();
+        $profile = UserProfile::withTrashed()->where('user_id', $user->id)->first();
+
+        $user->forceDelete();
+        $profile->forceDelete();
+
+        return redirect()->back()->with(['success' => 'Berhasil menghapus user secara permanen.']);
     }
 }

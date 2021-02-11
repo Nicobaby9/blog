@@ -49,6 +49,11 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' 
 	Route::get('/mail-restore/{id}', 'AdviceMailController@restore')->name('mail.restore');
 	Route::delete('/mail-clean/{id}', 'AdviceMailController@clean')->name('mail.clean');
 
+	//USER && USER PROFILE
+	Route::get('/banned-user', 'UserController@bannedUser')->name('banned.user');
+	Route::get('/user-unban/{id}', 'UserController@unban')->name('user.unban');
+	Route::delete('/user-clean/{id}', 'UserController@clean')->name('user.clean');
+
 	Route::resource('/category', 'CategoryController');
 	Route::resource('/mail', 'AdviceMailController');
 	Route::resource('/post', 'PostController');

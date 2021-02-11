@@ -3,10 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\User;
 
 class UserProfile extends Model
 {
+	use SoftDeletes;
+	
     protected $guarded = [];
 
     public function getRouteKeyName() {

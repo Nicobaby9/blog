@@ -1,6 +1,6 @@
 @extends('layouts.backend.home')
 
-@section('title', 'User')
+@section('title', 'Banned User')
 
 @section('content')
 <a class="btn btn-primary" href="{{ route('user.create') }}" role="button" aria-expanded="false">Tambah User</a>
@@ -33,8 +33,8 @@
 			</td>
 			<td><img src="{{ asset('storage/user-photo/'. $user->photo) }}" class="rounded-circle" width="80" height="80"></td>
 			<td>
-				<a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $user->id }}" data-action="{{ route('user.destroy',$user->id) }}"> Banned </button>
+				<a href="{{ route('user.unban', $user->id) }}" class="btn btn-sm btn-warning">Unban</a>
+				<button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $user->id }}" data-action="{{ route('user.clean',$user->id) }}"> Delete </button>
 			</td>
 		</tr>
 		@empty

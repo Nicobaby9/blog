@@ -87,6 +87,7 @@
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('user.index') }}">List User</a></li>
             <li><a class="nav-link" href="{{ route('user.create') }}">Tambah User</a></li>
+            <li><a class="nav-link" href="{{ route('banned.user') }}">Banned User</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

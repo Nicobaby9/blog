@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use App\Model\{User, UserProfile};
+use App\Model\{User, UserProfile, WebSetting};
 use File;
+use View;
 
 class UserController extends Controller
 {
+    public function __construct() {
+        $web = WebSetting::all()->first();
+
+        View::share('web', $web);
+    }
+
     /**
      * Display a listing of the resource.
      *

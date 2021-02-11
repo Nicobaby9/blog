@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Model\{Post, Category, Tag};
+use App\Model\{Post, Category, Tag, WebSetting};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use File;
+use View;
 
 class PostController extends Controller
 {
+    public function __construct() {
+        $web = WebSetting::all()->first();
+
+        View::share('web', $web);
+    }
+
     /**
      * Display a listing of the resource.
      *

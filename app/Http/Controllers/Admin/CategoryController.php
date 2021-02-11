@@ -6,11 +6,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Model\Category;
+use App\Model\{Category, WebSetting};
+use View;
 
 
 class CategoryController extends Controller
 {
+    public function __construct() {
+        $web = WebSetting::all()->first();
+
+        View::share('web', $web);
+    }
+
     /**
      * Display a listing of the resource.
      *

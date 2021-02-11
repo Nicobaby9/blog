@@ -5,10 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Model\Tag;
+use App\Model\{Tag, WebSetting};
+use View;
 
 class TagController extends Controller
 {
+    public function __construct() {
+        $web = WebSetting::all()->first();
+
+        View::share('web', $web);
+    }
+
     /**
      * Display a listing of the resource.
      *

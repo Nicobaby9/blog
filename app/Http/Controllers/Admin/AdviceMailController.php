@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\AdviceMail;
+use App\Model\{AdviceMail, WebSetting};
+use View;
 
 class AdviceMailController extends Controller
 {
+    public function __construct() {
+        $web = WebSetting::all()->first();
+
+        View::share('web', $web);
+    }
+    
     /**
      * Display a listing of the resource.
      *

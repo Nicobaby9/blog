@@ -1,7 +1,7 @@
 <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="index.html">Stisla</a>
+      <a href="index.html">{{ $web->web_name }}</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
       <a href="index.html">St</a>
@@ -19,7 +19,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Contact</span></a>
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-info-circle"></i> <span>Kontak</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('contact-setting.index') }}">Setting</a></li>
           </ul>
@@ -35,14 +35,12 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Kategori</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('category.index') }}">List Kategori</a></li>
-            <li><a class="nav-link" href="{{ route('category.create') }}">Tambah Katregori</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-hashtag"></i> <span>Tags</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('tag.index') }}">List Tags</a></li>
-            <li><a class="nav-link" href="{{ route('tag.create') }}">Tambah Tag</a></li>
           </ul>
         </li>
         @elseif(auth()->user()->role == 99)
@@ -55,7 +53,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Contact</span></a>
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-info-circle"></i> <span>Kontak</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('contact-setting.index') }}">Setting</a></li>
           </ul>
@@ -71,14 +69,12 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Kategori</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('category.index') }}">List Kategori</a></li>
-            <li><a class="nav-link" href="{{ route('category.create') }}">Tambah Katregori</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-hashtag"></i> <span>Tags</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('tag.index') }}">List Tags</a></li>
-            <li><a class="nav-link" href="{{ route('tag.create') }}">Tambah Tag</a></li>
           </ul>
         </li>
         <li class="menu-header">Special</li>
@@ -91,12 +87,12 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Web</span></a>
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cog"></i> <span>Web</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('web-setting.index') }}">Setting</a></li>
           </ul>
         </li>
-        <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+        <!-- <li class="active"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> -->
         @endif
       </ul>
   </aside>

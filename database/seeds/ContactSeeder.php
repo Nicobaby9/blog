@@ -11,7 +11,7 @@ class ContactSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('web_settings')->insert([
+        \DB::table('contacts')->insert([
             'id' 			=> 1,
             'phone' 		=> '081975126423',
             'email' 		=> 'nosvengeance@gmail.com',

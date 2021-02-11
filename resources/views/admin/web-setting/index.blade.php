@@ -22,19 +22,19 @@
             </div>
             <div class="form-group">
                 <label>Web Desc</label>
-                <textarea class="form-control" rows="4" disabled>{!! $web->web_desc !!}</textarea>
+                <textarea class="form-control" rows="4" style="height: 120px;" disabled>{!! $web->web_desc !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Story</label>
-                <textarea class="form-control" rows="4" disabled>{!! $web->web_story !!}</textarea>
+                <textarea class="form-control" rows="4" style="height: 120px;" disabled>{!! $web->web_story !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Vision</label>
-                <textarea class="form-control" rows="4" disabled>{!! $web->web_vision !!}</textarea>
+                <textarea class="form-control" rows="4" style="height: 220px;" disabled>{!! $web->web_vision !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Quotes</label>
-                <textarea class="form-control" rows="4" disabled>{!! $web->web_quotes !!}</textarea>
+                <textarea class="form-control" rows="4" style="height: 120px;" disabled>{!! $web->web_quotes !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Quotes Creator</label>
@@ -68,19 +68,19 @@
             </div>
             <div class="form-group">
                 <label>Web Desc</label>
-                <textarea name="web_desc" class="form-control" rows="4">{!! $web->web_desc !!}</textarea>
+                <textarea name="web_desc" class="form-control" rows="4" style="height: 120px;">{!! $web->web_desc !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Story</label>
-                <textarea name="web_story" class="form-control" rows="4">{!! $web->web_story !!}</textarea>
+                <textarea name="web_story" class="form-control" rows="4" style="height: 120px;">{!! $web->web_story !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Vision</label>
-                <textarea name="web_vision" class="form-control" rows="4">{!! $web->web_vision !!}</textarea>
+                <textarea name="web_vision" class="form-control" rows="4" style="height: 220px;">{!! $web->web_vision !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Web Quotes</label>
-                <textarea name="web_quotes" class="form-control" rows="4">{!! $web->web_quotes !!}</textarea>
+                <textarea name="web_quotes" class="form-control" rows="4" style="height: 120px;">{!! $web->web_quotes !!}</textarea>
             </div>
             <div class="form-group">
                 <label>Quotes Creator</label>

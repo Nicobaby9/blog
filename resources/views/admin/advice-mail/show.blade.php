@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label>Pesan</label>
-                    <textarea class="form-control" rows="5" disabled>{{ $mail->message }}</textarea>
+                    <textarea class="form-control" rows="5" style="height: 150px;" disabled>{{ $mail->message }}</textarea>
                 </div>
             </form>
         </div>

@@ -1,6 +1,6 @@
 @extends('layouts.backend.home')
 
-@section('title', 'Post')
+@section('title', 'Web Setting')
 
 @section('content')
 <ul class="nav nav-pills">

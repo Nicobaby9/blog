@@ -39,23 +39,30 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' 
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 	//POST
-	Route::get('/post-recycle-bin', 'PostController@post_bin')->name('post.bin');
-	Route::get('/post-restore/{id}', 'PostController@restore')->name('post.restore');
-	Route::delete('/post-clean/{id}', 'PostController@clean')->name('post.clean');
-	Route::patch('/post-main-post/{id}', 'PostController@mainPost')->name('post.main.post');
+	Route::group(['prefix' => 'post'], function() {
+		Route::get('recycle-bin', 'PostController@post_bin')->name('post.bin');
+		Route::get('restore/{id}', 'PostController@restore')->name('post.restore');
+		Route::delete('clean/{id}', 'PostController@clean')->name('post.clean');
+		Route::patch('main-post/{id}', 'PostController@mainPost')->name('post.main.post');
+	});
 
 	//MAIL
-	Route::get('/mail-spam', 'AdviceMailController@spam')->name('mail.spam');
-	Route::get('/mail-restore/{id}', 'AdviceMailController@restore')->name('mail.restore');
-	Route::delete('/mail-clean/{id}', 'AdviceMailController@clean')->name('mail.clean');
+	Route::group(['prefix' => 'advice-mail'], function() {
+		Route::get('/spam', 'AdviceMailController@spam')->name('advice-mail.spam');
+		Route::get('/restore/{id}', 'AdviceMailController@restore')->name('advice-mail.restore');
+		Route::delete('/clean/{id}', 'AdviceMailController@clean')->name('advice-mail.clean');
+	});
 
 	//USER && USER PROFILE
-	Route::get('/banned-user', 'UserController@bannedUser')->name('banned.user');
-	Route::get('/user-unban/{id}', 'UserController@unban')->name('user.unban');
-	Route::delete('/user-clean/{id}', 'UserController@clean')->name('user.clean');
+	Route::group(['prefix' => 'user'], function() {
+		Route::get('/banned-List', 'UserController@bannedUser')->name('user.banned-list');
+		Route::get('/unban/{id}', 'UserController@unban')->name('user.unban');
+		Route::delete('/clean/{id}', 'UserController@clean')->name('user.clean');
+	});
 
+	//RESOURCE
 	Route::resource('/category', 'CategoryController');
-	Route::resource('/mail', 'AdviceMailController');
+	Route::resource('/advice-mail', 'AdviceMailController');
 	Route::resource('/post', 'PostController');
 	Route::resource('/tag', 'TagController');
 	Route::resource('/user', 'UserController');

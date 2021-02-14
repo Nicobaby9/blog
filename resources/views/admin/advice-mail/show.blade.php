@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('mail.index') }}" class="btn btn-sm btn-info" style="width: 160px;">Back</a>
+    <a href="{{ route('advice-mail.index') }}" class="btn btn-sm btn-info" style="width: 160px;">Back</a>
     <hr>
     <div class="row">
         <div class="col-sm-12 col-md-12 main">

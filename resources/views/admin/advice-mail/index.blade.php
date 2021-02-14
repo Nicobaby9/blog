@@ -20,8 +20,8 @@
 			<td>{{ $mail->email }}</td>
 			<td>{{ $mail->subject }}</td>
 			<td>
-				<a href="{{ route('mail.show', $mail->id) }}" class="btn btn-sm btn-primary">Lihat Pesan</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-mail" data-id="{{ $mail->id }}" data-action="{{ route('mail.destroy',$mail->id) }}"> Delete </button>
+				<a href="{{ route('advice-mail.show', $mail->id) }}" class="btn btn-sm btn-primary">Lihat Pesan</a>
+				<button class="btn btn-danger btn-flat btn-sm remove-mail" data-id="{{ $mail->id }}" data-action="{{ route('advice-mail.destroy',$mail->id) }}"> Delete </button>
 			</td>
 		</tr>
 		@empty

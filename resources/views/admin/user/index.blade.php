@@ -52,8 +52,8 @@
   $('body').on("click",".remove-user",function(){
     var current_object = $(this);
     swal({
-        title: "Apakah anda Yakin?",
-        text: "User yang akan dihapus ditak akan bisa direstore!",
+        title: "Apakah anda yakin?",
+        text: "User akan dibekukan, dan dapat diaktifkan kembali di menu Banned List!",
         type: "error",
         showCancelButton: true,
         dangerMode: true,

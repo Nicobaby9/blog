@@ -22,8 +22,8 @@
 			<td>{{ $mail->subject }}</td>
 			<td>{{ \Carbon\Carbon::parse($mail->deleted_at)->format('d-M  H:i') }}</td>
 			<td>
-				<a href="{{ route('mail.restore', $mail->id) }}" class="btn btn-sm btn-warning">Restore</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-mail" data-id="{{ $mail->id }}" data-action="{{ route('mail.clean',$mail->id) }}"> Delete </button>
+				<a href="{{ route('advice-mail.restore', $mail->id) }}" class="btn btn-sm btn-warning">Restore</a>
+				<button class="btn btn-danger btn-flat btn-sm remove-mail" data-id="{{ $mail->id }}" data-action="{{ route('advice-mail.clean',$mail->id) }}"> Delete </button>
 			</td>
 		</tr>
 		@empty

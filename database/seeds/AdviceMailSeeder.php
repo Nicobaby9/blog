@@ -11,7 +11,7 @@ class AdviceMailSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('users')->insert([
+        \DB::table('advice_mails')->insert([
         	0 => [
                 'id' 			=> 1,
                 'email' 		=> 'antilolok@gmail.com',

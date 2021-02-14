@@ -42,7 +42,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1> @yield('title') </h1>
+            <h1 style="font-weight: bold;"> @yield('title') </h1>
           </div>
           <div class="section-body">
             <!-- Alert Message -->

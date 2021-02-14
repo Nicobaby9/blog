@@ -8,7 +8,7 @@
 	<meta name="description" content="Website berisi ribuan artikel yang bermanfaat">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Callie HTML Template</title>
+	<title>{{ $web->web_name }}</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">

@@ -175,13 +175,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $profile = UserProfile::where('user_id', $user->id)->first();
 
-        // Delete Image
-        $destinationPath = public_path('/storage/user-photo/');
-
-        if($user->photo != 'profile.png') {
-            $image = File::delete($destinationPath . $user->photo); 
-        }
-
         $user->delete();
         $profile->delete();
 
@@ -207,6 +200,13 @@ class UserController extends Controller
     public function clean($id) {
         $user = User::withTrashed()->where('id', $id)->first();
         $profile = UserProfile::withTrashed()->where('user_id', $user->id)->first();
+
+        // Delete Image
+        $destinationPath = public_path('/storage/user-photo/');
+
+        if($user->photo != 'profile.png') {
+            $image = File::delete($destinationPath . $user->photo); 
+        }
 
         $user->forceDelete();
         $profile->forceDelete();

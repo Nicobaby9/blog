@@ -36,7 +36,7 @@ Auth::routes();
 Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
 	Route::resource('/web-setting', 'WebSettingController');
 	Route::resource('/contact-setting', 'ContactController');
-	Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
 	//POST
 	Route::group(['prefix' => 'post'], function() {

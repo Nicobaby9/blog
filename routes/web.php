@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 Auth::routes();
 
-Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => 'rolecheck:99,1'], function() {
+Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => ['auth', 'rolecheck:99,1']], function() {
 
 
 	Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
@@ -49,12 +49,17 @@ Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => 'ro
 
 	//POST RESOURCE
 	Route::resource('/post', 'PostController');
+
 	//TAGS RESOURCE
 	Route::resource('/tag', 'TagController')->only(['index', 'store', 'edit', 'update', 'destroy']);
 	Route::get('/tag/search', 'TagController@search')->name('tag.search');
+
 	//CATEGORY RESOURCE
 	Route::resource('/category', 'CategoryController')->only(['index', 'store', 'edit', 'update', 'destroy']);
 	Route::get('/category/search', 'CategoryController@search')->name('category.search');
+
+	//REQUEST MAIN CONTENT
+	Route::patch('/request-main-content/{id}', 'RequestMainContentController@updateMainContent')->name('request-main-content.updateMainContent');
 
 	//ADMINISTRATOR
 	Route::group(['prefix' => 'administrator', 'middleware' => 'rolecheck:99'], function() {
@@ -80,6 +85,12 @@ Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => 'ro
 		//RESOURCE
 		Route::resource('/advice-mail', 'AdviceMailController');
 		Route::resource('/user', 'UserController');
+
+		//MAIN POST
+		Route::get('/request-main-content', 'RequestMainContentController@index')->name('request-main-content.index');
+		Route::patch('/request-main-content/{id}/update', 'RequestMainContentController@update')->name('request-main-content.update');
+		Route::get('/request-main-content/{id}/detail', 'RequestMainContentController@detail')->name('request-main-content.detail');
+		Route::delete('/request-main-content/{id}/delete', 'RequestMainContentController@destroy')->name('request-main-content.destroy');
 	});
 	
 });

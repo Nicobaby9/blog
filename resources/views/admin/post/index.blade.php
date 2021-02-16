@@ -30,6 +30,8 @@
 					<th scope="col">Kategory</th>
 					@if(auth()->user()->role == 99)
 					<th scope="col">Main Post</th>
+					@elseif(auth()->user()->role == 1)
+					<th scope="col">Request Main Post</th>
 					@endif
 					<th scope="col">Thumbnail</th>
 					<th scope="col">Action</th>
@@ -44,27 +46,42 @@
 					<td>{{ \Illuminate\Support\Str::title($post->category->name) }}</td>
 					@if(auth()->user()->role == 99)
 					<td>
-						@if($post->main_content == 0)
+						@if($post->main_content == 1)
 							<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
 								@csrf
 								@method('PATCH')
-		    					<input type="hidden" name="main_content" value="1"/>
-								<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin??')"> No </button>
+		    					<input type="hidden" name="main_content" value="0"/>
+								<button type="submit" class="btn btn-sm btn-success btn-block confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
 							</form>
 						@else
 							<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
 								@csrf
 								@method('PATCH')
-		    					<input type="hidden" name="main_content" value="0"/>
-								<button type="submit" class="btn btn-sm btn-success confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
+		    					<input type="hidden" name="main_content" value="1"/>
+								<button type="submit" class="btn btn-sm btn-danger btn-block" onclick="return confirm('Apakah anda yakin??')"> No </button>
 							</form>
+						@endif
+					</td>
+					@elseif(auth()->user()->role == 1)
+					<td>
+						@if($post->main_content == 0)
+							<form action="{{ route('request-main-content.updateMainContent', $post->id) }}" method="POST">  
+								@csrf
+								@method('PATCH')
+		    					<input type="hidden" name="main_content" value="2"/>
+								<button type="submit" class="btn btn-sm btn-primary btn-block" onclick="return confirm('Apakah anda yakin??')"> Request </button>
+							</form>
+						@elseif($post->main_content == 1)
+							<button type="reset" class="btn btn-sm btn-success btn-block"> Main </button>
+						@elseif($post->main_content == 2)
+							<button type="reset" class="btn btn-sm btn-info btn-block"> Pending </button>
 						@endif
 					</td>
 					@endif
 					<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
 					<td>
-						<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
-						<button class="btn btn-danger btn-flat btn-sm remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.destroy',$post->id) }}"> Delete </button>
+						<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary btn-block">Edit</a>
+						<button class="btn btn-danger btn-flat btn-sm btn-block remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.destroy',$post->id) }}"> Delete </button>
 					</td>
 				</tr>
 				@empty

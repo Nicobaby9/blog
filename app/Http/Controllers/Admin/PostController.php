@@ -27,7 +27,7 @@ class PostController extends Controller
         if(auth()->user()->role == 99) {
             $posts = Post::orderBy('created_at', 'desc')->paginate(25);
         }else if(auth()->user()->role == 1) {
-            $posts = Post::where('user_id', auth()->user()->id)->latest()->paginate(25);
+            $posts = auth()->user()->posts()->latest()->paginate(25);
         }
 
         return view('admin.post.index', compact('posts'));
@@ -212,10 +212,10 @@ class PostController extends Controller
             if($posts->count() >= 3) {
                 return redirect()->back()->with(['error' => 'Main konten tidak dapat melebihi 3 konten.']);
             }else {
-                $post->main_content = true;
+                $post->main_content = 1;
             }
         }else {
-            $post->main_content = false;
+            $post->main_content = 0;
         }
         $post->update();
 

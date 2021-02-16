@@ -14,7 +14,7 @@ class AddMainContentToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->boolean('main_content')->default(0)->after('image');
+            $table->integer('main_content')->default(0)->after('image');
             $table->integer('view_count')->default(0)->after('main_content');
         });
     }

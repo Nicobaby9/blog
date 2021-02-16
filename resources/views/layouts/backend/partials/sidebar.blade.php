@@ -40,10 +40,16 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-newspaper"></i> <span>Inbox Mail</span></a>
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i> <span>Inbox Mail</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('advice-mail.index') }}">List Mail</a></li>
             <li><a class="nav-link" href="{{ route('advice-mail.spam') }}">Spam</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i> <span>Request Main Post</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{{ route('request-main-content.index') }}">List Request</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

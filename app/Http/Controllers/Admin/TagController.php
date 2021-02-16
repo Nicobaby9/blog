@@ -118,4 +118,10 @@ class TagController extends Controller
 
         return redirect()->back()->with(['success' => 'berhasil menghapus tag']);
     }
+
+    public function search(Request $request) {
+        $tags = Tag::where('name', $request->search)->orWhere('name', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.post.index', compact('tags'));
+    }
 }

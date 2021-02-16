@@ -50,9 +50,11 @@ Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => 'ro
 	//POST RESOURCE
 	Route::resource('/post', 'PostController');
 	//TAGS RESOURCE
-	Route::resource('/tag', 'TagController');
+	Route::resource('/tag', 'TagController')->only(['index', 'store', 'edit', 'update', 'destroy']);
+	Route::get('/tag/search', 'TagController@search')->name('tag.search');
 	//CATEGORY RESOURCE
-	Route::resource('/category', 'CategoryController');
+	Route::resource('/category', 'CategoryController')->only(['index', 'store', 'edit', 'update', 'destroy']);
+	Route::get('/category/search', 'CategoryController@search')->name('category.search');
 
 	//ADMINISTRATOR
 	Route::group(['prefix' => 'administrator', 'middleware' => 'rolecheck:99'], function() {
@@ -72,6 +74,7 @@ Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => 'ro
 			Route::get('/unban/{id}', 'UserController@unban')->name('user.unban');
 			Route::delete('/clean/{id}', 'UserController@clean')->name('user.clean');
 			Route::get('/search', 'UserController@search')->name('user.search');
+			Route::get('/banned-search', 'UserController@bannedSearch')->name('user-banned.search');
 		});
 
 		//RESOURCE

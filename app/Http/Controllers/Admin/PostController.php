@@ -17,12 +17,6 @@ class PostController extends Controller
         View::share('web', $web);
     }
 
-    public function search(Request $request) {
-        $posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
-
-        return view('admin.post.index', compact('posts'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -226,5 +220,11 @@ class PostController extends Controller
         $post->update();
 
         return redirect()->back()->with(['success' => 'Status Main Post sudah berhasil diubah.']);
+    }
+
+    public function search(Request $request) {
+        $posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.post.index', compact('posts'));
     }
 }

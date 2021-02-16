@@ -7,7 +7,7 @@
   <div class="card-header">
 	<hr>
     <div class="card-header-action">
-      <form action="{{ route('post.search') }}" method="get">
+      <form action="{{ route('user-banned.search') }}" method="get">
         <div class="input-group">
           <input name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
           <div class="input-group-btn">

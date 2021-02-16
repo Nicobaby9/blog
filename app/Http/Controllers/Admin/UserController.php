@@ -17,12 +17,6 @@ class UserController extends Controller
         View::share('web', $web);
     }
 
-    public function search(Request $request) {
-        $users = User::where('name', $request->search)->orWhere('name', 'like', '%'.$request->search.'%')->latest()->paginate(15);
-
-        return view('admin.user.index', compact('users'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -200,7 +194,7 @@ class UserController extends Controller
         $user->restore();
         $profile->restore();
 
-        return redirect(route('user.index'))->with(['success' => 'Berhasil mengembalikan user yang dibekukan / dibanned, silahkan cek di Kotak Masuk']);
+        return redirect(route('user.index'))->with(['success' => 'Berhasil mengembalikan user yang dibekukan / dibanned, silahkan cek di user list.']);
     }
 
     public function clean($id) {
@@ -218,5 +212,17 @@ class UserController extends Controller
         $profile->forceDelete();
 
         return redirect()->back()->with(['success' => 'Berhasil menghapus user secara permanen.']);
+    }
+
+    public function search(Request $request) {
+        $users = User::where('name', $request->search)->orWhere('name', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.user.index', compact('users'));
+    }
+
+    public function bannedSearch(Request $request) {
+        $users = User::onlyTrashed()->where('name', $request->search)->orWhere('name', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.user.banned-user', compact('users'));
     }
 }

@@ -17,6 +17,12 @@ class UserController extends Controller
         View::share('web', $web);
     }
 
+    public function search(Request $request) {
+        $users = User::where('name', $request->search)->orWhere('name', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.user.index', compact('users'));
+    }
+
     /**
      * Display a listing of the resource.
      *

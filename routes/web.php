@@ -33,9 +33,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 Auth::routes();
 
-Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
-	Route::resource('/web-setting', 'WebSettingController');
-	Route::resource('/contact-setting', 'ContactController');
+Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => 'rolecheck:99,1'], function() {
+
+
 	Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
 	//POST
@@ -44,26 +44,39 @@ Route::group(['prefix' => 'administrator', 'namespace' => 'Admin', 'middleware' 
 		Route::get('restore/{id}', 'PostController@restore')->name('post.restore');
 		Route::delete('clean/{id}', 'PostController@clean')->name('post.clean');
 		Route::patch('main-post/{id}', 'PostController@mainPost')->name('post.main.post');
+		Route::get('/search', 'PostController@search')->name('post.search');
 	});
 
-	//MAIL
-	Route::group(['prefix' => 'advice-mail'], function() {
-		Route::get('/spam', 'AdviceMailController@spam')->name('advice-mail.spam');
-		Route::get('/restore/{id}', 'AdviceMailController@restore')->name('advice-mail.restore');
-		Route::delete('/clean/{id}', 'AdviceMailController@clean')->name('advice-mail.clean');
-	});
-
-	//USER && USER PROFILE
-	Route::group(['prefix' => 'user'], function() {
-		Route::get('/banned-List', 'UserController@bannedUser')->name('user.banned-list');
-		Route::get('/unban/{id}', 'UserController@unban')->name('user.unban');
-		Route::delete('/clean/{id}', 'UserController@clean')->name('user.clean');
-	});
-
-	//RESOURCE
-	Route::resource('/category', 'CategoryController');
-	Route::resource('/advice-mail', 'AdviceMailController');
+	//POST RESOURCE
 	Route::resource('/post', 'PostController');
+	//TAGS RESOURCE
 	Route::resource('/tag', 'TagController');
-	Route::resource('/user', 'UserController');
+	//CATEGORY RESOURCE
+	Route::resource('/category', 'CategoryController');
+
+	//ADMINISTRATOR
+	Route::group(['prefix' => 'administrator', 'middleware' => 'rolecheck:99'], function() {
+		Route::resource('/web-setting', 'WebSettingController');
+		Route::resource('/contact-setting', 'ContactController');
+
+		//MAIL
+		Route::group(['prefix' => 'advice-mail'], function() {
+			Route::get('/spam', 'AdviceMailController@spam')->name('advice-mail.spam');
+			Route::get('/restore/{id}', 'AdviceMailController@restore')->name('advice-mail.restore');
+			Route::delete('/clean/{id}', 'AdviceMailController@clean')->name('advice-mail.clean');
+		});
+
+		//USER && USER PROFILE
+		Route::group(['prefix' => 'user'], function() {
+			Route::get('/banned-List', 'UserController@bannedUser')->name('user.banned-list');
+			Route::get('/unban/{id}', 'UserController@unban')->name('user.unban');
+			Route::delete('/clean/{id}', 'UserController@clean')->name('user.clean');
+			Route::get('/search', 'UserController@search')->name('user.search');
+		});
+
+		//RESOURCE
+		Route::resource('/advice-mail', 'AdviceMailController');
+		Route::resource('/user', 'UserController');
+	});
+	
 });

@@ -17,6 +17,12 @@ class PostController extends Controller
         View::share('web', $web);
     }
 
+    public function search(Request $request) {
+        $posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.post.index', compact('posts'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +30,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        if(auth()->user()->role == 99) {
+            $posts = Post::orderBy('created_at', 'desc')->paginate(25);
+        }else if(auth()->user()->role == 1) {
+            $posts = Post::where('user_id', auth()->user()->id)->latest()->paginate(25);
+        }
 
         return view('admin.post.index', compact('posts'));
     }

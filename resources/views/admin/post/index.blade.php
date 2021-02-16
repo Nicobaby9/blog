@@ -4,55 +4,77 @@
 
 @section('content')
 
-<a class="btn btn-primary" href="{{ route('post.create') }}" role="button" aria-expanded="false">Tambah Post</a>
-<hr>
-<table class="table table-hover table-light table-bordered">
-	<thead class="table-primary">
-		<tr>
-			<th scope="col">No.</th>
-			<th scope="col">Title</th>
-			<th scope="col">Author</th>
-			<th scope="col">Kategory</th>
-			<th scope="col">Main Post</th>
-			<th scope="col">Thumbnail</th>
-			<th scope="col">Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		@forelse($posts as $key => $post)
-		<tr>
-			<td>{{ $key+=1 }}</td>
-			<td>{{ \Illuminate\Support\Str::title($post->title) }}</td>
-			<td>{{ \Illuminate\Support\Str::title($post->user->name) }}</td>
-			<td>{{ \Illuminate\Support\Str::title($post->category->name) }}</td>
-			<td>
-				@if($post->main_content == 0)
-					<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
-						@csrf
-						@method('PATCH')
-    					<input type="hidden" name="main_content" value="1"/>
-						<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin??')"> No </button>
-					</form>
-				@else
-					<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
-						@csrf
-						@method('PATCH')
-    					<input type="hidden" name="main_content" value="0"/>
-						<button type="submit" class="btn btn-sm btn-success confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
-					</form>
-				@endif
-			</td>
-			<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
-			<td>
-				<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.destroy',$post->id) }}"> Delete </button>
-			</td>
-		</tr>
-		@empty
-			<td>Tidak ada data.</td>
-		@endforelse
-	</tbody>
-</table>
+<div class="card">
+  <div class="card-header">
+	<a class="btn btn-primary" href="{{ route('post.create') }}" role="button" aria-expanded="false">Tambah Post</a>
+	<hr>
+    <div class="card-header-action">
+      <form action="{{ route('post.search') }}" method="get">
+        <div class="input-group">
+          <input name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
+          <div class="input-group-btn">
+            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+		<table class="table table-hover table-light table-bordered">
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">No.</th>
+					<th scope="col">Title</th>
+					<th scope="col">Author</th>
+					<th scope="col">Kategory</th>
+					@if(auth()->user()->role == 99)
+					<th scope="col">Main Post</th>
+					@endif
+					<th scope="col">Thumbnail</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@forelse($posts as $key => $post)
+				<tr>
+					<td>{{ $key+=1 }}</td>
+					<td>{{ \Illuminate\Support\Str::title($post->title) }}</td>
+					<td>{{ \Illuminate\Support\Str::title($post->user->name) }}</td>
+					<td>{{ \Illuminate\Support\Str::title($post->category->name) }}</td>
+					@if(auth()->user()->role == 99)
+					<td>
+						@if($post->main_content == 0)
+							<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
+								@csrf
+								@method('PATCH')
+		    					<input type="hidden" name="main_content" value="1"/>
+								<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin??')"> No </button>
+							</form>
+						@else
+							<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
+								@csrf
+								@method('PATCH')
+		    					<input type="hidden" name="main_content" value="0"/>
+								<button type="submit" class="btn btn-sm btn-success confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
+							</form>
+						@endif
+					</td>
+					@endif
+					<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
+					<td>
+						<a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
+						<button class="btn btn-danger btn-flat btn-sm remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.destroy',$post->id) }}"> Delete </button>
+					</td>
+				</tr>
+				@empty
+					<td>Tidak ada data.</td>
+				@endforelse
+			</tbody>
+		</table>
+    </div>
+  </div>
+</div>
 
 {{ $posts->links() }}
 

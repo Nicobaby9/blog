@@ -16,6 +16,8 @@
     ||
     Comment Total : {{ $requestMainContent->post->comments->count() }}
     ||
+    View Total : {{ $requestMainContent->post->view_count }}
+    ||
     Status : @if($requestMainContent->status == 2) Pending @endif
     <hr>
 	<form action="{{ route('request-main-content.update', $requestMainContent->id) }}" method="POST">  

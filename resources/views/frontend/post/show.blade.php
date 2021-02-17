@@ -16,7 +16,7 @@
 					<ul class="post-meta">
 						<li><a href="author.html">{{ \Illuminate\Support\Str::title($post->user->name) }}</a></li>
 						<li>{{ \Carbon\Carbon::parse($post->created_at)->format('d-M-Y') }}</li>
-						<li><i class="fa fa-comments"></i> 3</li>
+						<li><i class="fa fa-comments"></i> {{ $post->comments->count() }}</li>
 						<li><i class="fa fa-eye"></i> {{ $post->view_count }}</li>
 					</ul>
 				</div>

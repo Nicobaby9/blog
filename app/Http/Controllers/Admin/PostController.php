@@ -26,11 +26,12 @@ class PostController extends Controller
     {
         if(auth()->user()->role == 99) {
             $posts = Post::orderBy('created_at', 'desc')->paginate(25);
+            $trash_posts = Post::onlyTrashed()->paginate(10);
         }else if(auth()->user()->role == 1) {
             $posts = auth()->user()->posts()->latest()->paginate(25);
         }
 
-        return view('admin.post.index', compact('posts'));
+        return view('admin.post.index', compact('posts', 'trash_posts'));
     }
 
     /**

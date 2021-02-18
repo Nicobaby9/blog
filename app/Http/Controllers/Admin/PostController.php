@@ -25,13 +25,17 @@ class PostController extends Controller
     public function index()
     {
         if(auth()->user()->role == 99) {
-            $posts = Post::orderBy('created_at', 'desc')->paginate(25);
+            $published_posts = Post::where('status', 1)->orderBy('created_at', 'desc')->paginate(25);
             $trash_posts = Post::onlyTrashed()->paginate(10);
+            $pending_posts = Post::where('status', 2)->latest()->paginate(25);
+            $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
         }else if(auth()->user()->role == 1) {
-            $posts = auth()->user()->posts()->latest()->paginate(25);
+            $published_posts = auth()->user()->posts()->where('status', 1)->latest()->paginate(25);
+            $pending_posts = auth()->user()->posts()->where('status', 2)->latest()->paginate(25);
+            $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
         }
 
-        return view('admin.post.index', compact('posts', 'trash_posts'));
+        return view('admin.post.index', compact('published_posts', 'trash_posts', 'pending_posts', 'draft_posts'));
     }
 
     /**
@@ -59,7 +63,8 @@ class PostController extends Controller
             'title' => 'required|min:5',
             'category_id' => 'required',
             'content' => 'required|min:20',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4000'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4000',
+            'status' => 'required'
         ]);
 
         if ($request->hasFile('image')) {
@@ -77,6 +82,7 @@ class PostController extends Controller
                 'category_id' => $request->category_id,
                 'content' => $request->content,
                 'image' => $filename,
+                'status' => $request->status
             ]);
 
             $post->tags()->attach($request->tags);
@@ -129,7 +135,6 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
 
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -145,6 +150,7 @@ class PostController extends Controller
                 'category_id' => $request->category_id,
                 'content' => $request->content,
                 'image' => $filename,
+                'status' => $request->status,
             ];
 
             $post->update($post_data);
@@ -157,6 +163,7 @@ class PostController extends Controller
                 'slug' => Str::slug($request->title, '-'),
                 'category_id' => $request->category_id,
                 'content' => $request->content,
+                'status' => $request->status,
             ];
 
             $post->update($post_data);
@@ -175,6 +182,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+     
+        if($post->main_content == 1) {
+            return redirect()->back()->with(['error' => 'Post yg menjadi Main Content tidak dapat dihapus!']);
+        }
+
         $post->delete();
 
         return redirect()->back()->with(['success' => 'Data berhasil dihapus, Silahkan lihat di Post Recycle Bin']);
@@ -189,6 +201,8 @@ class PostController extends Controller
     public function restore($id) {
         $post = Post::withTrashed()->where('id', $id)->first();
         $post->restore();
+        $post->main_content = 0;
+        $post->update();
 
         return redirect()->back()->with(['success' => 'Data berhasil resstore, Silahkan lihat di List Post']);
     }
@@ -213,7 +227,11 @@ class PostController extends Controller
             if($posts->count() >= 3) {
                 return redirect()->back()->with(['error' => 'Main konten tidak dapat melebihi 3 konten.']);
             }else {
-                $post->main_content = 1;
+                if($post->status == 1) {
+                    $post->main_content = 1;
+                }else {
+                    return redirect()->back()->with(['error' => 'Main konten hanya dapat diisi post dengan status PUBLISHED.']);
+                }
             }
         }else {
             $post->main_content = 0;

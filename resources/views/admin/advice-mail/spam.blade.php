@@ -4,33 +4,51 @@
 
 @section('content')
 
-<table class="table table-hover table-light table-bordered">
-	<thead class="table-primary">
-		<tr>
-			<th scope="col">No.</th>
-			<th scope="col">Email</th>
-			<th scope="col">Subject</th>
-			<th scope="col">Dihapus pada</th>
-			<th scope="col">Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		@forelse($mails as $key => $mail)
-		<tr>
-			<td>{{ $key+=1 }}</td>
-			<td>{{ $mail->email }}</td>
-			<td>{{ $mail->subject }}</td>
-			<td>{{ \Carbon\Carbon::parse($mail->deleted_at)->format('d-M  H:i') }}</td>
-			<td>
-				<a href="{{ route('advice-mail.restore', $mail->id) }}" class="btn btn-sm btn-warning">Restore</a>
-				<button class="btn btn-danger btn-flat btn-sm remove-mail" data-id="{{ $mail->id }}" data-action="{{ route('advice-mail.clean',$mail->id) }}"> Delete </button>
-			</td>
-		</tr>
-		@empty
-			<td><h4>Tidak ada pesan.</h4></td>
-		@endforelse
-	</tbody>
-</table>
+<div class="card">
+  <!-- <div class="card-header">
+    <div class="card-header-action">
+      <form action="{{ route('request-main-content.search') }}" method="get">
+        <div class="input-group">
+          <input name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
+          <div class="input-group-btn">
+            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> -->
+  <div class="card-body p-0">
+    <div class="table-responsive">
+		<table class="table table-hover table-light table-bordered">
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">No.</th>
+					<th scope="col">Email</th>
+					<th scope="col">Subject</th>
+					<th scope="col">Dihapus pada</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@forelse($mails as $key => $mail)
+				<tr>
+					<td>{{ $key+=1 }}</td>
+					<td>{{ $mail->email }}</td>
+					<td>{{ $mail->subject }}</td>
+					<td>{{ \Carbon\Carbon::parse($mail->deleted_at)->format('d-M  H:i') }}</td>
+					<td>
+						<a href="{{ route('advice-mail.restore', $mail->id) }}" class="btn btn-sm btn-warning">Restore</a>
+						<button class="btn btn-danger btn-flat btn-sm remove-mail" data-id="{{ $mail->id }}" data-action="{{ route('advice-mail.clean',$mail->id) }}"> Delete </button>
+					</td>
+				</tr>
+				@empty
+					<td><h4>Tidak ada pesan.</h4></td>
+				@endforelse
+			</tbody>
+		</table>
+    </div>
+  </div>
+</div>
 
 {{ $mails->links() }}
 

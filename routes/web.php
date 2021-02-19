@@ -44,7 +44,6 @@ Route::group(['prefix' => 'private', 'namespace' => 'Admin', 'middleware' => ['a
 		Route::get('restore/{id}', 'PostController@restore')->name('post.restore');
 		Route::delete('clean/{id}', 'PostController@clean')->name('post.clean');
 		Route::patch('main-post/{id}', 'PostController@mainPost')->name('post.main.post');
-		Route::get('/search', 'PostController@search')->name('post.search');
 	});
 
 	//POST RESOURCE

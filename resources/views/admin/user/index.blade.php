@@ -10,7 +10,7 @@
     <div class="card-header-action">
       <form action="{{ route('user.search') }}" method="get">
         <div class="input-group">
-          <input name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
+          <input id="userSearch" name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
           <div class="input-group-btn">
             <button class="btn btn-primary"><i class="fas fa-search"></i></button>
           </div>
@@ -31,7 +31,7 @@
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="myUserSearch">
 				@forelse($users as $key => $user)
 				<tr>
 					<td>{{ $key+=1 }}</td>
@@ -67,30 +67,40 @@
 
 @section('js')
 <script type="text/javascript">
-  $('body').on("click",".remove-user",function(){
-    var current_object = $(this);
-    swal({
-        title: "Apakah anda yakin?",
-        text: "User akan dibekukan, dan dapat diaktifkan kembali di menu Banned List!",
-        type: "error",
-        showCancelButton: true,
-        dangerMode: true,
-        cancelButtonClass: '#ffffff',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Hapus',
-    },function (result) {
-        if (result) {
-            var action = current_object.attr('data-action');
-            var token = jQuery('meta[name="csrf-token"]').attr('content');
-            var id = current_object.attr('data-id');
+	// SEARCH
+	$(document).ready(function(){
+	  $("#userSearch").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#myUserSearch tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	});
 
-            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
-            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
-            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
-            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
-            $('body').find('.remove-form').submit();
-        }
-    });
-});
+	$('body').on("click",".remove-user",function(){
+		var current_object = $(this);
+		swal({
+		    title: "Apakah anda yakin?",
+		    text: "User akan dibekukan, dan dapat diaktifkan kembali di menu Banned List!",
+		    type: "error",
+		    showCancelButton: true,
+		    dangerMode: true,
+		    cancelButtonClass: '#ffffff',
+		    confirmButtonColor: '#dc3545',
+		    confirmButtonText: 'Hapus',
+		},function (result) {
+		    if (result) {
+		        var action = current_object.attr('data-action');
+		        var token = jQuery('meta[name="csrf-token"]').attr('content');
+		        var id = current_object.attr('data-id');
+
+		        $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+		        $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+		        $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+		        $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+		        $('body').find('.remove-form').submit();
+		    }
+		});
+	});
 </script>
 @endsection

@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 'name' 			=> 'Charles Leclerc',
                 'email' 		=> 'leclerc@gmail.com',
                 'password' 		=> Hash::make('123456789'),
-                'photo' 		=> '1612362678.jpg',
+                'photo' 		=> '1613712145.jpg',
                 'role' 			=> 0,
                 'created_at'	=> '2021-02-02 14:56:10',
                 'updated_at' 	=> '2021-02-02 14:58:10',

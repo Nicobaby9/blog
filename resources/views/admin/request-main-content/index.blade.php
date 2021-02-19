@@ -1,14 +1,31 @@
 @extends('layouts.backend.home')
 
+@section('css')
+	<style type="text/css" media="screen">
+		table.dataTable thead .sorting:after,
+		table.dataTable thead .sorting:before,
+		table.dataTable thead .sorting_asc:after,
+		table.dataTable thead .sorting_asc:before,
+		table.dataTable thead .sorting_asc_disabled:after,
+		table.dataTable thead .sorting_asc_disabled:before,
+		table.dataTable thead .sorting_desc:after,
+		table.dataTable thead .sorting_desc:before,
+		table.dataTable thead .sorting_desc_disabled:after,
+		table.dataTable thead .sorting_desc_disabled:before {
+		bottom: .5em;
+		}
+	</style>
+@endsection
+
 @section('title', 'Request Main Content')
 
 @section('content')
 
 <div class="card">
-  <div class="card-header">
+  <!-- <div class="card-header">
 	<hr>
     <div class="card-header-action">
-      <form action="{{ route('post.search') }}" method="get">
+      <form action="" method="get">
         <div class="input-group">
           <input name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
           <div class="input-group-btn">
@@ -17,18 +34,18 @@
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
   <div class="card-body p-0">
     <div class="table-responsive">
-		<table class="table table-hover table-light table-bordered">
+		<table id="selectedColumn" class="table table-hover table-light table-bordered" cellspacing="0">
 			<thead class="table-primary">
 				<tr>
-					<th scope="col">No.</th>
-					<th scope="col">Title</th>
-					<th scope="col">Author</th>
-					<th scope="col">View Total</th>
-					<th scope="col">Thumbnail</th>
-					<th scope="col">Action</th>
+					<th scope="col" class="th-sm">No.</th>
+					<th scope="col" class="th-sm">Title</th>
+					<th scope="col" class="th-sm">Author</th>
+					<th scope="col" class="th-sm">View Total</th>
+					<th scope="col" class="th-sm">Thumbnail</th>
+					<th scope="col" class="th-sm">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -74,19 +91,26 @@
 	        cancelButtonClass: '#ffffff',
 	        confirmButtonColor: '#dc3545',
 	        confirmButtonText: 'Hapus',
-    },function (result) {
-        if (result) {
-            var action = current_object.attr('data-action');
-            var token = jQuery('meta[name="csrf-token"]').attr('content');
-            var id = current_object.attr('data-id');
+	    },function (result) {
+	        if (result) {
+	            var action = current_object.attr('data-action');
+	            var token = jQuery('meta[name="csrf-token"]').attr('content');
+	            var id = current_object.attr('data-id');
 
-            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
-            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
-            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
-            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
-            $('body').find('.remove-form').submit();
-        }
-    });
-});
+	            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+	            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+	            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+	            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+	            $('body').find('.remove-form').submit();
+	        }
+	    });
+	});
+
+	$(document).ready(function () {
+		$('#dtOrderExample').DataTable({
+		"order": [[ 3, "desc" ]]
+		});
+		$('.dataTables_length').addClass('bs-select');
+	});
 </script>
 @endsection

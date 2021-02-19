@@ -8,11 +8,11 @@
 	<a class="btn btn-primary" data-toggle="collapse" href="#addTag" role="button" aria-expanded="false" aria-controls="addTag">Tambah Tag</a>
 	<hr>
     <div class="card-header-action">
-      <form action="{{ route('tag.search') }}" method="get">
+      <form >
         <div class="input-group">
-          <input name="search" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
+          <input id="tagSearch" type="text" class="form-control" placeholder="Search" value="{{ old('search') }}">
           <div class="input-group-btn">
-            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+            <button class="btn btn-primary" disabled><i class="fas fa-search"></i></button>
           </div>
         </div>
       </form>
@@ -44,7 +44,7 @@
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="myTagSearch">
 				@forelse($tags as $key => $tag)
 				<tr>
 					<td>{{ $key+=1 }}</td>
@@ -70,30 +70,40 @@
 
 @section('js')
 <script type="text/javascript">
-  $('body').on("click",".remove-tag",function(){
-    var current_object = $(this);
-    swal({
-        title: "Apakah anda Yakin?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "error",
-        showCancelButton: true,
-        dangerMode: true,
-        cancelButtonClass: '#ffffff',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'Hapus',
-    },function (result) {
-        if (result) {
-            var action = current_object.attr('data-action');
-            var token = jQuery('meta[name="csrf-token"]').attr('content');
-            var id = current_object.attr('data-id');
+	// SEARCH
+	$(document).ready(function(){
+	  $("#tagSearch").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#myTagSearch tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	});
 
-            $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
-            $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
-            $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
-            $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
-            $('body').find('.remove-form').submit();
-        }
-    });
-});
+	$('body').on("click",".remove-tag",function(){
+		var current_object = $(this);
+		swal({
+		    title: "Apakah anda Yakin?",
+		    text: "You will not be able to recover this imaginary file!",
+		    type: "error",
+		    showCancelButton: true,
+		    dangerMode: true,
+		    cancelButtonClass: '#ffffff',
+		    confirmButtonColor: '#dc3545',
+		    confirmButtonText: 'Hapus',
+		},function (result) {
+		    if (result) {
+		        var action = current_object.attr('data-action');
+		        var token = jQuery('meta[name="csrf-token"]').attr('content');
+		        var id = current_object.attr('data-id');
+
+		        $('body').html("<form class='form-inline remove-form' method='post' action='"+action+"'></form>");
+		        $('body').find('.remove-form').append('<input name="_method" type="hidden" value="delete">');
+		        $('body').find('.remove-form').append('<input name="_token" type="hidden" value="'+token+'">');
+		        $('body').find('.remove-form').append('<input name="id" type="hidden" value="'+id+'">');
+		        $('body').find('.remove-form').submit();
+		    }
+		});
+	});
 </script>
 @endsection

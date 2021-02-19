@@ -25,17 +25,19 @@ class PostController extends Controller
     public function index()
     {
         if(auth()->user()->role == 99) {
+            $all_post = Post::orderBy('created_at', 'desc')->paginate(25);
             $published_posts = Post::where('status', 1)->orderBy('created_at', 'desc')->paginate(25);
             $trash_posts = Post::onlyTrashed()->paginate(10);
             $pending_posts = Post::where('status', 2)->latest()->paginate(25);
             $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
         }else if(auth()->user()->role == 1) {
+            $all_post = auth()->user()->posts()->orderBy('created_at', 'desc')->paginate(25);
             $published_posts = auth()->user()->posts()->where('status', 1)->latest()->paginate(25);
             $pending_posts = auth()->user()->posts()->where('status', 2)->latest()->paginate(25);
             $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
         }
 
-        return view('admin.post.index', compact('published_posts', 'trash_posts', 'pending_posts', 'draft_posts'));
+        return view('admin.post.index', compact('all_post', 'published_posts', 'trash_posts', 'pending_posts', 'draft_posts'));
     }
 
     /**
@@ -241,9 +243,25 @@ class PostController extends Controller
         return redirect()->back()->with(['success' => 'Status Main Post sudah berhasil diubah.']);
     }
 
-    public function search(Request $request) {
-        $posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+    public function PublishedPostSearch(Request $request) {
+        if(auth()->user()->role == 1) {
+            $posts = Post::where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+            $published_posts = auth()->user()->posts()->where('status', 1)->where('title', $request->search)->orWhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+            $pending_posts = auth()->user()->posts()->where('status', 2)->latest()->paginate(25);
+            $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
+        }elseif(auth()->user()->role == 99) {
+            $published_posts = Post::where('status', 1)->where('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+            $trash_posts = Post::onlyTrashed()->paginate(10);
+            $pending_posts = Post::where('status', 2)->latest()->paginate(25);
+            $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
+        }
 
-        return view('admin.post.index', compact('posts'));
+        return view('admin.post.index', compact('published_posts'));
+    }
+
+    public function trashSearch(Request $request) {
+        $posts = Post::onlyTrashed()->where('title', $request->search)->orwhere('title', 'like', '%'.$request->search.'%')->latest()->paginate(15);
+
+        return view('admin.post.post-bin', compact('posts'));
     }
 }

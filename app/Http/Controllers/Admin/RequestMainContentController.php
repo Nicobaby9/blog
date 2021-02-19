@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Model\{Post, RequestMainContent, WebSetting};
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class RequestMainContentController extends Controller
 {
@@ -26,6 +27,9 @@ class RequestMainContentController extends Controller
         if ($request->main_content == 0) {
             return redirect()->back()->with(['error' => 'Anda sudah mengajukan request untuk post tersebut.']);
         }else if($request->main_content == 2) {
+            if($post->status != 1) {
+                return redirect()->back()->with(['error' => 'Anda hanya dapat mengajukan request untuk post yang meimiliki status PUBLISHED.']);
+            }
         	$post->main_content = 2;
         }
 
@@ -72,5 +76,11 @@ class RequestMainContentController extends Controller
     	$requestMainContent->delete();
 
     	return redirect(route('request-main-content.index'))->with(['Berhasil menolak request.']);
+    }
+
+    public function search(Request $request) {
+        $requestMainContents = RequestMainContent::where('status', 2)->with('post')->get();
+
+        return view('admin.request-main-content.index', compact('requestMainContents'));
     }
 }

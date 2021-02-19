@@ -44,6 +44,7 @@
           <div class="section-header">
             <h1 style="font-weight: bold;"> @yield('title') </h1>
           </div>
+            @yield('header')
           <div class="section-body">
             <!-- Alert Message -->
             @include('layouts.backend.partials.message')

@@ -56,18 +56,28 @@
                 <div class="form-group" >
                     <label for="status">Status</label>
                     <select name="status" class="form-control selectric">
-                        @if($post->status == 0)
-                        <option value="{{ $post->status }}">Draft</option>
-                        <option value="1">Publish</option>
-                        <option value="2">Pending</option>
-                        @elseif($post->status == 1)
-                        <option value="{{ $post->status }}">Publish</option>
-                        <option value="0">Draft</option>
-                        <option value="2">Pending</option>
-                        @elseif($post->status == 2)
-                        <option value="{{ $post->status }}">Pending</option>
-                        <option value="0">Draft</option>
-                        <option value="1">Publish</option>
+                        @if(auth()->user()->role == 99)
+                            @if($post->status == 0)
+                            <option value="{{ $post->status }}">Draft</option>
+                            <option value="1">Publish</option>
+                            <option value="2">Pending</option>
+                            @elseif($post->status == 1)
+                            <option value="{{ $post->status }}">Publish</option>
+                            <option value="2">Pending</option>
+                            @elseif($post->status == 2)
+                            <option value="{{ $post->status }}">Pending</option>
+                            <option value="1">Publish</option>
+                            @endif
+                        @elseif(auth()->user()->role == 1)
+                            @if($post->status == 0)
+                            <option value="{{ $post->status }}">Draft</option>
+                            <option value="2">Pending</option>
+                            @elseif($post->status == 1)
+                            <option value="{{ $post->status }}">Publish</option>
+                            @elseif($post->status == 2)
+                            <option value="{{ $post->status }}">Pending</option>
+                            <option value="0">Draft</option>
+                            @endif
                         @endif
                     </select>
                 </div>                

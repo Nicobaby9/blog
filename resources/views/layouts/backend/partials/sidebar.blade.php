@@ -47,7 +47,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i> <span>Request Main Post</span></a>
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-check-square"></i> <span>Request Main Post</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('request-main-content.index') }}">List Request</a></li>
           </ul>

@@ -94,8 +94,8 @@
 				                <a href="{{ route('blog.category', $post->category->slug) }}" target="_blank">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
 				              </td>
 				              <td>
-				                <a href="#">
-				                  <img alt="image" src="{{ asset('storage/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
+				                <a href="{{ route('profile.info', $post->user->profile->username) }}">
+				                  <img alt="image" src="{{ asset('storage/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="{{ $post->user->name }}" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
 				                </a>
 				              </td>
 				              @if(auth()->user()->role == 99)

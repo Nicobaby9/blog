@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
     		return view('admin.dashboard', compact('all_post', 'authors', 'posts', 'users', 'mails', 'latest_user'));
     	}else if(auth()->user()->role == 1) {
-	    	$all_post = Post::orderBy('created_at', 'desc')->take(6)->get();	
+	    	$all_post = auth()->user()->posts()->take(6)->get();	
 
     		return view('admin.dashboard', compact('all_post'));
     	}

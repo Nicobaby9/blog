@@ -41,9 +41,9 @@
 			<thead class="table-primary">
 				<tr>
 					<th scope="col" class="th-sm">No.</th>
-					<th scope="col" class="th-sm">Title</th>
+					<th scope="col" class="th-sm">Judul</th>
 					<th scope="col" class="th-sm">Author</th>
-					<th scope="col" class="th-sm">View Total</th>
+					<th scope="col" class="th-sm">Jumlah Tayangan</th>
 					<th scope="col" class="th-sm">Thumbnail</th>
 					<th scope="col" class="th-sm">Action</th>
 				</tr>

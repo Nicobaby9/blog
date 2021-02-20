@@ -12,13 +12,13 @@
     <p>{!! \Illuminate\Support\Str::words($requestMainContent->post->content, 63) !!}</p>
   </div>
   <div class="card-footer bg-whitesmoke">
-    Category : {{ $requestMainContent->post->category->name }}
+    Kategori : {{ $requestMainContent->post->category->name }}
     ||
-    Comment Total : {{ $requestMainContent->post->comments->count() }}
+    Jumlah Komentar : {{ $requestMainContent->post->comments->count() }}
     ||
-    View Total : {{ $requestMainContent->post->view_count }}
+    Jumlah Tayangan : {{ $requestMainContent->post->view_count }}
     ||
-    Status : @if($requestMainContent->status == 2) Pending @endif
+    Status : @if($requestMainContent->status == 2) <a class="btn btn-sm btn-info">Pending</a> @endif
     <hr>
 	<form action="{{ route('request-main-content.update', $requestMainContent->id) }}" method="POST">  
 		@csrf

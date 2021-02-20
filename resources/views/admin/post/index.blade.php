@@ -70,9 +70,9 @@
 							<th scope="col">Kategory</th>
 							<th scope="col">Author</th>
 							@if(auth()->user()->role == 99)
-							<th scope="col">Main Post</th>
+							<th scope="col">Main Content</th>
 							@elseif(auth()->user()->role == 1)
-							<th scope="col">Request Main Post</th>
+							<th scope="col">Request Main Content</th>
 							@endif
 							<th scope="col">Status</th>
 			            </tr>
@@ -105,14 +105,14 @@
 											@csrf
 											@method('PATCH')
 					    					<input type="hidden" name="main_content" value="0"/>
-											<button type="submit" class="btn btn-sm btn-success btn-block confirm-main" onclick="return confirm('Apakah anda yakin??')"> Main </button>
+											<button type="submit" class="btn btn-sm btn-success btn-block confirm-main" onclick="return confirm('Apakah anda ingin menghapus dari Main Content??')"> Main </button>
 										</form>
 									@else
 										<form action="{{ route('post.main.post', $post->id) }}" method="POST">  
 											@csrf
 											@method('PATCH')
 					    					<input type="hidden" name="main_content" value="1"/>
-											<button type="submit" class="btn btn-sm btn-danger btn-block" onclick="return confirm('Apakah anda yakin??')"> No </button>
+											<button type="submit" class="btn btn-sm btn-danger btn-block" onclick="return confirm('Apakah anda ingin menjadikan sebagai Main Content?')"> No </button>
 										</form>
 									@endif
 								</td>
@@ -134,11 +134,11 @@
 								@endif
 				              <td>
 				              	@if($post->status == 0)
-				              	<div class="badge badge-warning">Draft</div>
+				              	<div class="badge badge-warning btn-block">Draft</div>
 				              	@elseif($post->status == 1)
-				              	<div class="badge badge-primary">Published</div>
+				              	<div class="badge badge-primary btn-block">Published</div>
 				              	@elseif($post->status == 2)
-				              	<div class="badge badge-info">Pending</div>
+				              	<div class="badge badge-info btn-block">Pending</div>
 				              	@endif
 				              </td>
 			            </tr>
@@ -263,11 +263,11 @@
 								@endif
 				              <td>
 				              	@if($post->status == 0)
-				              	<div class="badge badge-warning">Draft</div>
+				              	<div class="badge badge-warning btn-block">Draft</div>
 				              	@elseif($post->status == 1)
-				              	<div class="badge badge-primary">Published</div>
+				              	<div class="badge badge-primary btn-block">Published</div>
 				              	@elseif($post->status == 2)
-				              	<div class="badge badge-info">Pending</div>
+				              	<div class="badge badge-info btn-block">Pending</div>
 				              	@endif
 				              </td>
 			            </tr>
@@ -356,11 +356,11 @@
 				              	<td><img src="{{ asset('storage/post-image/'. $post->image) }}" height="50" width="99"></td>
 				              	<td>
 					              	@if($post->status == 0)
-					              	<div class="badge badge-warning">Draft</div>
+					              	<div class="badge badge-warning btn-block">Draft</div>
 					              	@elseif($post->status == 1)
-					              	<div class="badge badge-primary">Published</div>
+					              	<div class="badge badge-primary btn-block">Published</div>
 					              	@elseif($post->status == 2)
-					              	<div class="badge badge-info">Pending</div>
+					              	<div class="badge badge-info btn-block">Pending</div>
 					              	@endif
 				              	</td>
 			            	</tr>
@@ -449,11 +449,11 @@
 			              	<td><img src="{{ asset('storage/post-image/'. $post->image) }}" height="50" width="99"></td>
 			              	<td>
 				              	@if($post->status == 0)
-				              	<div class="badge badge-warning">Draft</div>
+				              	<div class="badge badge-warning btn-block">Draft</div>
 				              	@elseif($post->status == 1)
-				              	<div class="badge badge-primary">Published</div>
+				              	<div class="badge badge-primary btn-block">Published</div>
 				              	@elseif($post->status == 2)
-				              	<div class="badge badge-info">Pending</div>
+				              	<div class="badge badge-info btn-block">Pending</div>
 				              	@endif
 				            </td>
 			            </tr>

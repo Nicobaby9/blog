@@ -45,6 +45,7 @@ class PostSeeder extends Seeder
 
 <p><img alt="" src="https://ads8.kompasads.com/new/www/delivery/lg.php?bannerid=37338&amp;campaignid=12099&amp;zoneid=3846&amp;loc=https%3A%2F%2Fwww.kompasiana.com%2Fcharlesemanueldm%2F601a67b9d541df31087c44c2%2Fbabak-belur-di-3-seri-thailand-saatnya-bulu-tangkis-indonesia-menatap-swiss-open&amp;referer=https%3A%2F%2Fwww.kompasiana.com%2Folahraga%2Fbulutangkis&amp;cb=b4f9bd8588" style="height:0px; width:0px" /></p>',
                 'image' 		=> '1612989300.jpg',
+                'status'        => 0,
                 'main_content' 	=> 0,
                 'view_count' 	=> 1433,
                 'created_at'	=> '2021-02-02 14:30:10',
@@ -82,6 +83,7 @@ class PostSeeder extends Seeder
 
 <p>&nbsp;</p>',
                 'image' 		=> '1612445056.jpg',
+                'status'        => 1,
                 'main_content' 	=> 0,
                 'view_count' 	=> 1233,
                 'created_at'	=> '2021-02-02 16:30:10',
@@ -121,6 +123,7 @@ After 4 memorable years, today we decided to part away with Randy &quot;Dreamoce
 
 <p>BOOM Esports kini menyisakan empat pemain saja di rosternya. Tim memutuskan break sampai Januari 2021 atau musim kompetisi baru dimulai. Kemana nasib&nbsp;<strong>Dreamocel</strong>&nbsp;usai hengkang dari&nbsp;<strong>BOOM</strong>?</p>',
                 'image' 		=> '1612648073.jpg',
+                'status'        => 2,
                 'main_content' 	=> 0,
                 'view_count' 	=> 1113,
                 'created_at'	=> '2021-02-02 14:35:10',
@@ -146,7 +149,8 @@ After 4 memorable years, today we decided to part away with Randy &quot;Dreamoce
 
 <p>Berbicara tentang pendidikan ini Dalam UUD pasal 31 ayat 1 dan 2 sudah jelas yaitu bahwa setiap warga negara berhak mendapat pendidikan, wajib mengikuti pendidikan dasar dan pemerintah wajib membiayainya, negara juga mempriorotaskan anggaran pendidikan sekurang-kurangnya 20 persen dari APBN dan APBD. Pertanyaanya, sudahkah semua anak bangsa mendapatkan haknya? Melihat fakta saat ini, di Indonesia setiap tahunnya lebih dari 1,5 juta anak sekolah tidak melanjutkan pendidikan ke jenjang yang lebih tinggi.</p>',
                 'image' 		=> '1612367242.jpg',
-                'main_content' 	=> 0,
+                'status'        => 1,
+                'main_content' 	=> 1,
                 'view_count' 	=> 2300,
                 'created_at'	=> '2021-02-02 14:41:10',
                 'updated_at' 	=> '2021-02-02 14:41:10',
@@ -179,6 +183,7 @@ Sepak bola adalah cara 11 orang beramin secara kolektivitas, namun ibarat sapu h
 <br />
 Patut disimak sampai akhir pertarungan di liga Inggris ini karena dominasi satu atau dua tim seperti Rangers dan Celtic yang selalu berlangsung di Scotlandia. Atau Bayern Muenchen di Jerman yang selalu mendominasi, atau Juventus di Italia, dll. Namun hingga pekan ke 22 ini paling tidak Everton, Leicester, Tottenhan Hotspur, Liverpool, Manchester United, dan sekarang Manchester City pernah merasakan duduk di singgasana klasmen liga inggris.</p>',
                 'image' 		=> '1612445490.jpeg',
+                'status'        => 1,
                 'main_content' 	=> 1,
                 'view_count' 	=> 3112,
                 'created_at'	=> '2021-02-02 14:44:10',
@@ -236,7 +241,8 @@ Patut disimak sampai akhir pertarungan di liga Inggris ini karena dominasi satu 
 	<li>Ilyas &ldquo;Illias&rdquo; Ganeev (<em>hard support</em>)</li>
 </ol>',
                 'image' 		=> '1612445817.jpg',
-                'main_content' 	=> 1,
+                'status'        => 1,
+                'main_content' 	=> 0,
                 'view_count' 	=> 806,
                 'created_at'	=> '2021-02-02 14:12:10',
                 'updated_at' 	=> '2021-02-02 14:12:10',
@@ -259,27 +265,113 @@ Patut disimak sampai akhir pertarungan di liga Inggris ini karena dominasi satu 
 
 <p>Selain itu, Honda juga akan kembali mengandalkan mobil Honda NSX GT3 Evo untuk mengikuti kejuaraan GT serta Endurance Series yang diadakan di Amerika Utara, Asia, dan juga Eropa.</p>',
                 'image' 		=> '1612428303.jpg',
-                'main_content' 	=> 1,
+                'status'        => 1,
+                'main_content' 	=> 0,
                 'view_count' 	=> 6500,
                 'created_at'	=> '2021-02-02 14:56:10',
                 'updated_at' 	=> '2021-02-02 14:58:10',
                 'deleted_at' 	=> null,
             ],
 
-            // 7 => [
-            // 	'id' 			=> 8,
-            //     'title' 		=> 'Ekonomi',
-            //     'user_id' 		=> 'ekonomi',
-            //     'slug' 			=> 'Ekonomi',
-            //     'category_id' 	=> 'ekonomi',
-            //     'content' 		=> 'Ekonomi',
-            //     'image' 		=> '1612989300.jpg',
-            //     'main_content' 	=> 0,
-            //     'view_count' 	=> 1433,
-            //     'created_at'	=> '2021-02-02 14:30:10',
-            //     'updated_at' 	=> '2021-02-02 14:30:10',
-            //     'deleted_at' 	=> null,
-            // ],
+            7 => [
+            	'id' 			=> 8,
+                'title' 		=> 'Prediksi Berani Musim Balap Formula 1 2021',
+                'user_id' 		=> 2,
+                'slug' 			=> 'prediksi-berani-musim-balap-formula-1-2021',
+                'category_id' 	=> 2,
+                'content' 		=> '<p>Tahun&nbsp;<a href="https://www.kompasiana.com/tag/2021">2021</a>&nbsp;datang dengan penuh harapan. Tentunya dengan harapan besar bahwa tahun ini dapat menjadi tahun yang lebih baik dari segala aspek kehidupan dibanding tahun 2020 yang penuh turbulensi dan hambatan.&nbsp;</p>
+
+<p>Tahun 2021 juga diharapkan menjadi tahun yang baik bagi atraksi&nbsp;<a href="https://www.kompasiana.com/tag/olahraga">olahraga</a>&nbsp;<a href="https://www.kompasiana.com/tag/balap">balap</a>&nbsp;jet darat&nbsp;<a href="https://www.kompasiana.com/tag/formula-1">Formula 1</a>. Setelah musim yang &#39;aneh&#39; namun penuh cerita seru di 2020, 2021 diharapkan menjadi musim yang seru nan atraktif.&nbsp;</p>
+
+<p>Dengan persiapan tim yang lebih singkat dari biasanya namun ada beberapa perubahan yang dibawa pada tim dan juga pembalap, maka musim ini layak dinanti.</p>
+
+<p>Tahun&nbsp;<a href="https://www.kompasiana.com/tag/2021">2021</a>&nbsp;datang dengan penuh harapan. Tentunya dengan harapan besar bahwa tahun ini dapat menjadi tahun yang lebih baik dari segala aspek kehidupan dibanding tahun 2020 yang penuh turbulensi dan hambatan.&nbsp;</p>
+
+<p>Tahun 2021 juga diharapkan menjadi tahun yang baik bagi atraksi&nbsp;<a href="https://www.kompasiana.com/tag/olahraga">olahraga</a>&nbsp;<a href="https://www.kompasiana.com/tag/balap">balap</a>&nbsp;jet darat&nbsp;<a href="https://www.kompasiana.com/tag/formula-1">Formula 1</a>. Setelah musim yang &#39;aneh&#39; namun penuh cerita seru di 2020, 2021 diharapkan menjadi musim yang seru nan atraktif.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Dengan persiapan tim yang lebih singkat dari biasanya namun ada beberapa perubahan yang dibawa pada tim dan juga pembalap, maka musim ini layak dinanti.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Saya melalui tulisan ini ingin menyampaikan prediksi saya terkait musim 2021 nanti. Semua ini hanya akan bersifat kemungkinan, tidak ada yang tahu apa yang akan terjadi secara pasti. Hanya saja, saya melihat beberapa kemungkinan kuat beberapa hal ini akan terjadi. Berikut prediksi saya:</p>
+
+<p><strong>1. Musim terakhir Hamilton?</strong></p>
+
+<p>Lewis Hamilton resmi menjadi salah satu pembalap jet darat terbaik di dunia setelah memenangi gelar juara dunia ketujuh musim lalu, menyamai rekor yang dimiliki Michael Schumacher.&nbsp;</p>
+
+<p>Walaupun begitu, kontrak Hamilton belum diperpanjang dan sebenarnya berakhir pada Desember 2020 lalu. Saya jadi melihat bahwa ada sesuatu yang memengaruhi diulurnya perpanjangan kontrak atau pengumuman perpanjangannya tidak kunjung dikeluarkan: bahwa ada kemungkinan Hamilton pensiun setelah ini.</p>
+
+<p>Meski begitu, saya melihat bahwa dia pasti akan kembali membalap pada musim 2021, hanya saja saya tidak bisa menemukan alasan lagi baginya untuk memperpanjang kontrak lebih dari satu tahun. Dia sudah memecahkan rekor kemenangan terbanyak, dia sudah menyamai rekor juara dunia terbanyak, dan dia sudah berada di tim terbaik di dunia. Mau apa lagi yang dia cari?&nbsp;</p>
+
+<p>Mungkin membalap itu seperti hobi, layaknya bagaimana Sebastian Vettel yang menolak pensiun dari F1 meski sudah juara dunia 4 kali, atau mungkin seperti Valentino Rossi yang sudah melegenda di MotoGP, namun ada hal-hal lain yang membuat dia dapat pensiun dari F1, yakni perbedaan F1 dengan nilai-nilai sosial yang dianutnya, terutama pengaruh F1 terhadap lingkungan.</p>
+
+<p>Saga karir Lewis Hamilton layak disimak selanjutnya. Kita pantau apakah dia akan menetap dan menjadi yang paling dominan sepanjang masa, atau dia memilih menyudahi nafsu gelarnya dan mundur di akhir musim 2021 nanti.</p>',
+                'image' 		=> '1613611100.jpg',
+                'status'        => 1,
+                'main_content' 	=> 1,
+                'view_count' 	=> 3546,
+                'created_at'	=> '2021-02-02 14:30:10',
+                'updated_at' 	=> '2021-02-02 14:30:10',
+                'deleted_at' 	=> null,
+            ],
+
+            8 => [
+                'id'             => 9,
+                'title'          => 'Sabdo Palon',
+                'user_id'        => 2,
+                'slug'           => 'sabdo-palon',
+                'category_id'    => 4,
+                'content'        => '<p>Tahun&nbsp;<a href="https://www.kompasiana.com/tag/2021">2021</a>&nbsp;datang dengan penuh harapan. Tentunya dengan harapan besar bahwa tahun ini dapat menjadi tahun yang lebih baik dari segala aspek kehidupan dibanding tahun 2020 yang penuh turbulensi dan hambatan.&nbsp;</p>
+
+<p>Tahun 2021 juga diharapkan menjadi tahun yang baik bagi atraksi&nbsp;<a href="https://www.kompasiana.com/tag/olahraga">olahraga</a>&nbsp;<a href="https://www.kompasiana.com/tag/balap">balap</a>&nbsp;jet darat&nbsp;<a href="https://www.kompasiana.com/tag/formula-1">Formula 1</a>. Setelah musim yang &#39;aneh&#39; namun penuh cerita seru di 2020, 2021 diharapkan menjadi musim yang seru nan atraktif.&nbsp;</p>
+
+<p>Dengan persiapan tim yang lebih singkat dari biasanya namun ada beberapa perubahan yang dibawa pada tim dan juga pembalap, maka musim ini layak dinanti.</p>
+
+<p>Tahun&nbsp;<a href="https://www.kompasiana.com/tag/2021">2021</a>&nbsp;datang dengan penuh harapan. Tentunya dengan harapan besar bahwa tahun ini dapat menjadi tahun yang lebih baik dari segala aspek kehidupan dibanding tahun 2020 yang penuh turbulensi dan hambatan.&nbsp;</p>
+
+<p>Tahun 2021 juga diharapkan menjadi tahun yang baik bagi atraksi&nbsp;<a href="https://www.kompasiana.com/tag/olahraga">olahraga</a>&nbsp;<a href="https://www.kompasiana.com/tag/balap">balap</a>&nbsp;jet darat&nbsp;<a href="https://www.kompasiana.com/tag/formula-1">Formula 1</a>. Setelah musim yang &#39;aneh&#39; namun penuh cerita seru di 2020, 2021 diharapkan menjadi musim yang seru nan atraktif.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Dengan persiapan tim yang lebih singkat dari biasanya namun ada beberapa perubahan yang dibawa pada tim dan juga pembalap, maka musim ini layak dinanti.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Saya melalui tulisan ini ingin menyampaikan prediksi saya terkait musim 2021 nanti. Semua ini hanya akan bersifat kemungkinan, tidak ada yang tahu apa yang akan terjadi secara pasti. Hanya saja, saya melihat beberapa kemungkinan kuat beberapa hal ini akan terjadi. Berikut prediksi saya:</p>
+
+<p><strong>1. Musim terakhir Hamilton?</strong></p>
+
+<p>Lewis Hamilton resmi menjadi salah satu pembalap jet darat terbaik di dunia setelah memenangi gelar juara dunia ketujuh musim lalu, menyamai rekor yang dimiliki Michael Schumacher.&nbsp;</p>
+
+<p>Walaupun begitu, kontrak Hamilton belum diperpanjang dan sebenarnya berakhir pada Desember 2020 lalu. Saya jadi melihat bahwa ada sesuatu yang memengaruhi diulurnya perpanjangan kontrak atau pengumuman perpanjangannya tidak kunjung dikeluarkan: bahwa ada kemungkinan Hamilton pensiun setelah ini.</p>
+
+<p>Meski begitu, saya melihat bahwa dia pasti akan kembali membalap pada musim 2021, hanya saja saya tidak bisa menemukan alasan lagi baginya untuk memperpanjang kontrak lebih dari satu tahun. Dia sudah memecahkan rekor kemenangan terbanyak, dia sudah menyamai rekor juara dunia terbanyak, dan dia sudah berada di tim terbaik di dunia. Mau apa lagi yang dia cari?&nbsp;</p>
+
+<p>Mungkin membalap itu seperti hobi, layaknya bagaimana Sebastian Vettel yang menolak pensiun dari F1 meski sudah juara dunia 4 kali, atau mungkin seperti Valentino Rossi yang sudah melegenda di MotoGP, namun ada hal-hal lain yang membuat dia dapat pensiun dari F1, yakni perbedaan F1 dengan nilai-nilai sosial yang dianutnya, terutama pengaruh F1 terhadap lingkungan.</p>
+
+<p>Saga karir Lewis Hamilton layak disimak selanjutnya. Kita pantau apakah dia akan menetap dan menjadi yang paling dominan sepanjang masa, atau dia memilih menyudahi nafsu gelarnya dan mundur di akhir musim 2021 nanti.</p>',
+                'image'          => '1613587740.jpg',
+                'status'         => 1,
+                'main_content'   => 1,
+                'view_count'     => 6,
+                'created_at'     => '2021-02-02 14:30:10',
+                'updated_at'     => '2021-02-02 14:30:10',
+                'deleted_at'     => null,
+            ],
 
         ]);
     }

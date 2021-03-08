@@ -7,7 +7,7 @@
   <div class="col-12 col-md-12 col-lg-5">
     <div class="card profile-widget">
       <div class="profile-widget-header">
-        <img alt="image" src="{{ asset('storage/user-photo/'. $user->photo) }}" class="rounded-circle profile-widget-picture" height="110">
+        <img alt="image" src="{{ asset('uploads/user-photo/'. $user->photo) }}" class="rounded-circle profile-widget-picture" height="110">
         <div class="profile-widget-items">
           <div class="profile-widget-item">
             <div class="profile-widget-item-label">Posts</div>
@@ -38,7 +38,7 @@
       	@csrf
       	@method('PATCH')
 			<div class="profile-widget-description">
-				<center><img id="preview_img" src="{{ asset('storage/user-photo/'.$user->photo) }}" class="rounded-circle profile-picture" height="150" width="150"></center>
+				<center><img id="preview_img" src="{{ asset('uploads/user-photo/'.$user->photo) }}" class="rounded-circle profile-picture" height="150" width="150"></center>
 			</div>
 	      	<center><label for="photo" class="profile-widget">Foto</label></center>
 	        <div class="custom-file">

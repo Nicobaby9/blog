@@ -5,7 +5,7 @@
 		<div class="col-md-3">
 			<div class="footer-widget">
 				<div class="footer-logo">
-					<a href="{{ url('/') }}"><img src="{{ asset('storage/web-logo/'. $web->web_logo) }}" width="250" height="250"></a>
+					<a href="{{ url('/') }}"><img src="{{ asset('uploads/web-logo/'. $web->web_logo) }}" width="250" height="250"></a>
 				</div>
 				<p>{{ $web->vision }}</p>
 				<ul class="contact-social">

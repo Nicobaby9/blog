@@ -18,7 +18,7 @@
             <div class="form-group text-center">
                 <label>Web Logo</label>
                 <br>
-                <img src="{{ asset('storage/web-logo/'. $web->web_logo) }}" width="300" height="300">
+                <img src="{{ asset('uploads/web-logo/'. $web->web_logo) }}" width="300" height="300">
             </div>
             <div class="form-group">
                 <label>Web Desc</label>
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="form-group" style="text-align: center;">
-                <img id="preview_img" src="{{ asset('storage/web-logo/'. $web->web_logo) }}" class="" width="250" height="250"/>
+                <img id="preview_img" src="{{ asset('uploads/web-logo/'. $web->web_logo) }}" class="" width="250" height="250"/>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary col-md-12" value="post" >Update</button> 

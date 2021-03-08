@@ -85,7 +85,7 @@ class UserProfileController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/storage/user-photo/');
+            $destinationPath = public_path('/uploads/user-photo/');
             $file->move($destinationPath, $filename);
             $insert['photo'] = "$filename";
 

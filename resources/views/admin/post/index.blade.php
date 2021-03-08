@@ -95,7 +95,7 @@
 				              </td>
 				              <td>
 				                <a href="{{ route('profile.info', $post->user->profile->username) }}">
-				                  <img alt="image" src="{{ asset('storage/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="{{ $post->user->name }}" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
+				                  <img alt="image" src="{{ asset('uploads/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="{{ $post->user->name }}" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
 				                </a>
 				              </td>
 				              @if(auth()->user()->role == 99)
@@ -224,7 +224,7 @@
 				              </td>
 				              <td>
 				                <a href="#">
-				                  <img alt="image" src="{{ asset('storage/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
+				                  <img alt="image" src="{{ asset('uploads/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
 				                </a>
 				              </td>
 				              @if(auth()->user()->role == 99)
@@ -350,10 +350,10 @@
 								</td>
 								<td>
 								<a href="#">
-								  <img alt="image" src="{{ asset('storage/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
+								  <img alt="image" src="{{ asset('uploads/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
 								</a>
 								</td>
-				              	<td><img src="{{ asset('storage/post-image/'. $post->image) }}" height="50" width="99"></td>
+				              	<td><img src="{{ asset('uploads/post-image/'. $post->image) }}" height="50" width="99"></td>
 				              	<td>
 					              	@if($post->status == 0)
 					              	<div class="badge badge-warning btn-block">Draft</div>
@@ -443,10 +443,10 @@
 							</td>
 							<td>
 							<a href="#">
-							  <img alt="image" src="{{ asset('storage/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
+							  <img alt="image" src="{{ asset('uploads/user-photo/'.$post->user->photo) }}" class="rounded-circle" height="25" width="25" data-toggle="title" title=""> <div class="d-inline-block ml-1 font-weight-bold">{{ \Illuminate\Support\Str::title($post->user->name) }}</div>
 							</a>
 							</td>
-			              	<td><img src="{{ asset('storage/post-image/'. $post->image) }}" height="50" width="99"></td>
+			              	<td><img src="{{ asset('uploads/post-image/'. $post->image) }}" height="50" width="99"></td>
 			              	<td>
 				              	@if($post->status == 0)
 				              	<div class="badge badge-warning btn-block">Draft</div>
@@ -487,7 +487,7 @@
 	  $('#myInput').trigger('focus').show();
 	});
 
-	$('body').on("click",".remove-post",function(){
+	$('body').on("click",".trash-post",function(){
 	    var current_object = $(this);
 	    swal({
 	        title: "Apakah anda Yakin?",

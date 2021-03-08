@@ -55,7 +55,7 @@
 					<td>{{ \Illuminate\Support\Str::title($post->post->title) }}</td>
 					<td>{{ \Illuminate\Support\Str::title($post->post->user->name) }}</td>
 					<td>{{ $post->post->view_count }}</td>
-					<td><img src="{{ asset('storage/post-image/'. $post->post->image) }}" class="img-fluid" width="99"></td>
+					<td><img src="{{ asset('uploads/post-image/'. $post->post->image) }}" class="img-fluid" width="99"></td>
 					<td>
 						<a href="{{ route('request-main-content.detail', $post->id) }}" class="btn btn-sm btn-info btn-block">Detail</a>
 					</td>

@@ -92,7 +92,7 @@
                     <label for="image">Image Preview</label>
                     <br>
                     <a href="#" class="thumbnail">
-                      <img id="preview_img" src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid">
+                      <img id="preview_img" src="{{ asset('uploads/post-image/'. $post->image) }}" class="img-fluid">
                     </a>
                 </div>
               </div>

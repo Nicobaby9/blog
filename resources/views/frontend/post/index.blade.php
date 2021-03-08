@@ -7,7 +7,7 @@
 	<div class="col-md-8 hot-post-left">
 		<!-- post -->
 		<div class="post post-thumb">
-			<a class="post-img" href="{{ route('blog.show', $main_post->slug) }}"><img src="{{ asset('storage/post-image/'.$main_post->image) }}" alt="" height="507"></a>
+			<a class="post-img" href="{{ route('blog.show', $main_post->slug) }}"><img src="{{ asset('uploads/post-image/'.$main_post->image) }}" alt="" height="507"></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="{{ route('blog.category', $main_post->category->slug) }}">{{ \Illuminate\Support\Str::title($main_post->category->name) }}</a>
@@ -25,14 +25,14 @@
 		<!-- post -->
 		@foreach($second_main_post as $second_post)
 		<div class="post post-thumb">
-			<a class="post-img" href="{{ route('blog.show', $second_post->slug) }}"><img src="{!! asset('storage/post-image/'.$second_post->image) !!}" alt="" height="250"></a>
+			<a class="post-img" href="{{ route('blog.show', $second_post->slug) }}"><img src="{!! asset('uploads/post-image/'.$second_post->image) !!}" alt="" height="250"></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="{{ route('blog.category', $second_post->category->slug) }}">{{ \Illuminate\Support\Str::title($second_post->category->name) }}</a>
 				</div>
 				<h3 class="post-title title-md"><a href="{{ route('blog.show', $second_post->slug) }}">{{ \Illuminate\Support\Str::words($second_post->title, 11) }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="author.html">{{ \Illuminate\Support\Str::words($second_post->user->name, 2) }}</a></li>
+					<li><a href="{{ route('profile.info', $second_post->user->profile->username) }}">{{ \Illuminate\Support\Str::words($second_post->user->name, 2) }}</a></li>
 					<li>{{ $second_post->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>
@@ -57,14 +57,14 @@
 	@foreach($recent_post as $post)
 	<div class="col-md-6">
 		<div class="post">
-			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt="" height="190"></a>
+			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('uploads/post-image/'. $post->image) }}" alt="" height="190"></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
 				</div>
 				<h3 class="post-title"><a href="{{ route('blog.show', $post->slug) }}">{{ \Illuminate\Support\Str::words($post->title, 4) }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="author.html">{{ \Illuminate\Support\Str::words($post->user->name, 2) }}</a></li>
+					<li><a href="{{ route('profile.info', $post->user->profile->username) }}">{{ \Illuminate\Support\Str::words($post->user->name, 2) }}</a></li>
 					<li>{{ $post->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>
@@ -87,7 +87,7 @@
 		<!-- post -->
 		@foreach($all_posts as $post)
 		<div class="post post-row">
-			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt="" style="height: 180px;"></a>
+			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('uploads/post-image/'. $post->image) }}" alt="" style="height: 180px;"></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>

@@ -43,7 +43,7 @@
                 <br>
                 <div class="text-center">
                     <a href="#" class="thumbnail">
-                      <img id="preview_img" src="{{ asset('storage/user-photo/'.$user->photo) }}" class="rounded-circle" width="235" height="235">
+                      <img id="preview_img" src="{{ asset('uploads/user-photo/'.$user->photo) }}" class="rounded-circle" width="235" height="235">
                     </a>
                 </div>
             </div>

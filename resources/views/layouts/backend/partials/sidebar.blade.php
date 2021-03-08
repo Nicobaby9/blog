@@ -1,7 +1,7 @@
 <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="{{ route('admin.dashboard') }}">{{ $web->web_name }}</a>
+      <a href="/" target="_blank">{{ $web->web_name }}</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
       <a href="index.html">St</a>

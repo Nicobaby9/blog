@@ -12,7 +12,7 @@
 
 			<!-- logo -->
 			<div class="nav-logo" style="width: 250px;">
-				<a href="/" class="logo"><img src="{{ asset('storage/web-logo/'. $web->web_logo) }}"></a>
+				<a href="/" class="logo"><img src="{{ asset('uploads/web-logo/'. $web->web_logo) }}"></a>
 			</div>
 			<!-- /logo -->
 

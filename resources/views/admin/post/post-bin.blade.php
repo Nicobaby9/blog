@@ -50,7 +50,7 @@
 							<td>{{ $post->title }}</td>
 							<td>{{ $post->category->name }}</td>
 							<td><a href="" title="">{{ $post->user->name }}</a></td>	
-							<td><img src="{{ asset('storage/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
+							<td><img src="{{ asset('uploads/post-image/'. $post->image) }}" class="img-fluid" width="99"></td>
 							<td>
 								<a href="{{ route('post.restore', $post->id) }}" class="btn btn-sm btn-primary btn-block" onclick="return confirm('Apakah anda yakin?')">Restore</a>
 								<button class="btn btn-danger btn-flat btn-sm btn-block remove-post" data-id="{{ $post->id }}" data-action="{{ route('post.clean',$post->id) }}"> Delete </button>

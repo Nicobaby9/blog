@@ -6,10 +6,11 @@
 
 <div class="card">
   <div class="card-header">
-    <h4>{{ $requestMainContent->post->title }}</h4>
+    <h2>{{ $requestMainContent->post->title }}</h2>
   </div>
   <div class="card-body">
-    <p>{!! \Illuminate\Support\Str::words($requestMainContent->post->content, 63) !!}</p>
+    <img src="{{ asset('uploads/post-image/'.$requestMainContent->post->image) }}" class="img-fluid">
+    <p>{!! \Illuminate\Support\Str::words($requestMainContent->post->content, 150) !!}</p>
   </div>
   <div class="card-footer bg-whitesmoke">
     Kategori : {{ $requestMainContent->post->category->name }}

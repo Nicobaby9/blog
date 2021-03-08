@@ -35,6 +35,7 @@ class PostController extends Controller
             $published_posts = auth()->user()->posts()->where('status', 1)->latest()->paginate(25);
             $pending_posts = auth()->user()->posts()->where('status', 2)->latest()->paginate(25);
             $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
+            $trash_posts = auth()->user()->posts()->onlyTrashed()->latest()->paginate(25);
         }
 
         return view('admin.post.index', compact('all_post', 'published_posts', 'trash_posts', 'pending_posts', 'draft_posts'));
@@ -73,7 +74,7 @@ class PostController extends Controller
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $imageSize = $file->getsize();
-            $destinationPath = public_path('/storage/post-image/');
+            $destinationPath = public_path('/uploads/post-image/');
             $file->move($destinationPath, $filename);
             $insert['image'] = "$filename";
 
@@ -141,7 +142,7 @@ class PostController extends Controller
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $imageSize = $file->getsize();
-            $destinationPath = public_path('/storage/post-image');
+            $destinationPath = public_path('/uploads/post-image');
             $file->move($destinationPath, $filename);
             $insert['image'] = "$filename";
             $image = File::delete($destinationPath . $post->image); 
@@ -213,7 +214,7 @@ class PostController extends Controller
         $post = Post::withTrashed()->where('id', $id)->first();
 
         // Delete Image
-        $destinationPath = public_path('/storage/post-image/');
+        $destinationPath = public_path('/uploads/post-image/');
         $image = File::delete($destinationPath . $post->image); 
 
         $post->forceDelete();

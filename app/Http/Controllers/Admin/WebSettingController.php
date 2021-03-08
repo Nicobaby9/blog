@@ -89,7 +89,7 @@ class WebSettingController extends Controller
         if ($request->hasFile('web_logo')) {
             $file = $request->file('web_logo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/storage/web-logo/');
+            $destinationPath = public_path('/uploads/web-logo/');
             $file->move($destinationPath, $filename);
             $insert['web_logo'] = "$filename";
             $image = File::delete($destinationPath . $web->web_logo); 

@@ -46,7 +46,7 @@
 							<span class="badge badge-info">User</span>  
 						@endif
 					</td>
-					<td><img src="{{ asset('storage/user-photo/'. $user->photo) }}" class="rounded-circle" width="80" height="80"></td>
+					<td><img src="{{ asset('uploads/user-photo/'. $user->photo) }}" class="rounded-circle" width="80" height="80"></td>
 					<td>
 						<a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
 						<button class="btn btn-danger btn-flat btn-sm remove-user" data-id="{{ $user->id }}" data-action="{{ route('user.destroy',$user->id) }}"> Banned </button>

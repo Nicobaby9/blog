@@ -67,7 +67,7 @@ class UserController extends Controller
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/storage/user-photo/');
+            $destinationPath = public_path('/uploads/user-photo/');
             $file->move($destinationPath, $filename);
             $insert['photo'] = "$filename";
 
@@ -202,7 +202,7 @@ class UserController extends Controller
         $profile = UserProfile::withTrashed()->where('user_id', $user->id)->first();
 
         // Delete Image
-        $destinationPath = public_path('/storage/user-photo/');
+        $destinationPath = public_path('/uploads/user-photo/');
 
         if($user->photo != 'profile.png') {
             $image = File::delete($destinationPath . $user->photo); 

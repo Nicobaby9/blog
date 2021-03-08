@@ -73,7 +73,7 @@
 	<!-- post -->
 	@foreach($popular_post as $post)
 	<div class="post post-widget">
-		<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt=""></a>
+		<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('uploads/post-image/'. $post->image) }}" alt=""></a>
 		<div class="post-body">
 			<div class="post-category">
 				<a href="{{ route('blog.category', $post->category->slug) }}">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>

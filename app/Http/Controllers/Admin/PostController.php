@@ -65,7 +65,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|min:5',
             'category_id' => 'required',
-            'content' => 'required|min:20',
+            'content' => 'required|min:150',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4000',
             'status' => 'required'
         ]);
@@ -89,6 +89,7 @@ class PostController extends Controller
             ]);
 
             $post->tags()->attach($request->tags);
+            dd($post);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
         }

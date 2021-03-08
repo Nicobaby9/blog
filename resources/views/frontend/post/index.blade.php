@@ -14,7 +14,7 @@
 				</div>
 				<h3 class="post-title title-lg"><a href="{{ route('blog.show', $main_post->slug) }}">{{ \Illuminate\Support\Str::words($main_post->title, 11) }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="author.html">{{ \Illuminate\Support\Str::words($main_post->user->name, 2) }}</a></li>
+					<li><a href="{{ route('profile.info', $post->user->profile->username) }}">{{ \Illuminate\Support\Str::words($main_post->user->name, 2) }}</a></li>
 					<li>{{ $main_post->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>
@@ -25,7 +25,7 @@
 		<!-- post -->
 		@foreach($second_main_post as $second_post)
 		<div class="post post-thumb">
-			<a class="post-img" href="{{ route('blog.show', $second_post->slug) }}"><img src="{{ asset('storage/post-image/'.$second_post->image) }}" alt="" height="250"></a>
+			<a class="post-img" href="{{ route('blog.show', $second_post->slug) }}"><img src="{!! asset('storage/post-image/'.$second_post->image) !!}" alt="" height="250"></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="{{ route('blog.category', $second_post->category->slug) }}">{{ \Illuminate\Support\Str::title($second_post->category->name) }}</a>

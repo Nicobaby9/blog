@@ -94,7 +94,7 @@
 				</div>
 				<h3 class="post-title"><a href="{{ route('blog.show', $post->slug) }}">{{ \Illuminate\Support\Str::words($post->title, 8, '...') }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="author.html">{{ \Illuminate\Support\Str::words($post->user->name, 2) }}</a></li>
+					<li><a href="{{ route('profile.info', $post->user->profile->username) }}">{{ \Illuminate\Support\Str::words($post->user->name, 2) }}</a></li>
 					<li>{{ $post->created_at->diffForHumans() }}</li>
 				</ul>
 				<p>{!! \Illuminate\Support\Str::words($post->content, 5, '...') !!}</p>

@@ -14,7 +14,7 @@
 				</div>
 				<h3 class="post-title title-lg"><a href="{{ route('blog.show', $main_post->slug) }}">{{ \Illuminate\Support\Str::words($main_post->title, 11) }}</a></h3>
 				<ul class="post-meta">
-					<li><a href="{{ route('profile.info', $post->user->profile->username) }}">{{ \Illuminate\Support\Str::words($main_post->user->name, 2) }}</a></li>
+					<li><a href="{{ route('profile.info', $main_post->user->profile->username) }}">{{ \Illuminate\Support\Str::words($main_post->user->name, 2) }}</a></li>
 					<li>{{ $main_post->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>

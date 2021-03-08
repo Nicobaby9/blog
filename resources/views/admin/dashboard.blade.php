@@ -83,7 +83,7 @@
 	      	@foreach($authors as $author)
 	        <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
 	          <div class="avatar-item mb-0">
-	            <img alt="image" src="{{ asset('storage/user-photo/'.$author->photo) }}" class="img-fluid" data-toggle="tooltip" title="{{ $author->name }}">
+	            <img alt="image" src="{{ asset('uploads/user-photo/'.$author->photo) }}" class="img-fluid" data-toggle="tooltip" title="{{ $author->name }}">
 	            <div class="avatar-badge" title="Author" data-toggle="tooltip"><i class="fas fa-wrench"></i></div>
 	          </div>
 	        </div>
@@ -101,7 +101,7 @@
 	      <ul class="list-unstyled list-unstyled-border">
 	      	@foreach($latest_user as $user)
 	        <li class="media" style="height: 76px;">
-	          <img class="mr-3 rounded-circle" width="50" src="{{ asset('storage/user-photo/'.$user->photo) }}" alt="avatar" width="40" height="50">
+	          <img class="mr-3 rounded-circle" width="50" src="{{ asset('uploads/user-photo/'.$user->photo) }}" alt="avatar" width="40" height="50">
 	          <div class="media-body">
 	            <div class="float-right text-primary">{{ $user->created_at->diffForHumans() }}</div>
 	            <div class="media-title"><a href="{{ route('profile.info', $user->profile->username) }}" title="{{ $user->name }}">{{ $user->name }}</a></div>
@@ -151,7 +151,7 @@
 	                    </div>
 	                  </td>
 	                  <td>
-	                    <a href="{{ route('profile.info', $post->user->profile->username) }}" class="font-weight-600"><img src="{{ asset('storage/user-photo/'.$post->user->photo) }}" alt="avatar" height="30" width="30" class="rounded-circle mr-1"> {{ \Illuminate\Support\Str::title($post->user->name) }}</a>
+	                    <a href="{{ route('profile.info', $post->user->profile->username) }}" class="font-weight-600"><img src="{{ asset('uploads/user-photo/'.$post->user->photo) }}" alt="avatar" height="30" width="30" class="rounded-circle mr-1"> {{ \Illuminate\Support\Str::title($post->user->name) }}</a>
 	                  </td>
 	                  <td>
 	                    <a class="btn btn-primary btn-action mr-1" href="{{ route('post.edit', $post->id) }}" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
@@ -201,7 +201,7 @@
                     </div>
                   </td>
                   <td>
-                    <a href="{{ route('profile.info', $post->user->profile->username) }}" class="font-weight-600"><img src="{{ asset('storage/user-photo/'.$post->user->photo) }}" alt="avatar" height="30" width="30" class="rounded-circle mr-1"> {{ \Illuminate\Support\Str::title($post->user->name) }}</a>
+                    <a href="{{ route('profile.info', $post->user->profile->username) }}" class="font-weight-600"><img src="{{ asset('uploads/user-photo/'.$post->user->photo) }}" alt="avatar" height="30" width="30" class="rounded-circle mr-1"> {{ \Illuminate\Support\Str::title($post->user->name) }}</a>
                   </td>
                   <td>
                     <a class="btn btn-primary btn-action mr-1" href="{{ route('post.edit', $post->id) }}" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>

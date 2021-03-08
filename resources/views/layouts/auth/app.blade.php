@@ -26,9 +26,6 @@
             <!-- Alert Message -->
             @include('layouts.backend.partials.message')
             <!-- //@include('sweetalert::alert') -->
-            <div class="login-brand">
-              <img src="{{ asset('storage/web-logo/'.$web->web_logo) }}" alt="logo" width="100" class="shadow-light rounded-circle">
-            </div> 
             @yield('content')
           </div>
         </div>

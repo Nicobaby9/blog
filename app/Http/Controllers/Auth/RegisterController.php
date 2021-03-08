@@ -70,10 +70,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'photo' => 'profile.png',
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($data['password'])
         ]);
 
-        $user->profile()->create([
+        $profile = UserProfile::create([
             'user_id' => $user->id,
             'bio' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             'username' => Str::slug($data['username'], '_'),

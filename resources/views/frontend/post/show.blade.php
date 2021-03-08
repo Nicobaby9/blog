@@ -5,7 +5,7 @@
     @include('layouts.backend.partials.message')
     <!-- //@include('sweetalert::alert') -->
 	<div id="post-header" class="page-header">
-		<div class="page-header-bg" style="background-image: url('{{ asset('storage/post-image/'. $post->image)  }}');" data-stellar-background-ratio="0.5"></div>
+		<div class="page-header-bg" style="background-image: url('{{ asset('uploads/post-image/'. $post->image)  }}');" data-stellar-background-ratio="0.5"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10">
@@ -111,7 +111,7 @@
 				@foreach($related_post as $post)
 				<div class="col-md-4">
 					<div class="post post-sm">
-						<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'.$post->image) }}" height="145"></a>
+						<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('uploads/post-image/'.$post->image) }}" height="145"></a>
 						<div class="post-body">
 							<div class="post-category">
 								<a href="category.html">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>
@@ -140,7 +140,7 @@
 				<!-- comment -->
 				<div class="media">
 					<div class="media-left">
-						<img class="media-object" src="{{ asset('storage/user-photo/'.$comment->user->photo) }}" height="50">
+						<img class="media-object" src="{{ asset('uploads/user-photo/'.$comment->user->photo) }}" height="50">
 					</div>
 					<div class="media-body">
 						<div class="media-heading">

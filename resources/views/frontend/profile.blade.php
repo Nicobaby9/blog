@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10 text-center">
 				<div class="author">
-					<img class="author-img center-block" src="{{ asset('storage/user-photo/'. $profile->user->photo) }}" height="100" width="100">
+					<img class="author-img center-block" src="{{ asset('uploads/user-photo/'. $profile->user->photo) }}" height="100" width="100">
 					<h1 class="text-uppercase"><a style="color: white;" onclick="reply()">{{ $profile->user->name }}</a></h1>
 					<p class="lead">{{ $profile->headline }}</p>
 					<ul class="author-social">

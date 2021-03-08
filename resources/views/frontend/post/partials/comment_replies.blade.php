@@ -3,7 +3,7 @@
 
 <div class="media media-author">
 	<div class="media-left">
-		<img class="media-object" src="{{ asset('storage/user-photo/'.$comment->user->photo) }}" height="50">
+		<img class="media-object" src="{{ asset('uploads/user-photo/'.$comment->user->photo) }}" height="50">
 	</div>
 	<div class="media-body">
 		<div class="media-heading">

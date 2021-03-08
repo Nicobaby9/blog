@@ -17,7 +17,7 @@
 		<!-- post -->
 		@forelse($posts as $post)
 		<div class="post post-row">
-			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('storage/post-image/'. $post->image) }}" alt=""></a>
+			<a class="post-img" href="{{ route('blog.show', $post->slug) }}"><img src="{{ asset('uploads/post-image/'. $post->image) }}" alt=""></a>
 			<div class="post-body">
 				<div class="post-category">
 					<a href="category.html">{{ \Illuminate\Support\Str::title($post->category->name) }}</a>

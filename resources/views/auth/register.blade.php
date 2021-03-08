@@ -75,6 +75,7 @@
                     </button>
                 </div>
             </form>
+            You have an account? <a href="{{ route('login') }}">Login</a>
         </div>
     </div>
 </div>

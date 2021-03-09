@@ -73,10 +73,8 @@ class PostController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $imageSize = $file->getsize();
             $destinationPath = public_path('/uploads/post-image/');
             $file->move($destinationPath, $filename);
-            $insert['image'] = "$filename";
 
             $post = Post::create([
                 'title' => $request->title,
@@ -89,7 +87,6 @@ class PostController extends Controller
             ]);
 
             $post->tags()->attach($request->tags);
-            dd($post);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
         }

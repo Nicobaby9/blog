@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Model\{Post, Category, Tag, WebSetting};
+use App\Model\{Post, Category, Tag, WebSetting, Post_Tag};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use File;
@@ -86,6 +86,7 @@ class PostController extends Controller
                 'status' => $request->status
             ]);
 
+            // $tags = Post_Tag::attach($request->tags);
             $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
@@ -168,9 +169,8 @@ class PostController extends Controller
                 'status' => $request->status,
             ];
 
-            $post->tags()->detach($post->tags);
             $post->update($post_data);
-            $post->tags()->attach($request->tags);
+            $post->tags()->sync($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);
         }

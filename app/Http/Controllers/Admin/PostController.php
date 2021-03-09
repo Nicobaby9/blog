@@ -37,7 +37,7 @@ class PostController extends Controller
             $draft_posts = auth()->user()->posts()->where('status', 0)->latest()->paginate(25);
             $trash_posts = auth()->user()->posts()->onlyTrashed()->latest()->paginate(25);
         }
-        
+
         return view('admin.post.index', compact('all_post', 'published_posts', 'trash_posts', 'pending_posts', 'draft_posts'));
     }
 
@@ -155,7 +155,8 @@ class PostController extends Controller
             ];
 
             $post->update($post_data);
-            $post->tags()->sync($request->tags);
+            $post->tags()->detach($post_data->tags);
+            $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);
         }else {
@@ -168,7 +169,8 @@ class PostController extends Controller
             ];
 
             $post->update($post_data);
-            $post->tags()->sync($request->tags);
+            $post->tags()->detach($post_data->tags);
+            $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);
         }

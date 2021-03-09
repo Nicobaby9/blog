@@ -67,6 +67,7 @@ class PostController extends Controller
             'category_id' => 'required',
             'content' => 'required|min:150',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4000',
+            'tags' => 'required',
             'status' => 'required'
         ]);
 

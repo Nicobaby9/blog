@@ -169,7 +169,7 @@ class PostController extends Controller
             ];
 
             $post->update($post_data);
-            $post->tags()->detach($post_data->tags);
+            $post->tags()->detach($post->tags);
             $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);

@@ -154,8 +154,8 @@ class PostController extends Controller
                 'status' => $request->status,
             ];
 
-            $post->update($post_data);
             $post->tags()->detach($post_data->tags);
+            $post->update($post_data);
             $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);
@@ -168,8 +168,8 @@ class PostController extends Controller
                 'status' => $request->status,
             ];
 
-            $post->update($post_data);
             $post->tags()->detach($post->tags);
+            $post->update($post_data);
             $post->tags()->attach($request->tags);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil merubah post']);

@@ -89,6 +89,7 @@ class PostController extends Controller
             ]);
 
             $post->tags()->attach($request->tags);
+            dd($post);
 
             return redirect(route('post.index'))->with(['success' => 'Berhasil mebuat post baru']);
         }
